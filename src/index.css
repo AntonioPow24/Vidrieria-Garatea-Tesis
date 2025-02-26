@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    .optionStyle{
+        @apply block px-4 py-2 text-gray-800 dark:text-adminTextWhite hover:bg-gray-200 dark:hover:bg-gray-600 transition-all duration-300 capitalize ;
+    }
+    .theadProduct{
+        @apply text-[18px] text-adminTextDark dark:text-adminTextWhite py-4 transition-all duration-300
+    }
+
+    .formBox{
+        @apply absolute w-[50%] h-[100%] right-0 flex items-center text-center text-textDark px-[40px]
+    }
+
+    .formAuth{
+        @apply w-[100%]
+    }
+
+    .inputBox{
+        @apply relative my-[25px]
+    }
+  }
+
+
+
+/* Personalización de la barra de desplazamiento */
+body {
+    /* La propiedad `overflow-y` ya está aplicada desde el JSX para habilitar el scroll */
+    overflow-y: auto; /* Asegura que el scroll vertical solo aparezca cuando sea necesario */
+}
+
+/* Estilos de la barra de desplazamiento */
+body::-webkit-scrollbar {
+    width: 8px; /* Ancho de la barra de desplazamiento */
+}
+
+/* Estilos de la "thumb" de la barra de desplazamiento (la parte que se mueve) */
+body::-webkit-scrollbar-thumb {
+    background-color: #555555; /* Color de la barra (celeste en este caso) */
+    border-radius: 10px; /* Bordes redondeados */
+}
+
+/* Estilos del área de la barra de desplazamiento */
+body::-webkit-scrollbar-track {
+    background-color: transparent; /* Color del fondo de la barra */
+    border-radius: 10px;
+}
+

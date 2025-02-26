@@ -1,0 +1,45 @@
+.requestContainer{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(420px,1fr));
+    gap: 20px;
+
+}
+
+
+
+/* Cuando el ancho de la pantalla sea menor o igual a 455px */
+@media (max-width: 455px) {
+    .requestContainer {
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)) !important;
+    }
+}
+
+.requestContainer > article {
+    min-height: 205px; /* Altura de cada pedido */
+    border-radius: 16px; /* Bordes redondeados */
+    box-shadow: 0 2px 4px rgba(95, 95, 95, 0.1); /* Sombra suave */
+  }
+
+
+/* Personalización de la barra de desplazamiento */
+.detailRequestScroll {
+    /* La propiedad `overflow-y` ya está aplicada desde el JSX para habilitar el scroll */
+    overflow-y: auto; /* Asegura que el scroll vertical solo aparezca cuando sea necesario */
+}
+
+/* Estilos de la barra de desplazamiento */
+.detailRequestScroll::-webkit-scrollbar {
+    width: 4px; /* Ancho de la barra de desplazamiento */
+}
+
+/* Estilos de la "thumb" de la barra de desplazamiento (la parte que se mueve) */
+.detailRequestScroll::-webkit-scrollbar-thumb {
+    background-color: #54c0e1; /* Color de la barra (celeste en este caso) */
+    border-radius: 10px; /* Bordes redondeados */
+}
+
+/* Estilos del área de la barra de desplazamiento */
+.detailRequestScroll::-webkit-scrollbar-track {
+    background-color: none; /* Color del fondo de la barra */
+    border-radius: 10px;
+}

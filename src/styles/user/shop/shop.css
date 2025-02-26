@@ -1,0 +1,125 @@
+.banner{
+    background: rgb(78,134,166);
+    background: -moz-linear-gradient(90deg, rgba(78,134,166,1) 0%, rgba(78,87,166,1) 100%);
+    background: -webkit-linear-gradient(90deg, rgba(78,134,166,1) 0%, rgba(78,87,166,1) 100%);
+    background: linear-gradient(90deg, rgba(78,134,166,1) 0%, rgba(78,87,166,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#4e86a6",endColorstr="#4e57a6",GradientType=1);
+
+}
+
+.categoryFilter:hover .categoryFilterSpan{
+    color: #272727;
+}
+
+.containerProducts{
+    display: grid;
+    grid-template-columns: repeat( auto-fill, minmax(300px, 1fr));
+    gap: 28px;
+}
+
+
+
+.productCard:hover::before{
+    content: '';
+    position: absolute;
+    top: -40px;
+    width: 60%;
+    height: 140%;
+    background: linear-gradient(#54BFE1, #4E57A6);
+    animation: rotate 3s linear infinite;
+    transition: all 0.3s;
+}
+
+.productCard::after{
+    content: '';
+    position: absolute;
+    background: #c8d1da;
+    inset: 6px;
+    border-radius: 12px;
+}
+
+@keyframes rotate {
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}
+
+.toastNotif{
+    background: rgb(172,184,231);
+background: -moz-linear-gradient(90deg, rgba(172,184,231,1) 0%, rgba(153,227,235,1) 34%, rgba(145,235,182,1) 66%, rgba(239,241,137,1) 100%);
+background: -webkit-linear-gradient(90deg, rgba(172,184,231,1) 0%, rgba(153,227,235,1) 34%, rgba(145,235,182,1) 66%, rgba(239,241,137,1) 100%);
+background: linear-gradient(90deg, rgba(172,184,231,1) 0%, rgba(153,227,235,1) 34%, rgba(145,235,182,1) 66%, rgba(239,241,137,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#acb8e7",endColorstr="#eff189",GradientType=1);
+}
+
+.animateProgress{
+    animation: progressToast 2s linear forwards;
+    transition: width 0.3s ease
+}
+
+@keyframes progressToast {
+    0% { width: 100%; }
+    100% { width: 0%; }
+}
+
+.cardDetail{
+    -webkit-box-shadow: -1px 1px 19px -4px rgba(46,46,46,1);
+    -moz-box-shadow: -1px 1px 19px -4px rgba(46,46,46,1);
+    box-shadow: -1px 1px 19px -4px rgba(46,46,46,1);
+}
+
+.buttonProductCartAdd:hover  .fa-cart-shopping{
+    right: 20px;
+    transition: all 0.3s;
+}
+.backContainerProductDetail:hover .backProductDetail,
+.backContainerProductDetail:hover .backTextProductDetail{
+    color:#a1a1a1
+}
+
+.addCartProductShop:hover .buttonIntoProductCard{
+    color: #EDEDED;
+}
+
+/* Personalización de la barra de desplazamiento */
+.containerProductsScroll {
+    /* La propiedad `overflow-y` ya está aplicada desde el JSX para habilitar el scroll */
+    overflow-y: auto; /* Asegura que el scroll vertical solo aparezca cuando sea necesario */
+}
+
+/* Estilos de la barra de desplazamiento */
+.containerProductsScroll::-webkit-scrollbar {
+    width: 8px; /* Ancho de la barra de desplazamiento */
+}
+
+/* Estilos de la "thumb" de la barra de desplazamiento (la parte que se mueve) */
+.containerProductsScroll::-webkit-scrollbar-thumb {
+    background-color: #54c0e1; /* Color de la barra (celeste en este caso) */
+    border-radius: 10px; /* Bordes redondeados */
+}
+
+/* Estilos del área de la barra de desplazamiento */
+.containerProductsScroll::-webkit-scrollbar-track {
+    background-color: none; /* Color del fondo de la barra */
+    border-radius: 10px;
+}
+
+
+  
+  /* Ocultar la barra de desplazamiento */
+  .filterCategoriesScroll::-webkit-scrollbar {
+    width: 0; /* El ancho de la barra de desplazamiento es 0 */
+    height: 0; /* Si hay desplazamiento horizontal, puedes esconderlo también */
+  }
+  
+  /* Opcional: Cambiar el estilo del área de scroll si es necesario */
+  .filterCategoriesScroll::-webkit-scrollbar-track {
+    background: transparent; /* El área del track (fondo de la barra) */
+  }
+  
+  .filterCategoriesScroll::-webkit-scrollbar-thumb {
+    background: transparent; /* El área de la barra de scroll */
+  }

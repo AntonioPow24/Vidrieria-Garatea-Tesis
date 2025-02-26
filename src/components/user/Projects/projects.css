@@ -1,0 +1,15 @@
+.bgImage{
+    background: url('/public//images//projects/bgProjects.png');
+}
+
+.galleryContainer{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.galleryContainerMax {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 30px;
+}
