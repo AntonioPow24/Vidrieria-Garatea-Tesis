@@ -4,7 +4,7 @@ import RequestDetail from './RequestDetail'
 import { useRequestsContext } from '../../../../context/RequestContext'
 import RequestCancelConfirm from './RequestCancelConfirm'
 
-const RequestCard = ({ requestId, city, priceDelivery, registerDate,  totalRequest, statusRequest, itemsRequest }) => {
+const RequestCard = ({ orderId, city, priceDelivery, registerDate,  totalOrder, orderStatus, itemsRequest }) => {
 
     const [ isDetailsOpen, setIsDetailOpen ] = useState( false )
 
@@ -18,7 +18,7 @@ const RequestCard = ({ requestId, city, priceDelivery, registerDate,  totalReque
 
     // Cancelar el pedido
     const cancelRequest = () => {
-        updateRequestState( requestId, 'Cancelado' )
+        updateRequestState( orderId, 'Cancelado' )
         setIsCancelRequest( false )
     }
 
@@ -38,9 +38,9 @@ const RequestCard = ({ requestId, city, priceDelivery, registerDate,  totalReque
         <div className='flex justify-between'>
             <span className='text-[20px] bigPhone:text-[14px] text-text-white'>{ registerDate }</span>
             <span 
-                className={`text-[20px] bigPhone:text-[14px] ${ statusRequest === 'Pendiente' ? 'text-yellow-500' : statusRequest === 'Completado' ? 'text-green-500' : 'text-red-500' }`}
+                className={`text-[20px] bigPhone:text-[14px] ${ orderStatus === 'Pendiente' ? 'text-yellow-500' : orderStatus === 'Completado' ? 'text-green-500' : 'text-red-500' }`}
             >
-                { statusRequest }
+                { orderStatus }
             </span>
         </div>
 
@@ -49,14 +49,14 @@ const RequestCard = ({ requestId, city, priceDelivery, registerDate,  totalReque
             <div className='flex 430:w-full'>
                 <div className='flex justify-center items-center flex-col gap-[6px] 430:flex-row 430:w-full 430:justify-between'>
                     <span className='text-adminTextPurple text-[18px] text-center 580:text-[16px]'>Total</span>
-                    <span className='text-[14px] text-text-white text-center'>S/. { totalRequest.toFixed(2) }</span>
+                    <span className='text-[14px] text-text-white text-center'>S/. { totalOrder.toFixed(2) }</span>
                 </div>
             </div>
             
             <div className='flex 430:w-full'>
                 <div className='flex justify-center items-center flex-col gap-[6px] 430:flex-row  430:w-full 430:justify-between'>
                     <span className='text-adminTextPurple text-[18px] text-center 580:text-[16px]'>Número de pedido</span>
-                    <span className='text-[14px] text-text-white text-center'>#VG_00{ requestId }2025</span>
+                    <span className='text-[14px] text-text-white text-center'>#VG_00{ orderId }2025</span>
                 </div>
             </div>
 
@@ -71,7 +71,7 @@ const RequestCard = ({ requestId, city, priceDelivery, registerDate,  totalReque
 
         <div className='flex justify-end gap-[21px] 580:justify-center'>
             {
-                statusRequest === 'Pendiente' && 
+                orderStatus === 'Pendiente' && 
 
                 <button 
                     className='bg-[#b054548f] py-1 rounded-[4px] w-full max-w-[200px]'
@@ -100,7 +100,7 @@ const RequestCard = ({ requestId, city, priceDelivery, registerDate,  totalReque
                     anotherClass='flex justify-center items-center '
                 >
 
-                            <RequestDetail requestId={ requestId } />
+                            <RequestDetail orderId={ orderId } />
 
                 </Modal>
             </div>

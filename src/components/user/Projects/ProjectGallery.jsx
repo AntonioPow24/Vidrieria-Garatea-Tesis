@@ -13,7 +13,7 @@ const ProjectGallery = () => {
 
 
   return (
-    <section className="pt-[35px] px-[2%] bg-appBgBlack ">
+    <section className="pt-[35px] px-[2%] bg-appBgBlack  w-full">
 
         <GalleryCategory categoryFilter={ categoryFilter } categoryActive={ categoryActive } />
 

@@ -1,9 +1,9 @@
 const GalleryPhoto = ({imgSrc}) => {
   return (
 
-    <div className="w-full">
+    <div className="455:max-w-[280px] 455:m-auto w-full">
         <img 
-            className="rounded-[10px] "
+            className="rounded-[10px] w-full object-cover "
             src={ imgSrc } 
         />
     </div>

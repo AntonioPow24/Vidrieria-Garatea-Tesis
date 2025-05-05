@@ -6,27 +6,24 @@ const UserContext = createContext();
 
 // Usuario de prueba
 const userTest = {
-  idUser: "1",
+  userId: "1",
   password: "Antonio2401",
   email:"user@gmail.com",
-  address: "",
-  phoneNumber: undefined,
   email: "garciaromeroantonio@gmail.com",
-  userRole: "user",
-  requestList: [],
+  ROLES:["user"],
+  // requestList: [],
   userName: "Antonio",
   lastName: "Garcia Romero",
 };
 
 // Usuario admin de prueba
 const userAdmi = {
-  idUser: "2",
+  userId: "2",
   email:"admin@gmail.com",
   password: "admin2401",
-  address: "",
-  phoneNumber: undefined,
+  // phoneNumber: undefined,
   email: "admin@empresa.com",
-  userRole: "admin",
+  ROLES:["admin"],
   requestList: [],
   userName: "admin",
   lastName: "Garcia Romero",
@@ -34,7 +31,7 @@ const userAdmi = {
 
 // Proveedor del contexto
 export const UserProvider = ({ children }) => {
-  const [user, setUser] = useState(userTest); // Estado del usuario autenticado
+  const [user, setUser] = useState( userAdmi ); // Estado del usuario autenticado
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 

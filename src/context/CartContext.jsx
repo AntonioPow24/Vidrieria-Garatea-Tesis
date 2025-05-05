@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useUserProductsContext } from "./ProductsContext/UserProductsContext";
 import axios from "axios";
 
-
+// TODO: NECESITO GUARDAR EN UNA VARIABLE EL shoppingCartId, para mandarlo en el clearCart, falta crear eso
 
 // ARREGLO DEL CARRITO( SOLO ES REFERENCIA)
 const defaultCart = [
@@ -143,7 +143,7 @@ const CartContextProvider = ({children}) =>{
 
     // Funcion Continuar Compra
     const continuePurchase = () => {
-        navigate("/tienda/continue");
+        navigate("/cart/continue");
     }
 
     // Función para incrementar la cantidad de un producto
@@ -264,16 +264,18 @@ const CartContextProvider = ({children}) =>{
 
       console.log('se verifico bd');
       
+      // TODO: CODIGO DE PRUEBA, ELIMINAR DESPUES
+
     // Verificar si hay carrito en la BD
     const fetchCartFromDatabase = async () => {
       
       
       try {
-          const response = await axios.get("/api/cartsd");
-          const data = response.data
+          const response = await axios.get("/api/cartsd"); 
+          const data = response.data.shoppingCartItems
           if (data.ok && data.length > 0) {
 
-            console.log('Si hay carrito en BD');
+            console.log('Si hay carrito en BD Y esta lleno');
             
 
             // Si hay carrito en BD, guardamos en localStorage
@@ -282,7 +284,7 @@ const CartContextProvider = ({children}) =>{
 
             await axios.delete("/api/cart");  // Vaciar carrito en BD
           } else{
-            console.log('no hay carrit oen BD');
+            console.log('no hay carrit oen BD o esta vacio');
             
             setCart([])
           }

@@ -8,7 +8,7 @@ const detailTest = {
     dni:'70204303',
     city:'Chimbote',
     phoneNumber:'928517790',
-    itemsRequest:[
+    items:[
         {
             productId: '24',
             titleName: 'Silicona Dowsil con nombre extremadamente largo',
@@ -53,7 +53,7 @@ const detailTest = {
     totalRequest: 52.00
 }
 
-const RequestDetail = ( { requestId } ) => {
+const RequestDetail = ( { orderId } ) => {
 
     const { getRequestById } = useRequestsContext()
 
@@ -62,11 +62,11 @@ const RequestDetail = ( { requestId } ) => {
 
     // useEffect(() => {
 
-    //     const request = getRequestById(requestId); 
+    //     const request = getRequestById(orderId); 
 
     //     setRequestDetails(request); 
 
-    // }, [requestId, getRequestById]);
+    // }, [orderId, getRequestById]);
 
 
 
@@ -77,13 +77,13 @@ const RequestDetail = ( { requestId } ) => {
             requestDetails ?
                 <>
                     <div className='flex px-[14px] py-[15px] items-center justify-start w-full 580:px-[6px]'>
-                        <span className='text-[18px] text-text-white font-medium 580:text-[12px]'>Total productos: { requestDetails.itemsRequest.length }</span>
+                        <span className='text-[18px] text-text-white font-medium 580:text-[12px]'>Total productos: { requestDetails.items.length }</span>
                     </div>
 
                     <div className='flex flex-col w-full overflow-y-auto h-[400px] detailRequestScroll'>
                         {
-                            requestDetails.itemsRequest.length > 0 &&
-                            requestDetails.itemsRequest.map( item => 
+                            requestDetails.items.length > 0 &&
+                            requestDetails.items.map( item => 
                                 <RequestDetailItem key={ item.productId} { ...item } />
                             ) 
                         }

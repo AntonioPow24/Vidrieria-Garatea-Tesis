@@ -22,6 +22,10 @@ export default {
         'adminTextWhite':'#b8b7b7',
         'adminTextPurple':'#9D78E5',
 
+        'adminInputBg':'#ECECEC',
+        'userDetailBg':'#10101099',
+
+
 
         'popUpDropDown':'#171717B3',
         'categorySelected':'#54BFE1B2',
@@ -79,13 +83,10 @@ export default {
       'bigTablet':{'max':'950px'},
 
       '1000':{'max':'1000px'},
-
-      '1070':{'max':'1070px'},
-
-  
-
+      
       'ipad':{'max':'1050px'} ,
-
+      
+      '1070':{'max':'1070px'},
       
       '1320':{'max':'1320px'},
       
@@ -136,5 +137,6 @@ export default {
       '850to1480': {'min': '850px', 'max': '1480px'},
     }
   },
+  darkMode:'class',
   plugins: [],
 }

@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Sen:wght@400..800&display=swap');
+
+*{
+    font-family: "Sen", sans-serif;
+}
+
+.active .iconLinkAdmin .fa-solid{
+    color: #7040F9;
+    font-size: 28px;
+}
+
+.dark .active .iconLinkAdmin .fa-solid{
+    color: #54BFE1;
+    font-size: 28px;
+}
+.active .linkName{
+    font-size: 20px;
+}
+
+
+/* Users */
+.userDetailContainer{
+    background-image: url("https://i.postimg.cc/Bv1PM1Wp/morning.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* background: red; */
+}
+
+.spinner {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: radial-gradient(farthest-side,#fcfcfc 94%,#0000) top/4px 4px no-repeat,
+           conic-gradient(#0000 30%,#fcfcfc);
+    -webkit-mask: radial-gradient(farthest-side,#0000 calc(100% - 4px),#000 0);
+    animation: spinner-c7wet2 1s infinite linear;
+ }
+ 
+ @keyframes spinner-c7wet2 {
+    100% {
+       transform: rotate(1turn);
+    }
+ }

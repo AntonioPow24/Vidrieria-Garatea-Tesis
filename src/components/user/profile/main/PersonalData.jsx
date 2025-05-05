@@ -16,7 +16,6 @@ const PersonalData = () => {
     const [updateUserState, setUpdateUserState] = useState({
       userName: user?.userName || "",
       lastName: user?.lastName || "",
-      address: user?.address || "",
       email: user?.email || "",
     });
 
@@ -70,15 +69,6 @@ const PersonalData = () => {
           value: updateUserState.lastName,
           onChange: onChangeUpdateuser,
           required:true
-        },
-        {
-          id: "address",
-          label: "Dirección:",
-          type: "text",
-          name: "address",
-          value: updateUserState.address,
-          onChange: onChangeUpdateuser,
-          required: false
         },
         {
           id: "email",

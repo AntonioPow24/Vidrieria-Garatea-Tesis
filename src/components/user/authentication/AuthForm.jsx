@@ -17,7 +17,6 @@ const AuthForm = ({ methodForm,closeAuth }) => {
         password:'',
         userName:'',
         lastName:'',
-        address:'',
         register:null,
     })
 
@@ -140,16 +139,6 @@ const AuthForm = ({ methodForm,closeAuth }) => {
                             inputStyle="inputBox"
                         />
 
-                        <AuthInput
-                            type="text"
-                            name="address"
-                            placeholder="Dirección"
-                            required={true}
-                            iconClass="fa-solid fa-location-dot"
-                            value={formData.address}
-                            onChange={handleOnChange}
-                            inputStyle="inputBox"
-                        />
                     </>
                 )}
 

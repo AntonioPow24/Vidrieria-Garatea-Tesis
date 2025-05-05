@@ -19,6 +19,7 @@ import ProductsAdmin from '../pages/admin/ProductsAdmin'
 import RequestsAdmin from '../pages/admin/RequestsAdmin'
 import UsersAdmin from '../pages/admin/UsersAdmin'
 import ResumeCart from "../pages/user/ResumeCart";
+import ResumePaid from "../pages/user/ResumePaid";
 
 
 export const router = createBrowserRouter([
@@ -52,15 +53,19 @@ export const router = createBrowserRouter([
             },
             {
                 path:'/configuration/:typeConfig',
-                element: <ConfigurationProfile/>,
+                element: <ConfigurationProfile />,
             },
             {
-                path:'/tienda/continue',
-                element: <ResumeCart/>,
+                path:'/cart/continue',
+                element: <ResumeCart />,
+            },
+            {
+                path:'/cart/paid/:requestId',
+                element: <ResumePaid />,
             },
             {
                 path:'*',
-                element:<NotFound/> ,
+                element:<NotFound /> ,
             },
         ]
     },

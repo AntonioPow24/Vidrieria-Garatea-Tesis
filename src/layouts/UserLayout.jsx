@@ -15,7 +15,7 @@ import UserProductsContextProvider from '../context/ProductsContext/UserProducts
 const UserLayout = () => {
 
     const { user } = useAuth()
-
+   
   return (
 
     <UserProductsContextProvider>
@@ -24,7 +24,7 @@ const UserLayout = () => {
         <div>
 
           <NavBar />
-            {user && user.userRole === 'admin'? <Navigate to={'/admin'}/> : <Outlet /> } 
+            {user && user.ROLES[0] === 'admin'? <Navigate to={'/admin'}/> : <Outlet /> } 
           <Footer />
 
         </div>

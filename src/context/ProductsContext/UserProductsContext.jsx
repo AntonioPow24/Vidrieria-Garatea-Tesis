@@ -18,11 +18,13 @@ const UserProductsContextProvider = ({ children }) => {
     // Traerme todos los productos de una categoria
     //TODO Descomentar el codigo del fetching, borrar la simulacion
     const fetchProducts = async (categoryId) => {
+
         // setIsLoading(true);
         // try {
 
         //     const response = await fetch(`/api/user/product?category=${categoryId}&isAvailable=true`);
         //     const data = await response.json();
+                // data=[ ... ]
         //     setProducts(data); // Setear productos de esa categoría
         // } catch (err) {
         //     console.error("Error fetching products by category:", err);
@@ -61,6 +63,7 @@ const UserProductsContextProvider = ({ children }) => {
         //             titleName: data.titleName,
         //             imageUrl: data.imageUrl,
         //             price: data.price,
+        //             stock:data.stock
         //         };
         //     }
     

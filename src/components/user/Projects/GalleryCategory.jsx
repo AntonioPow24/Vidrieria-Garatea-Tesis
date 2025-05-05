@@ -17,6 +17,8 @@ const GalleryCategory = ({categoryFilter, categoryActive}) => {
                 >
                     <span className={`text-2xl capitalize ${project.title === categoryActive ? 'text-text-white': 'text-skyBlueApp'} `}>{project.title}</span>
                 </button>
+
+                
             )
         }
     </div>

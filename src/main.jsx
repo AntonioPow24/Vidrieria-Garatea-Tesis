@@ -7,6 +7,7 @@ import { router } from './config/router.jsx'
 import LoginContainerContextProvider from './context/LoginContainerContext.jsx'
 import { UserProvider } from './context/UserContext.jsx'
 import { RequestProvider } from './context/RequestContext.jsx'
+import DarkThemeContextProvider from './context/DarkThemeContext.jsx'
 
 
 createRoot(document.getElementById('root')).render(
@@ -18,7 +19,11 @@ createRoot(document.getElementById('root')).render(
 
           <RequestProvider>
 
+            <DarkThemeContextProvider>
+
             <RouterProvider router={ router } />  
+
+            </DarkThemeContextProvider>
 
           </RequestProvider>
 

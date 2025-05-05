@@ -1,5 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import { useCartContext } from '../../../context/CartContext'
+import { useAuth } from '../../../context/UserContext'
+import { useLoginContainerContext } from '../../../context/LoginContainerContext'
 
 
 
@@ -11,6 +13,8 @@ const PreviewCartContinue = ({closeCart, total}) => {
 
   const { totalItemsCart, continuePurchase } = useCartContext()
 
+  const { user } = useAuth() // Obtener el estado del usuario
+  const { openLogin } = useLoginContainerContext() // Para abrir el modal de login
 
 
 
@@ -24,11 +28,14 @@ const PreviewCartContinue = ({closeCart, total}) => {
   
 
   // FUNCIONES
-  const handleNavigate= (path) =>{
-
-    if(totalItemsCart > 0){
-      continuePurchase()
-      closeCart()
+  const continuePurchaseHandler = () => {
+    if (totalItemsCart > 0) {
+      if (!user) {
+        openLogin() // Si no está logueado, abrir el modal de login
+      } else {
+        continuePurchase()
+        closeCart()
+      }
     }
   }
   
@@ -41,7 +48,7 @@ const PreviewCartContinue = ({closeCart, total}) => {
       </div>
 
       <div className="flex">
-        <button className={continueButton}  onClick={() => handleNavigate('tienda/siliconas')} >
+        <button className={continueButton}  onClick={ continuePurchaseHandler } >
           <span className='text-text-white text-xl font-medium mb-1'>Continuar compra</span>
           <i className=" text-xl fa-solid fa-cart-shopping"></i> 
         </button>

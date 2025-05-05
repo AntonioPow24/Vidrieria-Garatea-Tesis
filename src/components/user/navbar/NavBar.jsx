@@ -239,7 +239,7 @@ const NavBar = () => {
         </nav>
         {
             isLogin &&
-            
+            <div className='w-full h-full top-0 left-0 fixed z-[200]'>
                 <Modal
                     isModal={ isLogin }
                     toggleModal={ toggleLogin }
@@ -247,6 +247,7 @@ const NavBar = () => {
                 >
                     <AuthContainer closeAuth={ closeLogin } />
                 </Modal>
+            </div>
         }
     </>
   )

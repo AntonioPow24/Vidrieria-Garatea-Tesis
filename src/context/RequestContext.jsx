@@ -2,16 +2,18 @@ import { createContext, useContext, useState, useEffect } from "react";
 import axios from "axios";
 import { useAuth } from "./UserContext";
 
+
+
 const pruebaPedidos = [
   {
-    "requestId": 1,
-    // "dni": "12345678",
+    "orderId": 1,
+    "dni": "12345678",
     "city": "Chimbote",
-    // "phoneNumber": "987654321",
-    "priceDelivery": 10.5,
-    "registerDate": "2025-01-27T22:06:15.6431457",
-    "totalRequest": 52.00,
-    "statusRequest": "Completado",
+    "phoneNumber": "987654321",
+    "priceDelivery": 10,
+    "registerDate": "12 Abril 2025",
+    "totalOrder": 52,
+    "orderStatus": "Completado",
     // "itemsRequest": [
     //   {
     //     "idProduct": 1,
@@ -24,14 +26,134 @@ const pruebaPedidos = [
     // ]
   },
   {
-    "requestId": 2,
-    // "dni": "12345678",
+    "orderId": 2,
+    "dni": "12345678",
     "city": "Chimbote",
-    // "phoneNumber": "987654321",
-    "priceDelivery": 10.5,
-    "registerDate": "2025-01-27T22:06:15.6431457",
-    "totalRequest": 52.00,
-    "statusRequest": "Pendiente",
+    "phoneNumber": "987654321",
+    "priceDelivery": 10,
+    "registerDate": "12 Abril 2025",
+    "totalOrder": 52.00,
+    "orderStatus": "Pendiente",
+    // "itemsRequest": [
+    //   {
+    //     "idProduct": 1,
+    //     "titleName": "Laptop Dell Inspiron",
+    //     "quantity": 2,
+    //     "price": 50.25,
+    //     "imageUrl": "https://i.postimg.cc/wtN0pSw5/1.png",
+    //     "category": "VENTANAS"
+    //   }
+    // ]
+  },
+  {
+    "orderId": 3,
+    "dni": "12345678",
+    "city": "Chimbote",
+    "phoneNumber": "987654321",
+    "priceDelivery": 10,
+    "registerDate": "12 Abril 2025",
+    "totalOrder": 52,
+    "orderStatus": "Completado",
+    // "itemsRequest": [
+    //   {
+    //     "idProduct": 1,
+    //     "titleName": "Laptop Dell Inspiron",
+    //     "quantity": 2,
+    //     "price": 50.25,
+    //     "imageUrl": "https://i.postimg.cc/wtN0pSw5/1.png",
+    //     "category": "VENTANAS"
+    //   }
+    // ]
+  },
+  {
+    "orderId": 4,
+    "dni": "12345678",
+    "city": "Chimbote",
+    "phoneNumber": "987654321",
+    "priceDelivery": 10,
+    "registerDate": "12 Abril 2025",
+    "totalOrder": 52.00,
+    "orderStatus": "Pendiente",
+    // "itemsRequest": [
+    //   {
+    //     "idProduct": 1,
+    //     "titleName": "Laptop Dell Inspiron",
+    //     "quantity": 2,
+    //     "price": 50.25,
+    //     "imageUrl": "https://i.postimg.cc/wtN0pSw5/1.png",
+    //     "category": "VENTANAS"
+    //   }
+    // ]
+  },
+  {
+    "orderId": 5,
+    "dni": "12345678",
+    "city": "Chimbote",
+    "phoneNumber": "987654321",
+    "priceDelivery": 10,
+    "registerDate": "12 Abril 2025",
+    "totalOrder": 52,
+    "orderStatus": "Completado",
+    // "itemsRequest": [
+    //   {
+    //     "idProduct": 1,
+    //     "titleName": "Laptop Dell Inspiron",
+    //     "quantity": 2,
+    //     "price": 50.25,
+    //     "imageUrl": "https://i.postimg.cc/wtN0pSw5/1.png",
+    //     "category": "VENTANAS"
+    //   }
+    // ]
+  },
+  {
+    "orderId": 6,
+    "dni": "12345678",
+    "city": "Chimbote",
+    "phoneNumber": "987654321",
+    "priceDelivery": 10,
+    "registerDate": "12 Abril 2025",
+    "totalOrder": 52.00,
+    "orderStatus": "Cancelado",
+    // "itemsRequest": [
+    //   {
+    //     "idProduct": 1,
+    //     "titleName": "Laptop Dell Inspiron",
+    //     "quantity": 2,
+    //     "price": 50.25,
+    //     "imageUrl": "https://i.postimg.cc/wtN0pSw5/1.png",
+    //     "category": "VENTANAS"
+    //   }
+    // ]
+  },
+  {
+    "orderId": 7,
+    "dni": "12345678",
+    "city": "Chimbote",
+    "phoneNumber": "987654321",
+    "priceDelivery": 10,
+    "registerDate": "12 Abril 2025",
+    "totalOrder": 52,
+    "orderStatus": "Completado",
+    // "itemsRequest": [
+    //   {
+    //     "idProduct": 1,
+    //     "titleName": "Laptop Dell Inspiron",
+    //     "quantity": 2,
+    //     "price": 50.25,
+    //     "imageUrl": "https://i.postimg.cc/wtN0pSw5/1.png",
+    //     "category": "VENTANAS"
+    //   }
+    // ]
+  },
+  {
+    "orderId": 8,
+    "dni": "12345678",
+    "city": "Chimbote",
+    "phoneNumber": "987654321",
+    "priceDelivery": 10,
+    "registerDate": "12 Abril 2025",
+    "totalOrder": 52.00,
+    "orderStatus": "Completado",
     // "itemsRequest": [
     //   {
     //     "idProduct": 1,
@@ -54,17 +176,22 @@ export const RequestProvider = ({ children }) => {
 
   const { user } = useAuth()
 
+
+
   const [requests, setRequests] = useState(pruebaPedidos); // Lista de pedidos del usuario
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+
+
+
   // todo DESCOMENTAR CODIGO PARA OBTENER LOS PEDIDOS
   // Obtener los pedidos del usuario al cargar el componente
   // useEffect(() => {
-  //   if (user?.idUser) {
-  //     fetchRequests(user.idUser);
+  //   if (user?.userId) {
+  //     fetchRequests(user.userId);
   //   }
-  // }, [user?.idUser]);
+  // }, [user?.userId]);
 
 
   // Obtener los pedidos del usuario
@@ -85,22 +212,37 @@ export const RequestProvider = ({ children }) => {
     }
   };
 
+
+  // Crear un nuevo Pedido
     const addRequest = async (newRequest) => {
+      console.log('creando pedido');
+      
+      
     try {
-        const response = await axios.post("/api/requests", newRequest, {
+        const response = await axios.post("https://ecommerce-dqp2.onrender.com/api/v1/order/create", newRequest, {
         headers: { Authorization: `Bearer ${localStorage.getItem("authToken")}` },
         });
-        setRequests((prev) => [...prev, response.data]); // Añadir el nuevo pedido
+
+        if (response.status === 200) {
+
+          setRequests((prev) => [...prev, response.data]); // Añadir el nuevo pedido a la lista
+          return { success: true, data: response.data }; // Devuelve éxito con la data del pedido
+        } else {
+          return { success: false, message: "Error al procesar el pedido" };
+        }
+
         } catch (err) {
-        setError("Error al crear el pedido.");
+          console.error("Error al crear el pedido", err);
+          setError("Error al crear el pedido.");
+          return { success: false, message: err.message || "Error desconocido" }; // Manejo del error
         }
     };
 
     // Cambiar el estado de un pedido
-    const updateRequestState = async (idRequest, newState) => {
+    const updateRequestState = async (orderId, newState) => {
       try {
         const response = await axios.put(
-          `/api/v1/order/status/${idRequest}`,
+          `/api/v1/order/status/${orderId}`,
           { orderstatus: newState },
           {
             headers: { Authorization: `Bearer ${localStorage.getItem("authToken")}` },
@@ -110,8 +252,8 @@ export const RequestProvider = ({ children }) => {
         // Actualizar el estado local de los pedidos
         setRequests((prev) =>
           prev.map((request) =>
-            request.idRequest === idRequest
-              ? { ...request, statusRequest: newState }
+            request.orderId === orderId
+              ? { ...request, orderStatus: newState }
               : request
           )
         );
@@ -121,8 +263,10 @@ export const RequestProvider = ({ children }) => {
       }
     };
     
-    const getRequestById = (idRequest) => {
-        return requests.find((request) => request.idRequest === idRequest) || null;
+    // todo falta funcion fetch
+    const getRequestById = (orderId) => {
+
+        return requests.find((request) => request.orderId === orderId) || null;
     };
 
   return (
