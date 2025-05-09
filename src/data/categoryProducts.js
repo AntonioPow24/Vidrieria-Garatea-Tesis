@@ -1,36 +1,36 @@
 export const categoryProducts = [
     {
-        categoryId:1,
+        id:1,
         nameCategory:'chapas',
         titleCategory: 'cerraduras y chapas'
     },
     {
-        categoryId:2,
+        id:2,
         nameCategory:'cintas',
         titleCategory: 'cintas'
     },
     {
-        categoryId:3,
+        id:3,
         nameCategory:'aluminio',
         titleCategory: 'accesorios de aluminio'
     },
     {
-        categoryId:4,
+        id:4,
         nameCategory:'puertas',
         titleCategory: 'puertas'
     },
     {
-        categoryId:5,
+        id:5,
         nameCategory:'ferreteria',
         titleCategory: 'artículos de ferretería'
     },
     {
-        categoryId:6,
+        id:6,
         nameCategory:'siliconas',
         titleCategory: 'siliconas'
     },
     // {
-    //     categoryId:7,
+    //     id:7,
     //     nameCategory:'acero',
     //     titleCategory: 'accesorios de acero'
     // },

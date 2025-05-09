@@ -6,6 +6,8 @@ export const usePasswordValidation = () => {
     hasLowerCase: false,
     hasMinLength: false,
     hasNoSpaces: false,
+    hasNumber: false,
+    hasSpecialChar: false,
   });
 
   const validatePassword = (password) => {
@@ -14,6 +16,8 @@ export const usePasswordValidation = () => {
       hasLowerCase: /[a-z]/.test(password),
       hasMinLength: password.length >= 8,
       hasNoSpaces: !/\s/.test(password),
+      hasNumber: /\d/.test(password),
+      hasSpecialChar: /[!@#$%^&*(),.?":{}|<>]/.test(password),
     };
     setConditions(newConditions);
     return Object.values(newConditions).every(Boolean);

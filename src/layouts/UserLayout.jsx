@@ -24,7 +24,7 @@ const UserLayout = () => {
         <div>
 
           <NavBar />
-            {user && user.ROLES[0] === 'admin'? <Navigate to={'/admin'}/> : <Outlet /> } 
+            {user && user.roles[0] === 'ADMIN'? <Navigate to={'/ADMIN'}/> : <Outlet /> } 
           <Footer />
 
         </div>

@@ -32,11 +32,11 @@ export const AdminUsersProvider = ({ children }) => {
   };
 
   // Obtener un usuario específico por ID (retorna los datos)
-  const fetchUserById = async (userId) => {
+  const fetchUserById = async (id) => {
     setLoading(true);
     setError(null);
     try {
-      const response = await axios.get(`/api/v1/users/admin/${userId}`, {
+      const response = await axios.get(`/api/v1/users/admin/${id}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('authToken')}`,
         },
@@ -51,16 +51,16 @@ export const AdminUsersProvider = ({ children }) => {
   };
 
   // Eliminar un usuario por ID
-  const deleteUser = async (userId) => {
+  const deleteUser = async (id) => {
     setLoading(true);
     setError(null);
     try {
-      await axios.delete(`/api/v1/users/admin/${userId}`, {
+      await axios.delete(`/api/v1/users/admin/${id}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('authToken')}`,
         },
       });
-      setUsers((prevUsers) => prevUsers.filter((user) => user.id !== userId));
+      setUsers((prevUsers) => prevUsers.filter((user) => user.id !== id));
     } catch (err) {
       setError('Error al eliminar el usuario');
     } finally {
@@ -68,12 +68,12 @@ export const AdminUsersProvider = ({ children }) => {
     }
   };
 
-  const selectUser = async (userId) => {
+  const selectUser = async (id) => {
     // TODO: Descomentar codigo real, se esta realizando simulacion
     // setLoadingSelectedUser(true);
     // setError(null);
     // try {
-    //   const user = await fetchUserById(userId);
+    //   const user = await fetchUserById(id);
     //   setSelectedUserTable(user);
 
     //   setTimeout(() => {
@@ -84,7 +84,7 @@ export const AdminUsersProvider = ({ children }) => {
     // }
 
     // Al realizar esta funcion, activaremos el loadingSelectedUser por 0.6s y despues mostraremos el usuario seleccionado
-    setSelectedUserTable( users.find( user => user.userId === userId ))
+    setSelectedUserTable( users.find( user => user.id === id ))
     setLoadingSelectedUser(true);
     setTimeout(() => {
       setLoadingSelectedUser(false);

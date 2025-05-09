@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useUserProductsContext } from '../../context/ProductsContext/UserProductsContext'
 import DetailImage from '../../components/user/shop/product/detail/DetailImage'
@@ -7,14 +7,24 @@ import DetailInfo from '../../components/user/shop/product/detail/DetailInfo'
 const ProductDetail = () => {
 
   const { productId } = useParams()
-
-  console.log(productId);
   
   const { getProductDetails } = useUserProductsContext()
 
-  const  productDetails  = getProductDetails( Number(productId) )
-  
-  console.log(productDetails);
+  const [  productDetails, setProductDetails ] = useState({})
+
+  useEffect(()=>{
+    const fetchProductDetails = async () => {
+      try {
+        const details = await getProductDetails( Number(productId) )
+        setProductDetails(details)
+      } catch (error) {
+        console.error("Error fetching product details:", error);
+      }
+    };
+    fetchProductDetails()
+  },[productId])
+
+
   
   return (
     <section className=' bg-appBgBlack flex justify-center items-center pb-[20px] 1480to1920:pt-[117px] 850to1480:pt-[190px] 849:pt-[117px]'>

@@ -23,7 +23,7 @@ const ShopAside = ({ changeCategory, allCategories }) => {
             allCategories.map( category => 
               <ShopCategoryFilter 
                 { ...category } 
-                key={ category.categoryId }  
+                key={ category.id }  
                 changeCategory={ changeCategory } 
               /> )
           }

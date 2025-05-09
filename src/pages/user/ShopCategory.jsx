@@ -13,20 +13,13 @@ const ShopCategory = () => {
 
   const { allCategories, setCurrentCategory } = useUserProductsContext()
 
-
-
-  // Obtener el idCategory correspondiente al nameCategory
   const category = allCategories.find(c => c.nameCategory === categoryName);
 
-  
-
-  // Función para manejar el cambio de categoría (filtro)
   const handleChangeCategory = (categoryName) => {
     const selectedCategory = allCategories.find(c => c.nameCategory === categoryName);
     if (selectedCategory) {
-      // Navegar a la nueva ruta de categoría
       navigate(`/tienda/${selectedCategory.nameCategory}`);
-      setCurrentCategory(selectedCategory.idCategory);  // Actualizar la categoría en el contexto
+      setCurrentCategory(selectedCategory.id);
     }
   };
 
@@ -34,8 +27,7 @@ const ShopCategory = () => {
   useEffect(() => {
     if (category) {
       
-      // Seteamos el currentCategory, esto automaticamente en el context cambiara los productos
-      setCurrentCategory(category.categoryId)
+      setCurrentCategory(category.id)
 
     }
   }, [category, setCurrentCategory]);

@@ -3,7 +3,7 @@ import { useAdminUsersContext } from '../../../../../../context/AdminUsersContex
 import DataField from './DataField'
 
 
-const UserPersonalData = ({ userName, lastName, email, userId, createdDate, totalOrders }) => {
+const UserPersonalData = ({ userName, lastName, email, id, createdDate, totalOrders }) => {
 
      const { loadingSelectedUser } = useAdminUsersContext()
 
@@ -36,7 +36,7 @@ const UserPersonalData = ({ userName, lastName, email, userId, createdDate, tota
                         />
                         <DataField 
                             label={ 'ID de usuario' }
-                            field={ userId }
+                            field={ id }
                         />
                     </div>
                 </div>

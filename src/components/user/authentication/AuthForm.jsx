@@ -17,7 +17,6 @@ const AuthForm = ({ methodForm,closeAuth }) => {
         password:'',
         userName:'',
         lastName:'',
-        register:null,
     })
 
     
@@ -56,18 +55,9 @@ const AuthForm = ({ methodForm,closeAuth }) => {
 
 
         if( methodForm === 'login'){
-            await login(formData.email, formData.password);
-            if (!error) {
-                closeAuth(); // Cierra el modal si el login es exitoso
-            }
+            await login(formData.email, formData.password, closeAuth);
         } else if (methodForm === 'register') {
-            const { email, password, userName, lastName, address } = formData;
-
-            // Registrar usuario con los datos necesarios
-            await register({ email, password, userName, lastName, address });
-            if (!error) {
-                closeAuth(); // Cierra el modal si el registro es exitoso
-            }
+            await register(formData, closeAuth);
         }
     };
 
@@ -106,13 +96,15 @@ const AuthForm = ({ methodForm,closeAuth }) => {
                     inputStyle={ 'inputBox' }
                 />
 
-{methodForm === "register" && (
-          <ul className="flex gap-[25px]">
-            <PasswordCondition condition={conditions.hasUpperCase} label="1 mayúscula" antoherClass='text-[12px]'/>
-            <PasswordCondition condition={conditions.hasLowerCase} label="1 minúscula" antoherClass='text-[12px]'/>
-            <PasswordCondition condition={conditions.hasMinLength} label="min. 8 caracteres" antoherClass='text-[12px]'/>
-          </ul>
-        )}
+                {methodForm === "register" && (
+                    <ul className="flex gap-[25px] flex-wrap">
+                        <PasswordCondition condition={conditions.hasUpperCase} label="1 mayúscula" antoherClass='text-[12px]'/>
+                        <PasswordCondition condition={conditions.hasLowerCase} label="1 minúscula" antoherClass='text-[12px]'/>
+                        <PasswordCondition condition={conditions.hasMinLength} label="min. 8 caracteres" antoherClass='text-[12px]'/>
+                        <PasswordCondition condition={conditions.hasNumber} label="1 número" antoherClass='text-[12px]'/>
+                        <PasswordCondition condition={conditions.hasSpecialChar} label="1 caracter especial" antoherClass='text-[12px]'/>
+                    </ul>
+                )}
 
                  {/* Campos adicionales para registro */}
                  {methodForm === 'register' && (

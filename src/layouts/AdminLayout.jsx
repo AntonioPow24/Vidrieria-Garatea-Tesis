@@ -20,7 +20,7 @@ const AdminLayout = () => {
       <AdminUsersProvider>
         <div className='flex'>
             <AsideContainer />
-            {user && user.ROLES[0] === 'admin' ? 
+            {user && user.roles[0] === 'ADMIN' ? 
             <section className='bg-adminBgContrast dark:bg-[#404040] transition-all duration-300 flex-1'>
                 <Outlet />
             </section>  : <Navigate to={'/'} />}

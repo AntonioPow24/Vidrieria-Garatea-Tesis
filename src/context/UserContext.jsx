@@ -6,11 +6,11 @@ const UserContext = createContext();
 
 // Usuario de prueba
 const userTest = {
-  userId: "1",
+  id: "1",
   password: "Antonio2401",
   email:"user@gmail.com",
   email: "garciaromeroantonio@gmail.com",
-  ROLES:["user"],
+  roles:["user"],
   // requestList: [],
   userName: "Antonio",
   lastName: "Garcia Romero",
@@ -18,12 +18,12 @@ const userTest = {
 
 // Usuario admin de prueba
 const userAdmi = {
-  userId: "2",
+  id: "2",
   email:"admin@gmail.com",
   password: "admin2401",
   // phoneNumber: undefined,
   email: "admin@empresa.com",
-  ROLES:["admin"],
+  roles:["admin"],
   requestList: [],
   userName: "admin",
   lastName: "Garcia Romero",
@@ -31,7 +31,7 @@ const userAdmi = {
 
 // Proveedor del contexto
 export const UserProvider = ({ children }) => {
-  const [user, setUser] = useState( userAdmi ); // Estado del usuario autenticado
+  const [user, setUser] = useState( null ); // Estado del usuario autenticado
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -43,11 +43,13 @@ export const UserProvider = ({ children }) => {
     if (token) {
       try {
         setLoading(true);
-        const response = await axios.get("/api/auth/user", {
+        const response = await axios.get("http://apiorders.somee.com/api/v1/user", {
           headers: { Authorization: `Bearer ${token}` },
         });
-
+        console.log("Respuesta del initialize:", response.data);
+        
         const user = response.data;
+
         setUser(user);
 
 
@@ -64,16 +66,20 @@ export const UserProvider = ({ children }) => {
 
 
     // Función para hacer login
-    const login = async (email, password) => {
+    const login = async (email, password, closeAuth) => {
         setLoading(true);
         try {
-        const response = await axios.post("/api/auth/login", { email, password });
-        const { token } = response.data;
-        localStorage.setItem("authToken", token); // Guarda el token en Local Storage
+        const response = await axios.post("http://apiorders.somee.com/api/v1/user/login", { email, password });
 
-        // Llama a la API para obtener la información del usuario
+        const { token } = response.data;
+        localStorage.setItem("authToken", token);
+
         await initializeUser();
+
+        setError(null);
+        closeAuth();
         } catch (err) {
+        console.error("Error en el registro:", err.response?.data || err.message);
         setError("Usuario o contraseña incorrectos.");
         } finally {
         setLoading(false);
@@ -81,23 +87,25 @@ export const UserProvider = ({ children }) => {
     };
 
     // Función para registrar un usuario
-    const register = async (userData) => {
-        setLoading(true);
-        try {
-        const response = await axios.post("/api/auth/register", userData);
-        const { token } = response.data;
-        localStorage.setItem("authToken", token); // Guarda el token en Local Storage
+    const register = async (formData, closeAuth) => {
+      setLoading(true);
+      try {
+          console.log("Datos enviados al servidor:", formData);
+  
+          await axios.post(
+              "http://apiorders.somee.com/api/v1/user/register",
+              formData
+          );
 
-        // Iniciar sesión automáticamente tras registrarse
-        await login(userData.email, userData.password);
-
-        setError(null);
-        } catch (err) {
-        setError("Hubo un problema al registrar el usuario.");
-        console.error(err);
-        } finally {
-        setLoading(false);
-        }
+          await login(formData.email, formData.password, closeAuth);
+  
+          setError(null);
+      } catch (err) {
+          console.error("Error en el registro:", err.response?.data || err.message);
+          setError(err.response?.data?.message || "Hubo un problema al registrar el usuario.");
+      } finally {
+          setLoading(false);
+      }
     };
 
     // Función para cerrar sesión
@@ -112,7 +120,7 @@ export const UserProvider = ({ children }) => {
 
 
   return (
-      <UserContext.Provider value={{ user, login, register, logout, loading, error }}>
+      <UserContext.Provider value={{ user, login, register, logout, loading, error, setUser }}>
           {children}
       </UserContext.Provider>
   );

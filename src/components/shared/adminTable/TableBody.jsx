@@ -13,7 +13,7 @@ const TableBody = ({ tableData, tableName }) => {
               if( tableName === 'productsTable' ){
                 return <ProductTRCard key={ tr.productId } {...tr} />
               } else if (  tableName === 'userTable' ){
-                return <UserTRCard key={ tr.userId } {...tr} />
+                return <UserTRCard key={ tr.id } {...tr} />
               }}
             )
           :

@@ -1,6 +1,9 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useRef, useState } from "react";
 import { dataProducts } from "../../data/dataProducts";
 import { categoryProducts } from "../../data/categoryProducts";
+import axios from "axios";
+import { use } from "react";
+
 
 export const UserProductsContext = createContext();
 
@@ -15,80 +18,74 @@ const UserProductsContextProvider = ({ children }) => {
 
     const [isLoading, setIsLoading] = useState(false);
 
-    // Traerme todos los productos de una categoria
-    //TODO Descomentar el codigo del fetching, borrar la simulacion
+
     const fetchProducts = async (categoryId) => {
 
-        // setIsLoading(true);
-        // try {
-
-        //     const response = await fetch(`/api/user/product?category=${categoryId}&isAvailable=true`);
-        //     const data = await response.json();
-                // data=[ ... ]
-        //     setProducts(data); // Setear productos de esa categoría
-        // } catch (err) {
-        //     console.error("Error fetching products by category:", err);
-        // } finally {
-        //     setIsLoading(false);
-        // }
-
-        console.log(currentCategory);
-        
-        setProducts([]);  // O mostrar un mensaje de carga si prefieres
-
+        setIsLoading(true); 
         try {
-            const filteredProducts = dataProducts.filter(product => product.categoryId === categoryId);
-    
-            if (filteredProducts.length > 0) {
-                setProducts(filteredProducts);  // Setear los productos de la categoría
-            } else {
-                setProducts([]);  // O podrías manejar el caso de "sin productos" de otra manera
-            }
+            const response = await axios.get(`http://apiorders.somee.com/api/v1/product/list`, {
+                params: { categoryId },
+            });
+            const data = response.data;
+            setProducts(data);
         } catch (err) {
-            console.error("Error fetching products by category:", err);
+            console.error("Error fetching products:", err);
+        } finally {
+            setIsLoading(false);
+        }
+        
+    };
+
+    const productCache = useRef({}); 
+
+    const getProductDetails = async (productId,isCartItem=false) => {
+
+        if (productCache.current[productId]) {
+            return productCache.current[productId];
         }
 
+        try {
+            setIsLoading(true);
+
+            const timer = new Promise((resolve) => setTimeout(resolve, 1000));
+
+            const response = await axios.get(`http://apiorders.somee.com/api/v1/product/${productId}`);
+            const data = response.data;
+
+            productCache.current[productId] = data; 
+            
+            await timer;
+
+            if (isCartItem) {
+                return {
+                    titleName: data.titleName,
+                    imageUrl: data.images[0].url,
+                    price: data.price,
+                    stock: data.stock,
+                };
+            }
+            // Si es un detalle completo del producto, devuelve todos los datos
+            return data;
+
+        } catch (err) {
+            console.error("Error fetching product details:", err);
+            throw new Error("No se pudo obtener los detalles del producto.");
+        } finally {
+            setIsLoading(false);
+        }
+        
         
     };
 
-    // Función para obtener los detalles de un producto por su ID
-    // todo Colocar el async y descomentar el codigo real
-    const getProductDetails =  (productId,isCartItem=false) => {
-        // try {
-        //     const response = await fetch(`/api/user/product/${productId}`);
-        //     const data = await response.json();
-
-        //     if (isCartItem) {
-        //         return {
-        //             titleName: data.titleName,
-        //             imageUrl: data.imageUrl,
-        //             price: data.price,
-        //             stock:data.stock
-        //         };
-        //     }
-    
-        //     // Si es un detalle completo del producto, devuelve todos los datos
-        //     return data;
-
-        // } catch (err) {
-        //     console.error("Error fetching product details:", err);
-        // }
-        
-        return dataProducts.find( product => product.productId === productId )
-    };
-
-    // Función para obtener las categorías
-    // todo descomentar el fetch correspondiente
     const fetchCategories = async () => {
-        // try {
-        //     const response = await fetch("/api/user/categories");
-        //     const data = await response.json();
-        //     setAllCategories(data); // Setear todas las categorías disponibles
-        // } catch (err) {
-        //     console.error("Error fetching categories:", err);
-        // }
 
-        setAllCategories( categoryProducts )
+        try{
+            const response = await axios.get('http://apiorders.somee.com/api/v1/category/list');
+            const data = await response.data;
+            setAllCategories(data);
+        } catch(err){
+            console.log('Error fetching categories:', err);
+        }
     };
 
 
@@ -111,19 +108,21 @@ const UserProductsContextProvider = ({ children }) => {
     }
 
 
-    // Filtrar productos basados en searchQuery
-    const filteredProducts = products.filter(product => 
-        product.titleName.toLowerCase().includes(searchQuery.toLowerCase()) // Filtra por el nombre del producto
+    const filteredProducts = products.filter(product => {
+        console.log(product);
+        
+        return product.titleName.toLowerCase().includes(searchQuery.toLowerCase())
+    }
     );
 
     useEffect(() => {
         fetchCategories();
     }, []);
 
-    // useEffect para cargar los productos de la categoría seleccionada
+
     useEffect(() => {
         if (currentCategory) {
-            fetchProducts(currentCategory); // Cargar productos categoría actual
+            fetchProducts(currentCategory);
 
             console.log('se Hizo Fetch a los products');
 

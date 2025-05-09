@@ -188,18 +188,18 @@ export const RequestProvider = ({ children }) => {
   // todo DESCOMENTAR CODIGO PARA OBTENER LOS PEDIDOS
   // Obtener los pedidos del usuario al cargar el componente
   // useEffect(() => {
-  //   if (user?.userId) {
-  //     fetchRequests(user.userId);
+  //   if (user?.id) {
+  //     fetchRequests(user.id);
   //   }
-  // }, [user?.userId]);
+  // }, [user?.id]);
 
 
   // Obtener los pedidos del usuario
-  const fetchRequests = async (userId) => {
+  const fetchRequests = async (id) => {
     setLoading(true);
     setError(null);
     try {
-      const response = await axios.get(`/api/requests/user/${userId}`, {
+      const response = await axios.get(`/api/requests/user/${id}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("authToken")}`,
         },

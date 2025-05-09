@@ -20,23 +20,36 @@ const useUpdateUser = () => {
     setSuccess( false )
 
     try {
-      // Realiza la solicitud al backend
-      const response = await axios.put(`/api/user/${user.idUser}`, updatedFields, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("authToken")}`, // Enviar el token si es necesario
+      const token = localStorage.getItem("authToken");
+      const response = await axios.put(
+        `http://apiorders.somee.com/api/v1/user/update`,
+        updatedFields,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          validateStatus: (status) => status >= 200 && status < 300,
         },
-      });
-
-        // Usar la respuesta para actualizar el usuario local
-        const updatedUser = response.data; // El backend debería devolver el usuario actualizado
+      );
+      console.log(response);
+      
+      if (response.status === 200) {
+        const updatedUser = response.data;
+        console.log("Usuario actualizado:", updatedUser);
+  
         setUser(updatedUser);
-        setSuccess( true )
-
-      // Retorna el usuario actualizado para el componente
-      return updatedUser;
+        setSuccess(true);
+        setError(null);
+      }
     } catch (err) {
-        const backendError = err.response?.data?.message || "Error al actualizar los datos.";
-        setError(backendError);
+      console.log("Error completo:", err); // Log completo del error
+      console.log("Error response:", err.response); // Log de la respuesta del servidor
+    
+      const backendError =
+        err.response?.data?.message || "Error al actualizar los datos.";
+      console.log("Mensaje de error procesado:", backendError);
+    
+      setError(backendError);
     } finally {
       setLoading(false);
     }

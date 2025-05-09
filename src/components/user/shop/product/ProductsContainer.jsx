@@ -13,7 +13,7 @@ const ProductsContainer = () => {
         {
           products?.map( product => 
             <ProductCard 
-                key={ product.productId} 
+                key={ product.id} 
                 { ...product }  
             />
           )

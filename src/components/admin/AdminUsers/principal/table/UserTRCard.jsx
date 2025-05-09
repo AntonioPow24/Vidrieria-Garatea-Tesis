@@ -1,18 +1,18 @@
 import React from 'react'
 import { useAdminUsersContext } from '../../../../../context/AdminUsersContext/AdminUsersContext'
 
-const UserTRCard = ({userId, userName, lastName, email, ROLES}) => {
+const UserTRCard = ({id, userName, lastName, email, ROLES}) => {
 
     const { selectUser, selectedUserTable } = useAdminUsersContext()
-    const isSelected = selectedUserTable?.userId === userId
+    const isSelected = selectedUserTable?.id === id
 
-    const handleViewUserDetails = ( userId ) => selectUser( userId )
+    const handleViewUserDetails = ( id ) => selectUser( id )
 
   return (
     <tr 
         className={` border-y-2  border-[#A3A3A34F] h-[80px] hover:bg-[#e4e4e4] dark:hover:bg-[#303030]  transition-all duration-300 ${isSelected ? 'bg-[#bdd6e2] dark:bg-[#303030]' : 'hover:bg-adminBgContrast dark:hover:bg-[#303030]'}`}
         
-        onClick={ () => handleViewUserDetails( userId ) }
+        onClick={ () => handleViewUserDetails( id ) }
     >
         <td className='w-[10%]'>
             <div className='flex justify-center items-center'>
@@ -29,7 +29,7 @@ const UserTRCard = ({userId, userName, lastName, email, ROLES}) => {
         <td className='w-[5%]'>
             <div className='flex justify-center items-center'>
                 <span className='text-center text-adminTextDark dark:text-adminTextWhite transition-all duration-300 cursor-default'>
-                    { userId }
+                    { id }
                 </span>
             </div>
         </td>

@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { usePasswordValidation } from "./usePasswordValidation";
+import axios from "axios";
 
 
 export const usePasswordChange = () => {
@@ -36,6 +37,7 @@ export const usePasswordChange = () => {
 
         if (!isFormValid) {
         setError("Por favor, complete los campos correctamente.");
+        setTimeout(() => setError(""), 3000);
         return;
         }
 
@@ -43,20 +45,33 @@ export const usePasswordChange = () => {
         setError("");
 
         try {
-        // Realizar solicitud al backend
-        const response = await axios.post("/api/auth/change-password", {
-            currentPassword: enteredCurrentPassword,
-            newPassword: newPassword,
-        });
+        const token = localStorage.getItem("authToken");
+        if (!token) {
+            throw new Error("No se encontró el token de autenticación.");
+        }
+
+        const response = await axios.post(
+            "http://apiorders.somee.com/api/v1/user/resetPassword", 
+            {
+                currentPassword: enteredCurrentPassword,
+                newPassword: newPassword,
+            },
+            {
+                headers: { Authorization: `Bearer ${token}` },
+            }
+        );
 
         if (response.status === 200) {
             setSuccessChange(true);
             resetForm();
         }
         } catch (err) {
-        setError("Error al cambiar la contraseña. Verifique los datos e intente nuevamente.");
+            console.log(err);
+            
+            setError("Error al cambiar la contraseña. Verifique los datos e intente nuevamente.");
+            setTimeout(() => setError(""), 3000);
         } finally {
-        setLoading(false);
+            setLoading(false);
         }
     };
 
@@ -69,6 +84,8 @@ export const usePasswordChange = () => {
         hasLowerCase: false,
         hasMinLength: false,
         hasNoSpaces: false,
+        hasNumber: false,
+        hasSpecialChar: false,
         });
         setTimeout(() => setSuccessChange(false), 3000);
     };

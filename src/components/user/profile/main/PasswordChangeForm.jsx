@@ -5,6 +5,7 @@ import InputConfig from './InputConfig'
 import LineMessage from '../../../shared/LineMessage'
 import PasswordCondition from './PasswordCondition'
 import { usePasswordChange } from '../../../../hooks/ProfileHooks/usePasswordChange'
+import LoadingSpinner from '../../../shared/LoadingSpinner'
 
 
 const PasswordChangeForm = () => {
@@ -44,16 +45,19 @@ const PasswordChangeForm = () => {
 
         </div>
 
-        {error && <LineMessage message={error} type={"error"} style={"text-center"} />}
-        {successChange && <LineMessage message={"Cambio de contraseña exitoso"} style={"text-center"} />}
+
 
 
         <ul className='flex gap-[25px] 580:flex-col'>
             <PasswordCondition condition={conditions.hasUpperCase} label="1 mayúscula" />
             <PasswordCondition condition={conditions.hasLowerCase} label="1 minúscula" />
             <PasswordCondition condition={conditions.hasMinLength} label="min. 8 caracteres" />
-            <PasswordCondition condition={conditions.hasNoSpaces} label="Ningún espacio" />
+            <PasswordCondition condition={conditions.hasNumber} label="1 número" />
+            <PasswordCondition condition={conditions.hasSpecialChar} label="1 caracter especial" />
         </ul>
+        
+        {error && <LineMessage message={error} type={"error"} style={"text-center"} />}
+        {successChange && <LineMessage message={"Cambio de contraseña exitoso"} style={"text-center"} />}
 
         <div className="flex justify-center">
             <button

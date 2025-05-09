@@ -7,7 +7,7 @@ import { useCartContext } from '../../../../context/CartContext'
 // NO OLVIDES QUE ESTAMOS TRABAJANDO CON DATA DE PRUEBA, ASI QUE FALTA DESCOMENTAR EN USERPRODUCTSCONTEXT 
 // LA BUSQUEDA ES LOCAL, ASI QUE SOLO TRAEMOS DATA DE PRODUCTOS DE ACUERDO A LA CATEGORIA ACTUAL, ESO LO FILTRAMOPS DE ACUERDO AL VALOR DEL QUERY DE INPUT SEARCH
 
-const ProductCard = ({productId,imageUrl,titleName,price,category, valorization}) => {
+const ProductCard = ({id,images,titleName,price, valorization}) => {
 
   const {categoryName}  = useParams()
 
@@ -17,12 +17,12 @@ const ProductCard = ({productId,imageUrl,titleName,price,category, valorization}
     <article className=' p-[20px] rounded-[16px] flex flex-col gap-[20px] productCard relative justify-between items-center overflow-hidden h-[400px]'>
         <Link
           className='flex w-full h-[196px]  z-[2]'
-          to={ `/tienda/${categoryName}/${productId}` }
+          to={ `/tienda/${categoryName}/${id}` }
         >
           
           <div className='flex justify-center items-center py-[2px] w-full'>
               <img 
-                src={ imageUrl } 
+                src={ images?.length && images[0].url } 
                 alt={ titleName }
                 className='object-cover h-full' 
               />
@@ -45,7 +45,7 @@ const ProductCard = ({productId,imageUrl,titleName,price,category, valorization}
 
         <button 
           className='py-[12px] w-full flex gap-4 z-[2] border-appBgBlack border-[1px] justify-center items-center rounded-[6px] h-[42px] hover:bg-appBgBlack transition-all duration-300 addCartProductShop'
-          onClick={ () => addProductToCart( productId, 1 ) }
+          onClick={ () => addProductToCart( id, 1 ) }
           >
               <span className='text-[16px] text-textDark transition-all duration-300 buttonIntoProductCard'>
                 Agregar al carrito

@@ -12,22 +12,41 @@ const PersonalData = () => {
 
     const { user } = useAuth(); // Obtener el usuario actual del contexto
     const { updateUser, hasEmptyFields, loading, error, success } = useUpdateUser();
-  
-    const [updateUserState, setUpdateUserState] = useState({
-      userName: user?.userName || "",
-      lastName: user?.lastName || "",
-      email: user?.email || "",
-    });
+
+    const [updateUserState, setUpdateUserState] = useState({});
 
     const [isChanged, setIsChanged] = useState(false);
 
-    // Comparar `updateUserState` con los datos actuales del usuario
+    useEffect(() => {
+
+      if (user) {
+        console.log("Usuario:", user);
+        
+        setUpdateUserState({
+          userName: user.userName || "",
+          lastName: user.lastName || "",
+          email: user.email || "",
+        });
+      }
+    }, [user]);
+
     useEffect(() => {
         const hasChanges = Object.keys(updateUserState).some(
             (key) => updateUserState[key] !== user[key])
 
         setIsChanged(hasChanges);
     }, [updateUserState, user]);
+
+    useEffect(() => {
+      if (success || error) {
+        const timer = setTimeout(() => {
+          setSuccess(false);
+          setError(null);
+        }, 3000);
+    
+        return () => clearTimeout(timer);
+      }
+    }, [success, error]);
 
     // Functions
     const onChangeUpdateuser = (e) => {
@@ -92,7 +111,7 @@ const PersonalData = () => {
 
       <div className="flex flex-wrap gap-[70px] justify-between">
 
-        { inputArray.map( input => 
+        { inputArray?.map( input => 
 
           <InputConfig  
             {...input} 
@@ -136,7 +155,7 @@ const PersonalData = () => {
         />
       )}
 
-      {success && (
+      {success && !error && (
         <LineMessage
           message={ 'Cambios realizados' }
           type={"success"}
