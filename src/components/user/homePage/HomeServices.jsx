@@ -4,7 +4,7 @@ import { ourServices } from "../../../data/ourServices"
 const HomeServices = () => {
 
     // Estado para el filtro
-    const [serviceFilter , setServiceFilter] = useState('templado')
+    const [serviceFilter , setServiceFilter] = useState('Templado')
 
 
     
@@ -53,7 +53,7 @@ const HomeServices = () => {
 
                 <div className='w-[600px] 700:w-full bigPhone:pt-[40px] 1320:pt-0'>
 
-                    <p className='text-[26px] text-text-white'>
+                    <p className='text-[26px] text-text-white text-justify'>
                         {ourServices.find(service => service.title === serviceFilter).description}
                     </p>
 
