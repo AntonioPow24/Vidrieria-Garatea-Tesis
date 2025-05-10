@@ -84,42 +84,64 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#acb8e7",endCo
     color: #EDEDED;
 }
 
-/* Personalización de la barra de desplazamiento */
 .containerProductsScroll {
-    /* La propiedad `overflow-y` ya está aplicada desde el JSX para habilitar el scroll */
-    overflow-y: auto; /* Asegura que el scroll vertical solo aparezca cuando sea necesario */
+    overflow-y: auto; 
 }
 
-/* Estilos de la barra de desplazamiento */
 .containerProductsScroll::-webkit-scrollbar {
-    width: 8px; /* Ancho de la barra de desplazamiento */
+    width: 8px; 
 }
 
-/* Estilos de la "thumb" de la barra de desplazamiento (la parte que se mueve) */
+
 .containerProductsScroll::-webkit-scrollbar-thumb {
-    background-color: #54c0e1; /* Color de la barra (celeste en este caso) */
-    border-radius: 10px; /* Bordes redondeados */
-}
-
-/* Estilos del área de la barra de desplazamiento */
-.containerProductsScroll::-webkit-scrollbar-track {
-    background-color: none; /* Color del fondo de la barra */
+    background-color: #54c0e1;
     border-radius: 10px;
 }
 
 
-  
-  /* Ocultar la barra de desplazamiento */
+.containerProductsScroll::-webkit-scrollbar-track {
+    background-color: none;
+    border-radius: 10px;
+}
+
   .filterCategoriesScroll::-webkit-scrollbar {
-    width: 0; /* El ancho de la barra de desplazamiento es 0 */
-    height: 0; /* Si hay desplazamiento horizontal, puedes esconderlo también */
+    width: 0;
+    height: 0;
   }
   
-  /* Opcional: Cambiar el estilo del área de scroll si es necesario */
+
   .filterCategoriesScroll::-webkit-scrollbar-track {
-    background: transparent; /* El área del track (fondo de la barra) */
+    background: transparent; 
   }
   
   .filterCategoriesScroll::-webkit-scrollbar-thumb {
-    background: transparent; /* El área de la barra de scroll */
+    background: transparent; 
   }
+
+  .spinnerBig {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: radial-gradient(farthest-side,#fcfcfc 94%,#0000) top/4px 4px no-repeat,
+           conic-gradient(#0000 30%,#fcfcfc);
+    -webkit-mask: radial-gradient(farthest-side,#0000 calc(100% - 8px),#000 0);
+    animation: spinner-c7wet2 1s infinite linear;
+ }
+
+  .spinnerBigDark {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: radial-gradient(farthest-side,#252525 94%,#0000) top/4px 4px no-repeat,
+           conic-gradient(#0000 30%,#252525);
+    -webkit-mask: radial-gradient(farthest-side,#0000 calc(100% - 4px),#000 0);
+    animation: spinner-c7wet2 1s infinite linear;
+ }
+
+
+ 
+ @keyframes spinner-c7wet2 {
+    100% {
+       transform: rotate(1turn);
+    }
+ }

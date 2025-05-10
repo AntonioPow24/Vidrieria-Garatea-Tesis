@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const RequestDelivery = ({ deliveryMethod, setCity, deliveryCost, handleDeliveryChange, city  }) => {
+const RequestDelivery = ({ deliveryMethod, setCity, deliveryCost, handleDeliveryChange, city, allCities  }) => {
 
   return (
     <div className='flex flex-col gap-[10px]'>
@@ -33,19 +33,28 @@ const RequestDelivery = ({ deliveryMethod, setCity, deliveryCost, handleDelivery
                 checked={deliveryMethod === 'domicilio'} 
                 onChange={() => handleDeliveryChange('domicilio')} 
                 />
-              Entrega a domicilio  <span className='text-[16px] font-semibold text-skyBlueApp w-[54px] smallTablet:text-[12px]'>(S/. {deliveryCost})</span>
+              Entrega a domicilio  <span className='text-[16px] font-semibold text-skyBlueApp w-[58px] smallTablet:text-[12px]'>(S/. {deliveryCost})</span>
             </label>
 
             {/* EN CASO SE ESCOGA DOMOCILIO */}
             {deliveryMethod === 'domicilio' && (
-              <div className='flex gap-4 rounded-[6px] overflow-hidden'>
+              <div className='flex gap-4 rounded-[6px] overflow-hidden flex-1 px-1 bg-[#3D3D3D] z-20'>
                   <select 
-                    className='bg-[#3D3D3D] p-[5px] text-text-white border-none px-1 outline-none text-[14px] overflow-hidden smallTablet:text-[12px]'
-                    onChange={(e) => setCity(e.target.value)}
-                    value={city}
+                    className='p-[5px] text-text-white border-none  outline-none text-[14px] overflow-hidden smallTablet:text-[12px] flex-1 bg-transparent'
+                    onChange={(e) => setCity(Number(e.target.value))}
+                    value={ city }
                   >
-                    <option value="Chimbote">Chimbote</option>
-                    <option value="NvoChimbote">Nvo. Chimbote</option>
+                    {
+                      allCities.map((city) => (
+                        <option 
+                          value={ city.id } 
+                          key={ city.id }
+                          className='bg-[#3D3D3D] text-text-white text-[14px] smallTablet:text-[12px]' 
+                        >
+                          { city.nameCity }
+                        </option>
+                      ))
+                    }
                   </select>
               </div>
             )}

@@ -12,6 +12,7 @@ const ResumeRequest = () => {
     deliveryCost,
     setDeliveryCost,
     city,
+    allCities,
     setCity,
     dni,
     setDNI,
@@ -31,6 +32,7 @@ const ResumeRequest = () => {
   return (
     <section className='flex flex-col p-[20px] bg-[#1B1B1B] rounded-[8px] gap-[22px] justify-between smallTablet:max-w-full'>
           <RequestDelivery
+            allCities={ allCities }
             city={ city }
             setCity={ setCity }
             deliveryCost={ deliveryCost }

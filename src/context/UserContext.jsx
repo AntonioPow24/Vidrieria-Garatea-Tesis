@@ -37,35 +37,30 @@ export const UserProvider = ({ children }) => {
 
 
 
-  // Función para inicializar el usuario al cargar la aplicación
-  const initializeUser = async () => {
-    const token = localStorage.getItem("authToken");
-    if (token) {
-      try {
-        setLoading(true);
-        const response = await axios.get("http://apiorders.somee.com/api/v1/user", {
-          headers: { Authorization: `Bearer ${token}` },
-        });
-        console.log("Respuesta del initialize:", response.data);
-        
-        const user = response.data;
+    const initializeUser = async () => {
+      const token = localStorage.getItem("authToken");
+      if (token) {
+        try {
+          setLoading(true);
+          const response = await axios.get("http://apiorders.somee.com/api/v1/user", {
+            headers: { Authorization: `Bearer ${token}` },
+          });
+          
+          const user = response.data;
 
-        setUser(user);
+          setUser(user);
 
 
-        
-      } catch (err) {
-        setError(err);
-        localStorage.removeItem("authToken");
-      } finally {
-        setLoading(false);
+          
+        } catch (err) {
+          setError(err);
+          localStorage.removeItem("authToken");
+        } finally {
+          setLoading(false);
+        }
       }
-    }
-  };
+    };
 
-
-
-    // Función para hacer login
     const login = async (email, password, closeAuth) => {
         setLoading(true);
         try {
@@ -86,12 +81,9 @@ export const UserProvider = ({ children }) => {
         }
     };
 
-    // Función para registrar un usuario
     const register = async (formData, closeAuth) => {
       setLoading(true);
       try {
-          console.log("Datos enviados al servidor:", formData);
-  
           await axios.post(
               "http://apiorders.somee.com/api/v1/user/register",
               formData
@@ -108,10 +100,9 @@ export const UserProvider = ({ children }) => {
       }
     };
 
-    // Función para cerrar sesión
     const logout = () => {
-        localStorage.removeItem("authToken"); // Elimina el token
-        setUser(null); // Limpia el estado del usuario
+        localStorage.removeItem("authToken");
+        setUser(null);
     };
 
     useEffect(() => {

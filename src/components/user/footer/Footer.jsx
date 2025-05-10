@@ -3,6 +3,7 @@ import { bancaItems } from '../../../data/bancaItems'
 import { categoryProducts } from '../../../data/categoryProducts'
 import { ourServices } from '../../../data/ourServices'
 import { socialItems } from '../../../data/socialsItems'
+import { useUserProductsContext } from '../../../context/ProductsContext/UserProductsContext'
 
 
 const Footer = () => {
@@ -14,6 +15,7 @@ const Footer = () => {
     const celPhone = ['+51928517790', '+51928517390']
     const gmails = ['garciaromeroantonio24@gmail.com', 'garciaromeroantonio23@gmail.com']
 
+    const { allCategories } = useUserProductsContext()
 
 
   return (
@@ -62,9 +64,9 @@ const Footer = () => {
 
                     <div className="flex flex-col gap-[10px] 1360:items-center">
                         {
-                            categoryProducts && categoryProducts.map( category => 
+                            allCategories?.map( category => 
                                 <Link
-                                    key={category.categoryId}
+                                    key={category.id}
                                     to={`/tienda/${category.nameCategory}`}
                                     className='text-text-white capitalize hover:text-skyBlueApp transition-all duration-300'
                                 >

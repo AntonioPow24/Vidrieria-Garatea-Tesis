@@ -12,19 +12,12 @@ const useSearchProduct = (categoryFilter,statusFilter) => {
     useEffect(() => {    
         
         if (products && products.length > 0) {
-
-          console.log(products);
-          
-
           const filterProducts = () => {
               return products.filter(product => {
                   const matchesQuery = product.titleName.toLowerCase().includes(query.toLowerCase());
                   
                   const matchesCategory = categoryFilter === 'todos' || product.category === categoryFilter;
 
-                  console.log(categoryFilter);
-                  
-                  
                   const matchesStatus = statusFilter === 'todos' || product.isAvailable === statusFilter;
 
                   return matchesQuery && matchesCategory && matchesStatus;

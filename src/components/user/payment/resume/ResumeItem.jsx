@@ -1,24 +1,43 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useUserProductsContext } from '../../../../context/ProductsContext/UserProductsContext'
 import { useCartContext } from '../../../../context/CartContext'
 
-const ResumeItem = ({ productId, quantity }) => {
+const ResumeItem = ({ id, quantity }) => {
 
     const { getProductDetails } = useUserProductsContext()
 
-    const productDetails = getProductDetails( productId, true )
 
     // Destructuracion del CartContext
     const { increaseProductCount, decreaseProductCount, deleteProduct } = useCartContext()
+
+     const [ productDetails, setProductDetails ] = useState(null)
     
+      useEffect(() => {
+        if (!id) {
+          return;
+        }
+        const fetchDetails = async () => {
+          try {
+            const details = await getProductDetails(id, true);
+            setProductDetails(details);
+            
+          } catch (error) {
+            console.error("Error al obtener los detalles del producto:", error);
+          }
+        };
+        
+        fetchDetails();
+    
+      }, [id, getProductDetails]);
+
 // TODO ARREGLAR EL SIMBOLO, DEBE SER MAYOR O IGUAL
 
   return (
-    <article className='flex gap-[40px] border-b border-textWhiteTransparent 290 py-[20px] justify-between 580:flex-col 580:gap-[6px] 580:max-w-[300px]'>
-      <div className='flex gap-[20px] min-w-[340px] 580:max-w-full 580:min-w-[200px]'>
+    <article className='flex gap-[40px] border-b border-textWhiteTransparent 290 py-[20px] justify-between 580:flex-col 580:gap-[6px] '>
+      <div className='flex gap-[20px] min-w-[340px] 580:max-w-full 580:min-w-[200px] 580:gap-[10px]'>
             <div className='w-[118px] h-[100px] flex justify-center bg-appBgBlack rounded-[6px] py-[4px] 580:h-[90px] 580:w-[106px]'>
                 <img 
-                src={ productDetails?.imageUrl } 
+                src={ productDetails?.images?.length && productDetails.images[0].url }   
                 alt={ productDetails?.titleName } 
                 className=' h-full'
                 />
@@ -50,7 +69,7 @@ const ResumeItem = ({ productId, quantity }) => {
                 <div className=' flex w-full justify-start items-center gap-[14px]'>
                     <button 
                         className='flex justify-center items-center cursor-pointer'
-                        onClick={ () => decreaseProductCount(productId) }
+                        onClick={ () => decreaseProductCount(id) }
                         disabled={quantity <= 1}     
                     >
                         <i className="fa-solid fa-minus text-skyBlueApp text-[18px]"></i>
@@ -64,7 +83,7 @@ const ResumeItem = ({ productId, quantity }) => {
 
                     <button 
                         className='flex justify-center items-center cursor-pointer'
-                        onClick={ () => increaseProductCount(productId) }
+                        onClick={ () => increaseProductCount(id) }
                         disabled={quantity === productDetails?.stock}    
                     >
                         <i className="fa-solid fa-plus text-skyBlueApp text-[18px]"></i>
@@ -81,7 +100,7 @@ const ResumeItem = ({ productId, quantity }) => {
             <div className='w-full flex justify-center items-center 580:justify-start'>
                 <button 
                     className='flex justify-center items-center gap-2'
-                    onClick={ () => deleteProduct(productId) }
+                    onClick={ () => deleteProduct(id) }
                 >
                     <span className='text-[14px] text-logOut'>Eliminar</span>
                     <i className="fa-solid fa-trash text-logOut text-[12px] 580:text-[10px] 580:pt-[3px]"></i>

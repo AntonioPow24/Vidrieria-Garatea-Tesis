@@ -167,6 +167,13 @@ const pruebaPedidos = [
   },
 ]
 
+const statusLabelMap = [
+  { code: 0, label: "PENDIENTE" },
+  { code: 1, label: "COMPLETADO" },
+  { code: 2, label: "CANCELADO" },
+
+]
+
 
 
 
@@ -176,35 +183,32 @@ export const RequestProvider = ({ children }) => {
 
   const { user } = useAuth()
 
-
-
-  const [requests, setRequests] = useState(pruebaPedidos); // Lista de pedidos del usuario
+  const [requests, setRequests] = useState([]); 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  useEffect(() => {
+    if (user?.id) {
+      fetchRequests(user.id);
+    }
+  }, [user?.id]);
 
-
-
-  // todo DESCOMENTAR CODIGO PARA OBTENER LOS PEDIDOS
-  // Obtener los pedidos del usuario al cargar el componente
-  // useEffect(() => {
-  //   if (user?.id) {
-  //     fetchRequests(user.id);
-  //   }
-  // }, [user?.id]);
-
-
-  // Obtener los pedidos del usuario
   const fetchRequests = async (id) => {
+    const token = localStorage.getItem("authToken");
+    if (!token) {
+      return [];
+    }
+
     setLoading(true);
     setError(null);
     try {
-      const response = await axios.get(`/api/requests/user/${id}`, {
+      const response = await axios.get("http://apiorders.somee.com/api/v1/order/user", 
+      {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+          Authorization: `Bearer ${token}`,
         },
-      });
-      setRequests(response.data); // Suponiendo que el backend devuelve los pedidos
+      });  
+      setRequests(response.data);
     } catch (err) {
       setError("Error al obtener los pedidos del usuario.");
     } finally {
@@ -212,62 +216,79 @@ export const RequestProvider = ({ children }) => {
     }
   };
 
+  const addRequest = async (newRequest, navigate) => {
+    setLoading(true);
+    setError(null);
 
-  // Crear un nuevo Pedido
-    const addRequest = async (newRequest) => {
-      console.log('creando pedido');
-      
-      
     try {
-        const response = await axios.post("https://ecommerce-dqp2.onrender.com/api/v1/order/create", newRequest, {
-        headers: { Authorization: `Bearer ${localStorage.getItem("authToken")}` },
-        });
+      const response = await axios.post("http://apiorders.somee.com/api/v1/order", 
+      newRequest, 
+      {
+      headers: { Authorization: `Bearer ${localStorage.getItem("authToken")}` },
+      });
 
-        if (response.status === 200) {
-
-          setRequests((prev) => [...prev, response.data]); // Añadir el nuevo pedido a la lista
-          return { success: true, data: response.data }; // Devuelve éxito con la data del pedido
-        } else {
-          return { success: false, message: "Error al procesar el pedido" };
+      if (response.status === 200) {
+        setRequests((prev) => [...prev, response.data]);
+        
+        if ( response.data.id ) {
+          navigate(`/cart/paid/${response.data.id}`);
         }
+      } 
 
-        } catch (err) {
-          console.error("Error al crear el pedido", err);
-          setError("Error al crear el pedido.");
-          return { success: false, message: err.message || "Error desconocido" }; // Manejo del error
-        }
-    };
-
-    // Cambiar el estado de un pedido
-    const updateRequestState = async (orderId, newState) => {
-      try {
-        const response = await axios.put(
-          `/api/v1/order/status/${orderId}`,
-          { orderstatus: newState },
-          {
-            headers: { Authorization: `Bearer ${localStorage.getItem("authToken")}` },
-          }
-        );
-  
-        // Actualizar el estado local de los pedidos
-        setRequests((prev) =>
-          prev.map((request) =>
-            request.orderId === orderId
-              ? { ...request, orderStatus: newState }
-              : request
-          )
-        );
       } catch (err) {
-        console.error("Error al actualizar estado del pedido:", err);
-        setError("Error al actualizar el estado del pedido.");
+        console.error("Error al crear el pedido", err);
+        setError("Error al crear el pedido.");
+      } finally {
+        setTimeout(() => {
+          setLoading(false);
+        }, 2000)
       }
-    };
-    
-    // todo falta funcion fetch
-    const getRequestById = (orderId) => {
+  };
 
-        return requests.find((request) => request.orderId === orderId) || null;
-    };
+  const updateRequestState = async (id, newStatusCode) => {
+    try {
+      const response = await axios.put(
+        "http://apiorders.somee.com/api/v1/order",
+        { orderId : id , 
+          status: newStatusCode 
+        },
+        {
+          headers: { Authorization: `Bearer ${localStorage.getItem("authToken")}` },
+        }
+      );
+  
+      // Actualizar el estado local de los pedidos
+      setRequests((prev) =>{
+        
+        const updatedRequests = prev.map((request) =>{
+          const statusLabelCheck = statusLabelMap.find((status) => status.code === newStatusCode);
+          return request.id === id
+            ? { ...request, status: newStatusCode, statusLabel: statusLabelCheck.label  }
+            : request
+        }
+        )
+        return updatedRequests;
+        }
+      );
+    } catch (err) {
+      console.error("Error al actualizar estado del pedido:", err);
+      setError("Error al actualizar el estado del pedido.");
+    }
+  };
+    
+  const getRequestById = async(id) => {
+    try {
+      const response = await axios.get(`http://apiorders.somee.com/api/v1/order/${id}`, {
+        headers: { Authorization: `Bearer ${localStorage.getItem("authToken")}` },
+      });
+
+      return response.data;
+
+    } catch (err) {
+      console.error("Error al obtener el pedido por ID:", err);
+      setError("Error al obtener el pedido por ID.");
+    }
+  };
 
   return (
     <RequestContext.Provider

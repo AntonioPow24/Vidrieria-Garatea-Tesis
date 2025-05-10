@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { useAuth } from "../../context/UserContext";
 
@@ -31,29 +31,34 @@ const useUpdateUser = () => {
           validateStatus: (status) => status >= 200 && status < 300,
         },
       );
-      console.log(response);
       
       if (response.status === 200) {
         const updatedUser = response.data;
-        console.log("Usuario actualizado:", updatedUser);
-  
         setUser(updatedUser);
         setSuccess(true);
         setError(null);
       }
     } catch (err) {
-      console.log("Error completo:", err); // Log completo del error
-      console.log("Error response:", err.response); // Log de la respuesta del servidor
-    
       const backendError =
         err.response?.data?.message || "Error al actualizar los datos.";
-      console.log("Mensaje de error procesado:", backendError);
+      console.error("Mensaje de error procesado:", backendError);
     
       setError(backendError);
     } finally {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    if (success || error) {
+      const timer = setTimeout(() => {
+        setSuccess(false);
+        setError(null);
+      }, 3000);
+    
+      return () => clearTimeout(timer);
+    }
+  }, [success, error]);
 
   return { updateUser, hasEmptyFields, loading, error, success };
 };

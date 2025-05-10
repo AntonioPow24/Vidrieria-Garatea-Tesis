@@ -66,7 +66,7 @@ export const usePasswordChange = () => {
             resetForm();
         }
         } catch (err) {
-            console.log(err);
+            console.error(err);
             
             setError("Error al cambiar la contraseña. Verifique los datos e intente nuevamente.");
             setTimeout(() => setError(""), 3000);

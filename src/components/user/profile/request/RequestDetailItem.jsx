@@ -1,12 +1,16 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useUserProductsContext } from '../../../../context/ProductsContext/UserProductsContext'
 
-const RequestDetailItem = ({ productId, titleName, price, quantity, category, imageUrl }) => {
+const RequestDetailItem = ({ productId, quantity, productDetails }) => {
+
+      const { images, titleName, price  } = productDetails || {}
+
   return (
     <article className='px-[14px] py-[12px] flex justify-between items-center border-textWhiteTransparent border-t-[1px] h-[100px] 580:h-[80px] 580:px-[6px]'>
 
         <div className='flex w-[75px] h-full p-[2px]  580:w-[55px]'>
             <div className='w-full h-full flex justify-center items-cente'>
-                <img src={ imageUrl } className=' object-cover '/>
+                <img src={ images && images.length && images[0].url  } className=' object-cover '/>
             </div>
         </div>
 
@@ -36,7 +40,7 @@ const RequestDetailItem = ({ productId, titleName, price, quantity, category, im
             </div>
 
             <div className='flex justify-center items-center w-full'>
-                <span className='text-textWhiteTransparent text-[14px] text-center 580:text-[10px]'>S/.{ price.toFixed(2) }</span>
+                <span className='text-textWhiteTransparent text-[14px] text-center 580:text-[10px]'>S/.{ price?.toFixed(2) }</span>
             </div>
         </div>
     </article>

@@ -119,38 +119,27 @@ const CartContextProvider = ({children}) =>{
 
     const { getProductDetails } = useUserProductsContext()
 
-    //Estado para manejar la cantidad de Productos en el Preview Carrito
     const [cart, setCart] = useState( [] )
 
-    // Estado para el Modal del cart
     const [isCartModal , setIsCartModal] = useState(false)
 
-    // Total precio de los items
     const [total, setTotal] = useState(0)
 
-    // Total de items dentro del carrito
     const totalItemsCart = cart.length
 
-
-
-
-
-    // Funcion Guardar en Local Storage
     const saveCartToLocalStorage = (cart) => {
       localStorage.setItem("previewCart", JSON.stringify(cart));
     };  
 
-
-    // Funcion Continuar Compra
     const continuePurchase = () => {
         navigate("/cart/continue");
     }
 
     // Función para incrementar la cantidad de un producto
-    const increaseProductCount = (productId) => {
+    const increaseProductCount = (id) => {
         setCart(prevCart => {
           const updatedCart = prevCart.map(item => {
-            if (item.productId === productId) {
+            if (item.id === id) {
               return {
                 ...item,
                 quantity: item.quantity + 1
@@ -167,10 +156,10 @@ const CartContextProvider = ({children}) =>{
 
 
     // Función para disminuir la cantidad de un producto
-    const decreaseProductCount = (productId) => {
+    const decreaseProductCount = (id) => {
         setCart(prevCart => {
         const updatedCart = prevCart.map(item => {
-            if (item.productId === productId && item.quantity > 1) {
+            if (item.id === id && item.quantity > 1) {
             return {
                 ...item,
                 quantity: item.quantity - 1
@@ -187,8 +176,8 @@ const CartContextProvider = ({children}) =>{
 
 
     //Funcion para Eliminar un producto del Preview Carrito
-    const deleteProduct = (productId) => setCart( prevCart => {               
-        const updatedCart = prevCart.filter( item => item.productId !== productId)
+    const deleteProduct = (id) => setCart( prevCart => {               
+        const updatedCart = prevCart.filter( item => item.id !== id)
 
         saveCartToLocalStorage(updatedCart);
 
@@ -196,16 +185,16 @@ const CartContextProvider = ({children}) =>{
     })
 
     // Funcion para agregar un producto al Preview Carrito
-    const addProductToCart = ( productId, quantity ) => {
+    const addProductToCart = ( id, quantity ) => {
       setCart( prevCart => {
 
-        const existingProduct = prevCart.find( item => item.productId === productId )
+        const existingProduct = prevCart.find( item => item.id === id )
         
         let updatedCart
 
         if( existingProduct ){
           updatedCart = prevCart.map( item => 
-            item.productId === productId 
+            item.id === id 
               ? { ...item, quantity: item.quantity + quantity }
               : item
           )
@@ -213,7 +202,7 @@ const CartContextProvider = ({children}) =>{
 
 
         } else {
-          updatedCart = [ ...prevCart, { productId, quantity: 1 } ]
+          updatedCart = [ ...prevCart, { id, quantity: 1 } ]
 
         }
         saveCartToLocalStorage(updatedCart);
@@ -225,22 +214,23 @@ const CartContextProvider = ({children}) =>{
     }
 
     // Calcular el total del carrito
-    const calculateTotal = () => {
+    const calculateTotal = async () => {
+      try {
+        const productDetails = await Promise.all(
+          cart.map(item => getProductDetails(item.id, true))
+        );
 
-      // if (!Array.isArray(cart)) {
-      //   console.error('El carrito no es un arreglo válido.');
-      //   setTotal(0); // O alguna otra lógica adecuada para el caso
-      //   return;
-      // }
-    
-      const total = cart.reduce((acc, item) => {
-        const product = getProductDetails(item.productId, true); // Obtenemos los detalles del producto desde ProductsContext
-        return acc + (product?.price * item.quantity); // Calculamos el total con el precio y la cantidad
-      }, 0);
-    
-      setTotal(total);
-      
-  };
+        const total = productDetails.reduce((acc, product, index) => {
+          const quantity = cart[index].quantity;
+          return acc + (product?.price * quantity);
+        }, 0);
+
+        setTotal(total); // Actualiza el estado con el total calculado
+      } catch (error) {
+        console.error("Error al calcular el total del carrito:", error);
+        setTotal(0); // Manejo de errores: establece el total en 0 si algo falla
+      }
+    };
 
 
 
@@ -262,30 +252,32 @@ const CartContextProvider = ({children}) =>{
 
     useEffect(() => {
 
-      console.log('se verifico bd');
-      
-      // TODO: CODIGO DE PRUEBA, ELIMINAR DESPUES
-
-    // Verificar si hay carrito en la BD
-    const fetchCartFromDatabase = async () => {
+      const fetchCartFromDatabase = async () => {
       
       
       try {
-          const response = await axios.get("/api/cartsd"); 
+          const token = localStorage.getItem("authToken");
+          if (!token) {
+            return [];
+          }
+
+          const config = {
+            headers: {
+              Authorization: `Bearer ${token}`, 
+            },
+          };
+
+          const response = await axios.get("http://apiorders.somee.com/api/v1/shoppingCart", config); 
+
           const data = response.data.shoppingCartItems
+
           if (data.ok && data.length > 0) {
 
-            console.log('Si hay carrito en BD Y esta lleno');
-            
-
-            // Si hay carrito en BD, guardamos en localStorage
             localStorage.setItem("previewCart", JSON.stringify(data));
             setCart(response.data);  
 
-            await axios.delete("/api/cart");  // Vaciar carrito en BD
-          } else{
-            console.log('no hay carrit oen BD o esta vacio');
-            
+            await axios.delete("/api/cart");
+          } else{            
             setCart([])
           }
         } catch (err) {
@@ -294,13 +286,9 @@ const CartContextProvider = ({children}) =>{
         } 
       };
 
+      fetchCartFromDatabase();
 
-        // Si no hay data en localStorage, intentamos traerla de la BD
-        fetchCartFromDatabase();
-
-
-
-      }, [ setCart ]);
+    }, [ setCart ]);
 
 
       useEffect(() => {
@@ -309,17 +297,14 @@ const CartContextProvider = ({children}) =>{
 
       useEffect(() => {
         const handleBeforeUnload = async (event) => {
-          // Guardar el carrito en la base de datos antes de que el usuario cierre la página
+
           await saveCartToDatabase();
-          
-          // Limpiar el carrito en LocalStorage
+
           localStorage.removeItem("previewCart");
         };
     
-        // Agregar el evento antes de que se cierre o recargue la página
         window.addEventListener("beforeunload", handleBeforeUnload);
     
-        // Limpiar el evento cuando el componente se desmonte
         return () => {
           window.removeEventListener("beforeunload", handleBeforeUnload);
         };

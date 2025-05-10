@@ -2,16 +2,14 @@ import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { dropDownLinks } from './NavBar';
 import { categoryProducts } from '../../../data/categoryProducts';
+import { useAuth } from '../../../context/UserContext';
 
 
 
 const DropDown = ({setDropDowns , toElement=''}) => {
+    const { logout } = useAuth()
 
-    // USE REF  
     const dropdownRef = useRef(null);
-
-
-
 
     const profileLinks = [
             {icon:'wrench', title:'configuracion', path:'configuration/myProfile'} ,
@@ -19,27 +17,17 @@ const DropDown = ({setDropDowns , toElement=''}) => {
             {icon:'power-off', title:'cerrar sesion'} ,
     ]
 
-
-
     // ======================ESTILOS=======================
     const itemStyle = 'bg-popUpDropDown px-[18px] py-[15px] flex-1  capitalize font-normal transition-all duration-300'
     
     const widthDroPDown = dropDownLinks.includes(toElement)? 'w-[320px]' : toElement === 'profile'? 'w-[170px]' : 'w-[400px]'
 
-
-
-
-
     // ==================FUNCIONES========================
-    // Funcion cerrar el DropDown Actual
     const closeDropDown = ()=>{
        setDropDowns && setDropDowns(prev => ({...prev,[`${toElement}DropDown`]:false}))
 
     } 
 
-
-
-    // Cerrar el DropDown al dar click fuera
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -94,6 +82,7 @@ const DropDown = ({setDropDowns , toElement=''}) => {
                             <button 
                                 key={profileLink.title}
                                 className={`${itemStyle} flex justify-start items-center gap-2 text-logOut hover:text-text-white hover:bg-logOut`}
+                                onClick={logout}
                             >
                                 <i className={`fa-solid fa-${profileLink.icon}`}></i> 
                                 <span className='capitalize'>{profileLink.title}</span>

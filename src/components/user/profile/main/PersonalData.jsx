@@ -13,15 +13,16 @@ const PersonalData = () => {
     const { user } = useAuth(); // Obtener el usuario actual del contexto
     const { updateUser, hasEmptyFields, loading, error, success } = useUpdateUser();
 
-    const [updateUserState, setUpdateUserState] = useState({});
+    const [updateUserState, setUpdateUserState] = useState({
+      userName: "",
+      lastName: "",
+      email: "",
+    });
 
     const [isChanged, setIsChanged] = useState(false);
 
     useEffect(() => {
-
-      if (user) {
-        console.log("Usuario:", user);
-        
+      if (user) {      
         setUpdateUserState({
           userName: user.userName || "",
           lastName: user.lastName || "",
@@ -37,16 +38,6 @@ const PersonalData = () => {
         setIsChanged(hasChanges);
     }, [updateUserState, user]);
 
-    useEffect(() => {
-      if (success || error) {
-        const timer = setTimeout(() => {
-          setSuccess(false);
-          setError(null);
-        }, 3000);
-    
-        return () => clearTimeout(timer);
-      }
-    }, [success, error]);
 
     // Functions
     const onChangeUpdateuser = (e) => {
@@ -100,9 +91,6 @@ const PersonalData = () => {
           required:true
         },
       ];
-
-
-
 
   return (
     <section className='flex flex-col gap-[20px] mb-5 pr-[200px] 1570:pr-[1%]'>

@@ -15,7 +15,7 @@ const Shop = () => {
   useEffect(() => {
     // Redirigir al primer producto de la lista de categorías si está disponible
     // if (allCategories.length > 0) {
-      navigate(`/tienda/${categoryProducts[0].nameCategory}`)
+      navigate(`/tienda/${allCategories[0].nameCategory}`)
     // }
   }, [allCategories, navigate])
 

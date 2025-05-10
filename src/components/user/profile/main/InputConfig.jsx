@@ -15,7 +15,7 @@ const InputConfig = ({label, type, value, name, onChange, style, required}) => {
           <input
               className='rounded-[4px] bg-[#363636] outline-none text-text-white px-4 py-2 text-xl' 
               type={ type }
-              value={ value}
+              value={ value }
               name={ name }
               onChange={ onChange }
               required={ required }

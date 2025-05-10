@@ -16,50 +16,59 @@ const UserProductsContextProvider = ({ children }) => {
 
     const [ searchQuery, setSearchQuery ] = useState('')
 
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoadingProducts, setIsLoadingProducts] = useState(false);
+    const [isLoadingDetails, setIsLoadingDetails] = useState(false);
 
 
     const fetchProducts = async (categoryId) => {
 
-        setIsLoading(true); 
+        const timer = new Promise((resolve) => setTimeout(resolve, 800));
+
+        setIsLoadingProducts(true); 
         try {
             const response = await axios.get(`http://apiorders.somee.com/api/v1/product/list`, {
                 params: { categoryId },
             });
             const data = response.data;
+            await timer;
             setProducts(data);
         } catch (err) {
             console.error("Error fetching products:", err);
         } finally {
-            setIsLoading(false);
+            setIsLoadingProducts(false);
         }
         
     };
 
     const productCache = useRef({}); 
 
-    const getProductDetails = async (productId,isCartItem=false) => {
+    const getProductDetails = async (id,isCartItem=false) => {
 
-        if (productCache.current[productId]) {
-            return productCache.current[productId];
+        if (!id) {
+            console.error("El ID del producto es inválido:", id);
+            throw new Error("El ID del producto es inválido.");
         }
 
+        if (productCache.current[id]) {
+            return productCache.current[id];
+        }
+        
         try {
-            setIsLoading(true);
+            setIsLoadingDetails(true);
 
             const timer = new Promise((resolve) => setTimeout(resolve, 1000));
 
-            const response = await axios.get(`http://apiorders.somee.com/api/v1/product/${productId}`);
+            const response = await axios.get(`http://apiorders.somee.com/api/v1/product/${id}`);
             const data = response.data;
 
-            productCache.current[productId] = data; 
+            productCache.current[id] = data; 
             
             await timer;
 
             if (isCartItem) {
                 return {
                     titleName: data.titleName,
-                    imageUrl: data.images[0].url,
+                    images: data.images,
                     price: data.price,
                     stock: data.stock,
                 };
@@ -71,7 +80,7 @@ const UserProductsContextProvider = ({ children }) => {
             console.error("Error fetching product details:", err);
             throw new Error("No se pudo obtener los detalles del producto.");
         } finally {
-            setIsLoading(false);
+            setIsLoadingDetails(false);
         }
         
         
@@ -84,7 +93,7 @@ const UserProductsContextProvider = ({ children }) => {
             const data = await response.data;
             setAllCategories(data);
         } catch(err){
-            console.log('Error fetching categories:', err);
+            console.error('Error fetching categories:', err);
         }
     };
 
@@ -108,9 +117,7 @@ const UserProductsContextProvider = ({ children }) => {
     }
 
 
-    const filteredProducts = products.filter(product => {
-        console.log(product);
-        
+    const filteredProducts = products.filter(product => {      
         return product.titleName.toLowerCase().includes(searchQuery.toLowerCase())
     }
     );
@@ -123,9 +130,6 @@ const UserProductsContextProvider = ({ children }) => {
     useEffect(() => {
         if (currentCategory) {
             fetchProducts(currentCategory);
-
-            console.log('se Hizo Fetch a los products');
-
         }
     }, [currentCategory]);
 
@@ -134,13 +138,14 @@ const UserProductsContextProvider = ({ children }) => {
             value={{
                 products: filteredProducts,
                 allCategories,
-                isLoading,
+                isLoadingProducts,
+                isLoadingDetails,
                 currentCategory,
                 searchQuery,
                 setSearchQuery,
-                setCurrentCategory, // cambiar la categoría actual
+                setCurrentCategory,
                 getProductDetails,
-                twoTopProducts // obtener los detalles del producto
+                twoTopProducts
             }}
         >
             {children}

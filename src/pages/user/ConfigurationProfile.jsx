@@ -8,11 +8,9 @@ const validPaths = ['myProfile', 'myRequest'];
 
 
 const ConfigurationProfile = () => {
-    // Usuario para comprobar si el usuario existe
     const { user } = useAuth()
 
     const { typeConfig } = useParams()
-    console.log(typeConfig);
 
     if (!validPaths.includes(typeConfig)) {
       return <Navigate to="/404" />;

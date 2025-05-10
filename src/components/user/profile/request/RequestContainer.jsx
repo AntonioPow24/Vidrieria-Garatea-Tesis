@@ -11,19 +11,16 @@ const statusOptions = ["Pendientes", "Completados", "Cancelados"];
 const RequestContainer = () => {
 
   const { requests } = useRequestsContext()
-    console.log(requests);
     
-  
   const [selectedStatus, setSelectedStatus] = useState("Pendientes") 
-
 
   const filteredRequest = requests.filter(request => {
     const statusMap = {
-      Pendientes: "Pendiente",
-      Completados: "Completado",
-      Cancelados: "Cancelado",
+      Pendientes: "PENDIENTE",
+      Completados: "COMPLETADO",
+      Cancelados: "CANCELADO",
     };
-    return request.orderStatus === statusMap[selectedStatus];
+    return request.statusLabel === statusMap[selectedStatus];
   });
 
   return (
@@ -46,17 +43,18 @@ const RequestContainer = () => {
             </nav>
         </div>
 
-        <div className=' flex-1  px-[4%]  max-h-[655px] requestContainerScroll'>
+        {filteredRequest.length > 0 ? 
+          <div className=' flex-1  px-[4%]  max-h-[655px] requestContainerScroll'>
               <div className='w-full h-full requestContainer'>
-                {filteredRequest.length > 0 ? (
 
-                  filteredRequest.map(request => <RequestCard {...request} key={request.orderId} />)
-                  
-                ) : 
-                  <p className="text-textWhiteTransparent text-center">No hay pedidos en esta categoría.</p>
-                }
+                  {filteredRequest.map(request => <RequestCard {...request} key={request.id} />)}
               </div>
-        </div>
+          </div>      
+          : 
+          <div className=' flex-1 flex justify-center items-center '>
+            <p className="text-textWhiteTransparent text-center">No hay pedidos en esta categoría.</p>
+          </div>
+          }
       </div>
 
       <div className=' flex justify-center'>

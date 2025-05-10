@@ -11,7 +11,7 @@ const RequestAditionalInfo = ({ setDNI, setPhoneNumber, setAddress, deliveryMeth
 
         <div className='flex gap-4'>
           <input 
-            className="bg-[#3D3D3D] px-[10px] py-[6px] text-text-white rounded-[4px] border-none outline-none w-[166px] 1070:w-[50%] smallTablet:text-[12px]"
+            className="bg-[#3D3D3D] px-[10px] py-[6px] text-text-white rounded-[4px] border-none outline-none w-[50%] smallTablet:text-[12px]"
             type="text" 
             placeholder="DNI"
             onChange={(e) => setDNI(e.target.value)} 
@@ -19,7 +19,7 @@ const RequestAditionalInfo = ({ setDNI, setPhoneNumber, setAddress, deliveryMeth
           />
 
           <input 
-            className="bg-[#3D3D3D] px-[10px] py-[6px] text-text-white rounded-[4px] border-none outline-none w-[166px] 1070:w-[50%] smallTablet:text-[12px]"
+            className="bg-[#3D3D3D] px-[10px] py-[6px] text-text-white rounded-[4px] border-none outline-none w-[50%] smallTablet:text-[12px]"
             type="text" 
             placeholder="Numero de celular"
             onChange={(e) => setPhoneNumber(e.target.value)} 
@@ -29,7 +29,7 @@ const RequestAditionalInfo = ({ setDNI, setPhoneNumber, setAddress, deliveryMeth
         {
           deliveryMethod === 'domicilio' &&
         
-          <div className='flex flex-col justify-center w-full gap-2 max-w-[348px] 1070:max-w-[100%]'>
+          <div className='flex flex-col justify-center flex-1 gap-2  1070:max-w-[100%]'>
               <input 
                 className="bg-[#3D3D3D] px-[10px] py-[6px] text-text-white rounded-[4px] border-none outline-none w-full smallTablet:text-[12px]"
                 type="text" 

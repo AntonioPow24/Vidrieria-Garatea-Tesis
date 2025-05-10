@@ -3,7 +3,6 @@ import { Link, useParams } from 'react-router-dom'
 import ProductStars from './ProductStars'
 import { useCartContext } from '../../../../context/CartContext'
 
-// TODO construir nuevo ProductCard
 // NO OLVIDES QUE ESTAMOS TRABAJANDO CON DATA DE PRUEBA, ASI QUE FALTA DESCOMENTAR EN USERPRODUCTSCONTEXT 
 // LA BUSQUEDA ES LOCAL, ASI QUE SOLO TRAEMOS DATA DE PRODUCTOS DE ACUERDO A LA CATEGORIA ACTUAL, ESO LO FILTRAMOPS DE ACUERDO AL VALOR DEL QUERY DE INPUT SEARCH
 

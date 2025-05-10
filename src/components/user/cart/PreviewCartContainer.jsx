@@ -17,13 +17,6 @@ const PreviewCartContainer = () => {
     const containerStyle = 'w-[500px] z-20 flex flex-col bg-appBgWhite  bigPhone:w-[390px] '
     const paddingStyle = 'px-[20px] py-[10px]'
     const borderStyle = 'border-b border-[#c4c4c4]'
-
-
-
-
-
-
-
     
     return (
     <section 
@@ -41,9 +34,9 @@ const PreviewCartContainer = () => {
 
         {
 
-            cart.length ? cart.map(itemCart => 
+            cart?.length ? cart.map(itemCart => 
                     
-                <PreviewCartItem classComponent={paddingStyle} key={itemCart.productId} {...itemCart} />)
+                <PreviewCartItem classComponent={paddingStyle} key={itemCart.id} {...itemCart} />)
 
             : <PreviewCartEmpty closeCart={closeCart} />
 

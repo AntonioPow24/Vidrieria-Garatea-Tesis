@@ -6,13 +6,13 @@ const RequestCancelConfirm = ({ closeModal }) => {
                     <p className="text-text-white">¿Estás seguro de cancelar este pedido?</p>
                     <div className="flex gap-6">
                         <button
-                            onClick={() => closeModal(false)}  // Solo cierra el modal sin hacer nada
+                            onClick={() => closeModal(false)}
                             className="bg-appBgWhite text-textDark py-2 px-4 rounded"
                         >
                                 Conservar pedido
                         </button>
                         <button
-                            onClick={() => closeModal(true)}  // Confirmar cancelación
+                            onClick={() => closeModal(true, 2)}
                             className="bg-[#a76d6d] text-text-white py-2 px-4 rounded"
                         >
                                 Cancelar pedido

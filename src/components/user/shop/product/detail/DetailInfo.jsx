@@ -2,21 +2,19 @@ import React from 'react'
 import ProductStars from '../ProductStars'
 import { useCartContext } from '../../../../../context/CartContext'
 import { useUserProductsContext } from '../../../../../context/ProductsContext/UserProductsContext'
+import Loader from '../../../../shared/Loader'
 
 const DetailInfo = ({ id, titleName, description, price = 0,stock = 0, valorization = 0 }) => {
 
     const { addProductToCart } = useCartContext()
-    const { isLoading } = useUserProductsContext()
+    const { isLoadingDetails } = useUserProductsContext()
 
   return (
     <section className='pl-[40px] max-w-[490px] w-full flex flex-col justify-between items-center h-[430px] ipad:pl-0 bigPhone:max-w-[350px]'>
         
         {
-            isLoading ?
-                <div className='flex justify-center items-center gap-3 w-full h-full'>
-                    <span className='text-adminTextWhite'>Cargando imagen</span>
-                    <div class="spinner"></div>
-                </div>
+            isLoadingDetails ?
+                <Loader message={"Cargando detalles del producto"}/>
             :
             <>
                 <div className='flex flex-col gap-[10px]'>

@@ -23,31 +23,18 @@ export const dropDownLinks = ['tienda']
 
 const NavBar = () => {
 
-
-    // Objeto Estados para los DropDowns
     const [dropDowns , setDropDowns] = useState({tiendaDropDown:false, profileDropDown:false, proyectosDropDown:false})
 
-    //Estado para el scrolling
     const [isScrolled, setIsScrolled] = useState(false)
 
-    //Estado para el menu de navegacion
     const [isMenuOpen , setIsMenuOpen]= useState(false)
 
-
-
-    // USE CONTEXT 
     const { isLogin, openLogin, toggleLogin, closeLogin } = useLoginContainerContext()
 
     const { user , setUser} = useAuth()
 
     const { isCartModal, toggleCart } = useCartContext()
 
-
-
-
-
-
-    // USE EFFECT PARA CONTROLAR EL SCROLLING
     useEffect(() => {
         const handleScroll = () => {
           if (window.scrollY > 50) {
@@ -57,18 +44,14 @@ const NavBar = () => {
           }
         };
         
-
-
         window.addEventListener('scroll', handleScroll, {passive: true});
 
-    
         return () => {
           window.removeEventListener('scroll', handleScroll);
 
         };
       }, []);
 
-    //USE EFFECT PARA CONTROLAR EL INNERWIDTH DE LA PANTALLA PARA EL MENU
     useEffect(() => {
         const handleResize = () => {
             if (window.innerWidth > 850 && isMenuOpen) {
@@ -83,28 +66,15 @@ const NavBar = () => {
           };
     },[isMenuOpen])
 
-
-
-    // Arreglo de Links
     const linksClient = ['inicio','proyectos','tienda','contacto']
     
-
-
-
-    // ============= FUNCIONES ================
-    // Funcion para el Dropdown de cada Elemento
     const handleDropDown = (type) =>{
-
-            // Cerrar todos los dropdowns antes de abrir uno nuevo
             setDropDowns({
                 tiendaDropDown: false,
                 proyectosDropDown: false,
                 profileDropDown: false
             });
 
-
-
-            // Abrir el dropdown correspondiente
             setDropDowns((prevDropDowns) => ({
                 ...prevDropDowns,
                 [`${type}DropDown`]: !dropDowns[`${type}DropDown`]
@@ -112,13 +82,10 @@ const NavBar = () => {
 
         }      
 
-    //Funcion para Abrir o Cerrar el icono MENU
     const toggleMenu = () =>{
         setIsMenuOpen(!isMenuOpen)
     }
 
-
-    // Funcion dinamica para El inicio de Sesion
     const sesionVerify = () => {
         if( user ) {
             handleDropDown('profile')
@@ -228,7 +195,6 @@ const NavBar = () => {
 
                                 <DropDown setDropDowns={setDropDowns} toElement='profile' />
                         }
-
 
                     </div>
 

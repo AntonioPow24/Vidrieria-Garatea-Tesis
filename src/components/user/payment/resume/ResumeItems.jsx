@@ -19,7 +19,7 @@ const ResumeItems = () => {
                 {
                     cart.length > 0?
                     
-                    cart.map( item => <ResumeItem {...item} key={ item.productId } /> )
+                    cart.map( item => <ResumeItem {...item} key={ item.id } /> )
 
                     :
                     <div className='w-full flex justify-center items-center'>
