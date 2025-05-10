@@ -4,8 +4,9 @@ import RequestDetail from './RequestDetail'
 import { useRequestsContext } from '../../../../context/RequestContext'
 import RequestCancelConfirm from './RequestCancelConfirm'
 import { requestFormatDate } from '../../../../utils/formatDate'
+import { citiesData } from '../../../../data/citiesData'
 
-const RequestCard = ({ id, nameCity, priceDelivery, createdDate,  totalOrder, statusLabel, itemsRequest }) => {
+const RequestCard = ({ id, nameCity, priceDelivery, createdDate,  totalOrder, statusLabel, cityId }) => {
 
     const [ isDetailsOpen, setIsDetailOpen ] = useState( false )
 
@@ -30,8 +31,13 @@ const RequestCard = ({ id, nameCity, priceDelivery, createdDate,  totalOrder, st
         } else{
             setIsCancelRequest( false )
         }
-
     }
+
+    // retornar el nombre de la ciudad con el citiesData
+    const printCityName = (cityId) => {
+    const city = citiesData.find(city => city.id === cityId);
+    return city ? city.name : "Gratis"; // Devuelve un valor predeterminado si no se encuentra
+    };
 
   return (
     <article className='p-[18px] bg-userDarkContrast flex flex-col justify-between 430:gap-5 h-min 390:requestContainer320'>
@@ -63,7 +69,7 @@ const RequestCard = ({ id, nameCity, priceDelivery, createdDate,  totalOrder, st
             <div className='flex 430:w-full'>
                 <div className='flex justify-center items-center flex-col gap-[6px] 430:flex-row 430:w-full 430:justify-between'>
                     <span className='text-adminTextPurple text-[18px] text-center 580:text-[16px]'>Envío/Ciudad</span>
-                    <span className='text-[14px] text-text-white text-center'>{ nameCity ? nameCity : "Gratis" } - S/.{ priceDelivery.toFixed( 2 ) }</span>
+                    <span className='text-[14px] text-text-white text-center'>{cityId !== 0 ? `${printCityName(cityId)} - S/.${priceDelivery.toFixed(2)}` : "Gratis"}</span>
                 </div>
             </div>
 
