@@ -3,61 +3,66 @@
 export const projectList = [
     {
         id:1,
-        img:`./images/projects/residenciales/project1.jpg`,
+        img:`https://scontent-lim1-1.xx.fbcdn.net/v/t1.6435-9/204612939_1631363270401013_6445394510173192576_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeG4tJk2TB0dyDVGJRBSM05QWtLUv_GZTLFa0tS_8ZlMsUi5aXmUO1JauyzngdE0d4ZGqmrGxlGQGokQK9aeCtrk&_nc_ohc=FYLajwBvxQ0Q7kNvwFo6V2S&_nc_oc=Adll0Lt5e6R2fG4EyyZI1idxOq_9VmlYc2Tvkc6bEyEVtcRglyzJW3gJFNy0fwAa8ua5h79Ntli34vYVVyqcwCY2&_nc_zt=23&_nc_ht=scontent-lim1-1.xx&_nc_gid=rw-cpGJKp3rXzQw1JRCinA&oh=00_AfIqB_5KdrNfbdvGwglBnVJNLH14xCjrqxq0iZ7EGdkt8A&oe=68474ABB`,
         title:'residenciales',
         description: 'Esta es la descripcion del proyecto 1, aqui se describe todo lo que se necesita saber de este proyecto y como lo aplica la empresa',
         galery: {
-            1: `./images/projects/residenciales/project1.jpg`,
-            2: `./images/projects/residenciales/project1.jpg`,
-            3: `./images/projects/residenciales/project1.jpg`,
-            4: `./images/projects/residenciales/project1.jpg`,
-            5: `./images/projects/residenciales/project1.jpg`,
-            6: `./images/projects/residenciales/project1.jpg`,
+            1: `https://scontent-lim1-1.xx.fbcdn.net/v/t39.30808-6/476348420_2569597873244210_4319814143485553062_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeFuMjr_6rk_DkobHz9ghVepzUZaW9oBYhjNRlpb2gFiGNgPKQF1OXgGGXtOR_l4k6Q8zqBKXdpdbFTlscMEZKsK&_nc_ohc=UlF1JxY8AqUQ7kNvwEirgqd&_nc_oc=AdlgXPUZbinCWXfcQiS8erEq91Os8EHe19Ef942ePsqont_L1wuUCXaUkEwTjhvsYS_GbaICf_rj3loKAf7QRLQU&_nc_zt=23&_nc_ht=scontent-lim1-1.xx&_nc_gid=GrjAb8QxzTa5hULXa0jEaQ&oh=00_AfLDhjarvxAPupICX7j1Z2Z4aJB7v70709SPiNpHlDjnNA&oe=6825AF5D`,
+
+            2: `https://scontent-lim1-1.xx.fbcdn.net/v/t39.30808-6/476426564_2567172340153430_610583157031028274_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeFU_hOBsxOo0moqLPWWfNN1cqPtlzZzZ3dyo-2XNnNnd44Zl1ckJFsc8DXweBgMUPrGixYwgdWGacxZRVOloUGD&_nc_ohc=N9Snm8d3ut0Q7kNvwEAWX9r&_nc_oc=Adnd2IQa6bT2mmDVWRgo6VSRzwO4xF_D2Oce-3Kvi3a5CWrBNV9yD92GAAU_vUWYR12Ib_5_B7x4079TmkExewcp&_nc_zt=23&_nc_ht=scontent-lim1-1.xx&_nc_gid=Bcjgfwn1RFl0HUy8P8QRug&oh=00_AfK6anIwBr0itcFEVXZdST_Q-fVaGyxBlQ8yctoyoZ7MWw&oe=6825B591`,
+
+            3: `https://scontent-lim1-1.xx.fbcdn.net/v/t39.30808-6/476898355_2569598003244197_6379499425729020267_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeFFig4xmytec4v-Y8aDPLKSceGYig2W_XRx4ZiKDZb9dFGBxFDdWjZQlVoSrYf8vbNGvXwfcLXSzQSGO0BF-Ft-&_nc_ohc=qjHrID7BBw0Q7kNvwG5qGZh&_nc_oc=Adnz8CzIJX3op-qFNRGs9gKKyWCmgR_8u4tlpdycCr2X5ODccNZ5USQ9m2NIrc0nwf5vGI5UQfD7wE1KJy6AoQIG&_nc_zt=23&_nc_ht=scontent-lim1-1.xx&_nc_gid=5_FHRqoWVQJ8qC1wVX8ybg&oh=00_AfLSSeM2DYKVXTkKGg1KDEbXc08REugyp1aq0uTGpWjOMg&oe=6825D20A`,
+
+            4: `https://scontent-lim1-1.xx.fbcdn.net/v/t39.30808-6/476430163_2569598083244189_6652688497883030967_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeGZZw9Uvn_mW7HD0Zco0BNw4AVg-iAP_1ngBWD6IA__WcX7ElyDm1N1ncLpq0r894bazPIEEV4NowMYt8IEDuh0&_nc_ohc=LLJQ4opvR7oQ7kNvwEljqtd&_nc_oc=Adn2q6_sx3vHNc4ypJbjBohQHdE9J5epxTDhagjppUzjV4izpreUqbm82kbXqEumhP65OKdi5cg1EUqIVPghSOLs&_nc_zt=23&_nc_ht=scontent-lim1-1.xx&_nc_gid=Q85fOvtn10ZMtHB8Oy1QwA&oh=00_AfLRVUi-ZiALpx1lq48augu8iSL05gI02ofm6C2y9BQa5A&oe=6825B9C4`,
+
+            5: `https://scontent-lim1-1.xx.fbcdn.net/v/t39.30808-6/476161629_2567172090153455_3904682876915308546_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeG6vqfqSzqwIUZZgimeB-8nOJRII41sQGo4lEgjjWxAavjMBzSNyExFUvJBEmUikJ-UgtSDOZt5-PjnBQE-mZSB&_nc_ohc=tAIr2a_RDtAQ7kNvwHgISq2&_nc_oc=Adn1vZ9CEnkp3VwwHsfIVVzrZVLc_R75GE7eaFgTGX-D1zLOKi29BUVAW6cfb0GQY2CIxotzo_1LfXTZqQ1Pcmul&_nc_zt=23&_nc_ht=scontent-lim1-1.xx&_nc_gid=mVE5-3f0KVJCbYgoeXw0LA&oh=00_AfLbl2F81j2eTywUImLxQv3PuKWjRPClmCSF4rAciklmiA&oe=6825BA66`,
+
+            6: `https://scontent-lim1-1.xx.fbcdn.net/v/t39.30808-6/475266865_2561929370677727_1591874240163233107_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeH7XQyu32IVg6ny3BmCa2ZUex5NCVe24up7Hk0JV7bi6k0TxbclsSAn4NColOitxXGwkR9M2XJULHhvQ3ewVgi-&_nc_ohc=UFrvcqMzCusQ7kNvwHvLZCn&_nc_oc=AdmKTGdO6BSUFbyFwdpzCK4Zl9w7jh91IRvwBCoLaC46IgsAQi-NBx19iw5a5xPR25DoimeRuR7pKLi9SMT524MN&_nc_zt=23&_nc_ht=scontent-lim1-1.xx&_nc_gid=O1AQm6Ovb3rD43jwuBfgNA&oh=00_AfLAZXjXepOKBYyGhhVbA-G_1LvYXJ9mVLKKtmMVedY1UQ&oe=6825B4E8`,
         }
     },
 
     {
         id:2,
-        img:'./images/projects/instituciones/project2.jpg',
+        img:'https://scontent-lim1-1.xx.fbcdn.net/v/t39.30808-6/476880680_1319084300223639_4437095236976141078_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeEQjtMLm3lLnXpGAs7dcBtEeZcIrOuGbeR5lwis64Zt5DZcEabWX9v-Zy6RxlwnTbcs-eMQAhQjUtuMHfcXmAoY&_nc_ohc=m5qOJvIHS8QQ7kNvwF1Xyv8&_nc_oc=AdnOas1De7ZQKoUWgaefNVke414ltGTBvdmhR5L_GyssZWbYDxak_MY_V-s_GLBGaAlPRJmbAFXDrzpEyAcgMdq4&_nc_zt=23&_nc_ht=scontent-lim1-1.xx&_nc_gid=FjerVXylfAR4wjlav2zg4g&oh=00_AfLHV0a0WZ9RdVBPTafV-7d-T-n2cB2d_enokdgQsx2ctg&oe=6825B213',
         title:'instituciones',
         description: 'Esta es la descripcion del proyecto 2, aqui se describe todo lo que se necesita saber de este proyecto y como lo aplica la empresa',
         galery: {
-            1: `./images/projects/instituciones/project2.jpg`,
-            2: `./images/projects/instituciones/project2.jpg`,
-            3: `./images/projects/instituciones/project2.jpg`,
-            4: `./images/projects/instituciones/project2.jpg`,
-            5: `./images/projects/instituciones/project2.jpg`,
-            6: `./images/projects/instituciones/project2.jpg`,
+            1: `https://scontent-lim1-1.xx.fbcdn.net/v/t39.30808-6/461106449_2456737237863608_2811680909811153784_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=cf85f3&_nc_eui2=AeG84SNEAXlSE_M4X8Os2E5hurCYO6Hq7-66sJg7oerv7nFjTaFs9R8ZfOcZeCYsypR5sphSaAGuaff2CEwk9vud&_nc_ohc=46gZZ65zCjsQ7kNvwEtB3cU&_nc_oc=AdnuW21stwkWgDXnDZIhwCjyigjf2trqygaJUmGmcLo8wURs1GgcF62YTCkCo357hIAHl9d2iGEeLPiTVbwWet_Y&_nc_zt=23&_nc_ht=scontent-lim1-1.xx&_nc_gid=uaJID-hqc4elRkbBy-hkig&oh=00_AfKi6u0NtkoNcjDYwVITMJAzUlgaYKDDQBHRCLRS-LrmaA&oe=6825BCF2`,
+            2: `https://scontent-lim1-1.xx.fbcdn.net/v/t39.30808-6/461262483_2456737144530284_2716620844087603713_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=cf85f3&_nc_eui2=AeESwgzjKv--YOOhHdgqyYHZaegS6z4rrKdp6BLrPiusp3VyRn3BmSpjXVkHrCOaOiAIm20e07-cimghFZG1bj-B&_nc_ohc=xjjoJQvj6YEQ7kNvwF9KEI8&_nc_oc=AdmWkXFjgxZm4PKR38si8bshhmLpqh5nWZd3gi3GzMdzSvqxPWuXzxUA6uQSubHwGxsxk1fITch-wAzjQdgtXOae&_nc_zt=23&_nc_ht=scontent-lim1-1.xx&_nc_gid=jmvCdwPgR0MCIO9AIoir0g&oh=00_AfIRA7_hzMANoDCJYCgApXl5sh5KYhBMvblbcUaLnKhobg&oe=6825AECB`,
+            3: `https://scontent-lim1-1.xx.fbcdn.net/v/t39.30808-6/461281967_2456737134530285_898425730116729677_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=cf85f3&_nc_eui2=AeFAzX-9uThA1j55Aafgd_wvIV0AZRyde2EhXQBlHJ17YZoImzeKF51s6FuU4rFQpyRJE4W_QvIkSLHFgH4mq2vY&_nc_ohc=A4qNZ0oIosQQ7kNvwH-9SSz&_nc_oc=AdmessSr2qe76-zNw6CSTFbt90tCDjZm5uwVN7t7_vkbfiFYTu8e4uUtdGCUK67Y_-b_th0fzSm-uqO14Wj-Ssae&_nc_zt=23&_nc_ht=scontent-lim1-1.xx&_nc_gid=ehHVyG8HMxJz787PPhX9_g&oh=00_AfILQphIakmNhETFOVGwctOfxghKbyclFWZfwpnMe-GUog&oe=6825CB08`,
+            4: `https://scontent-lim1-1.xx.fbcdn.net/v/t39.30808-6/476463270_1319084220223647_754970941513284693_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeEYDoeCmjVTahJeXZz0MJUUOUzRau9WCqs5TNFq71YKqwJ9HqJBZRqAPGKkzJSGkwof1yIRgMf7u0uDUdO17LCT&_nc_ohc=cIxz-JRlVOMQ7kNvwHvfMr4&_nc_oc=Adndn7TBEHNeZnutfs1ynFc3Uiwc79Yen05EZaOWPf1rClO6uKnL7R8F1k-tY_Nr_ksZnXB60H4DQLDycvTiAdC-&_nc_zt=23&_nc_ht=scontent-lim1-1.xx&_nc_gid=MlUc8W115FeDrK-nlnKSzQ&oh=00_AfJZanTU7bfRjViGequOtbY07Hozq6cMdo0uJXoWW51XPw&oe=6825DDB3`,
+            5: `https://scontent-lim1-1.xx.fbcdn.net/v/t39.30808-6/495090504_2649073531963310_5635248994950605387_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=cf85f3&_nc_eui2=AeGLIbYNVCvz5rfNwhbnrNeKaxjgAlbD7xVrGOACVsPvFagDyTQPv4MKQ8YfqBDQC77kUUjkX_7wq3zfAn9J5nSB&_nc_ohc=isEfyT-nKkUQ7kNvwH95jqK&_nc_oc=AdnT8nCGPn7DEKXzmz2UyOpZCac1VjH7-JYte0UI-HF75A8S0EuyfeOtJNelXLdTZAOH_14SYVe5nQW5d1BSEUaO&_nc_zt=23&_nc_ht=scontent-lim1-1.xx&_nc_gid=cxG9dklHTuvC7CtUuIv_uw&oh=00_AfLSW4rjuaOrlYhZugsit1qGndhvpDiOW_1-1V7Y_mrQUA&oe=6825DCA5`,
+            6: `https://scontent-lim1-1.xx.fbcdn.net/v/t39.30808-6/461201743_2456737027863629_5579658374873188289_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=cf85f3&_nc_eui2=AeEYRbJd2vgPm72T9BRJusj2DjYowbOKqRAONijBs4qpEObrj7WDf43er4o9Hq7mpat9CrNgpdZj_cFsqxsq91xV&_nc_ohc=j4_md_xaz4EQ7kNvwEGWVKS&_nc_oc=Adm6JT-jqLhozcxxvkbrlBB9coYI66Cz8QPsw6AEyLKl88mwASz1EWUj34eVUGeM0S2u1T6eZMx6Nar7ctJXfV8N&_nc_zt=23&_nc_ht=scontent-lim1-1.xx&_nc_gid=q50N6KltxMaGt8xPqliMcQ&oh=00_AfJbAyTSs8coFVeZaICwJPFE8nFYUHuQWGtqrVjuWG1vYA&oe=6825CB21`,
         }
     },
 
     {
         id:3,
-        img:`./images/projects/hospitales/project3.jpg`,
-        title:'hospitales',
+        img:`https://scontent-lim1-1.xx.fbcdn.net/v/t39.30808-6/476089757_2567172380153426_4337249654235954718_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeFRSg-xZDAwKNBowtTHR_6TvKg5wiX7TQ-8qDnCJftND9b6J-q6ztBcmha2KXIrVcIsdm3afbF3jFUWohaFVPS3&_nc_ohc=-nzeIGF61QUQ7kNvwHNYWtz&_nc_oc=Admo-LtB-A6bkFWBGhnyftd3f3uXuwETS0sLg1Pj6a_FuNCp8uGwfPrBX6U_rquDKP3TlF-yStBsYfMMDvv-F_D9&_nc_zt=23&_nc_ht=scontent-lim1-1.xx&_nc_gid=eKv37rMBWukE1LrnpjBciQ&oh=00_AfI0ByMw41hagKF259NRRt6jDuijRegbcfTze6jZGMTaPQ&oe=6825B4D7`,
+        title:'comerciales',
         description: 'Esta es la descripcion del proyecto 3, aqui se describe todo lo que se necesita saber de este proyecto y como lo aplica la empresa',
         galery: {
-            2: `./images/projects/hospitales/projectH.jpg`,
-            1: `./images/projects/hospitales/projectH.jpg`,
-            3: `./images/projects/hospitales/projectH.jpg`,
-            4: `./images/projects/hospitales/projectH.jpg`,
-            5: `./images/projects/hospitales/projectH.jpg`,
-            6: `./images/projects/hospitales/projectH.jpg`,
+            2: `https://scontent-lim1-1.xx.fbcdn.net/v/t39.30808-6/462690672_2472792192924779_8848820451551334347_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGKolWI_FaxWbiTyUfP_gMmcH4g0i02GS5wfiDSLTYZLpNb81Rnp_ZPbA00NYsjE5I515q6c6_0t3jbPRqUXTnr&_nc_ohc=yI3SzA7JpBMQ7kNvwFi4D66&_nc_oc=AdlDH_rPyA8g1Yh09S-Egvhmb95nM-ks86u_d08k0DNetB_6qGTfjJnhrpUnLuxyBqfgxI6Y1pO-CivFbT0Wv2St&_nc_zt=23&_nc_ht=scontent-lim1-1.xx&_nc_gid=KzAdfWtXmrI5wJswZCT9OA&oh=00_AfLjyUmOk8dxm_ulubkus66VitiMrPs7xZHGoj3hqtHV9w&oe=6825CC6C`,
+            1: `https://scontent-lim1-1.xx.fbcdn.net/v/t39.30808-6/462686726_2472792206258111_3692943917186690043_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeF0JS--5R3ZPhjLiLJQ_KZrLW60k8c4TtctbrSTxzhO1xoVBey0ZTAvyLFzLCB_WouXxTixHETI9gM4sq7rsEkJ&_nc_ohc=5SeRIa8sqfUQ7kNvwFEFURd&_nc_oc=AdmyYhasmR8Uces65mMnCOPuNPTLec4MIBVIMSXhGqu1uYukVGcKDXIZbUPmW1lo2z2Dc3X2A1QLnT-TJUq5hJ-W&_nc_zt=23&_nc_ht=scontent-lim1-1.xx&_nc_gid=ntRCX7T879fxJqNsnYpjFA&oh=00_AfKKkz5KqRm1HyzQWCP7omG7RyS5K_9tRBTr_ppMBS3rTg&oe=6825CD70`,
+            3: `https://scontent-lim1-1.xx.fbcdn.net/v/t39.30808-6/462749499_2472537052950293_8923648873654540406_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeEboSrMi39zeF2ivs5jPQEAY3zSwipJDlhjfNLCKkkOWMHjfCDUl9WY5Rj7LYMtF3sRDz6K1PyCNUTaMjRJJj3c&_nc_ohc=LWWWOOEsalQQ7kNvwFw0OZ1&_nc_oc=AdmL6xrrRk04gVOGH97YsDx7mqZHPTIWxjSS0NbDk19ErWaIboN6Q0i5A2Zg0vJWuuwkCw_7Wj7hex7h1BSrBH5d&_nc_zt=23&_nc_ht=scontent-lim1-1.xx&_nc_gid=pc9rgC3GIlMxnb54Zouqtg&oh=00_AfK-zZXf4eP2sxxVk_rtQ6DGBvrDBuTc86SpzHpczypTuw&oe=6825D32B`,
+            4: `https://scontent-lim1-1.xx.fbcdn.net/v/t39.30808-6/461308834_2456736207863711_1503803545423185080_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=cf85f3&_nc_eui2=AeGfnghEQIDiGSB-hj7nChK79XckYyFHYuD1dyRjIUdi4AeWJOD8NKIPEus_DO6SYbNIrucrCp0OmQPBt5dipPbJ&_nc_ohc=enjQkzf_6IsQ7kNvwFuO1H2&_nc_oc=Adm82ZqAMPuYHvu9v_RdoNN0OUu157mSV4W8h6WD1YerSBBCbSxDC06aXMA4h4_I5opZF59KRhL7HTrv1VE2AWkH&_nc_zt=23&_nc_ht=scontent-lim1-1.xx&_nc_gid=pPjn_nR19q_h5TS0oioc5g&oh=00_AfI5yyFEdNiemZdFm7ilTS2pJ9f1nRaLSqYx9FgQB01dsg&oe=6825BB9E`,
+            5: `https://scontent-lim1-1.xx.fbcdn.net/v/t39.30808-6/461296848_2456736071197058_6100380837371230174_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=cf85f3&_nc_eui2=AeH2urV08DklM5oG1Y6wnAafubdEW3Uygxu5t0RbdTKDG8eCgzsSd-ZhVju3JPKatFksr5G3EHTF0oiZAam4B-uN&_nc_ohc=2lzO-9oUp3sQ7kNvwFWGZRQ&_nc_oc=AdlnfO9xvscgkrRG8aM9pnhJliqioicjUyJKs0Aw0oyZ-sJJRmv_q78gG6X5_WelnV_TOc39-feyMIOS1uMPvnXr&_nc_zt=23&_nc_ht=scontent-lim1-1.xx&_nc_gid=hgP84LcMtrZb30HmFh4wvg&oh=00_AfI9_7ZBwknSnGFnf4YQwrK7RFGZXjywZiAXXdgEFHsA_w&oe=6825B06A`,
+            6: `https://scontent-lim1-1.xx.fbcdn.net/v/t39.30808-6/461280854_2454763108061021_1109554116067406856_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHAJ0i4yXWPhtV1xpPDZYcS0-GIvwYswBTT4Yi_BizAFMHrd3fVm1Ha4mwko0i5PxOdyZEVtybmnv85wWJjq5HZ&_nc_ohc=SrIVc_PXlXwQ7kNvwGDOLt0&_nc_oc=AdlGRJu64JI8dUjkxZAopiIm3uofvEKqV2-bQAnayelusCvEeMoSSVR5E5xOunQufUwZmJ_nW8NvyYIerPGITRlW&_nc_zt=23&_nc_ht=scontent-lim1-1.xx&_nc_gid=tgT5f-Ril7xevT9Nj9r3LA&oh=00_AfKnIbWhdksYOV5Pa_N2wc9JaNiu9MgJJCGKrDIMg4HUSQ&oe=6825C5B4`,
         }
     },
 
     {
         id:4,
-        img:`./images/projects/negocios/project4.jpg`,
-        title:'negocios',
+        img:`https://scontent-lim1-1.xx.fbcdn.net/v/t39.30808-6/470223521_2530404193830245_2121575940439890788_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeGmUhSCErrwmeJS63dgqz0k61786RU1R6HrXvzpFTVHoUxKIFidTV6G7DgztHklMIbEwbvPZ_5fS_wQbnPWf7-V&_nc_ohc=69WGareHnLAQ7kNvwHQIHZG&_nc_oc=AdnlWSNAHv0vbDetwRGqDm24OezUPNJVSzDrrPY9E0UNcy-UwqqNE56jlq9rbFsm3NawiEhvU6WWSent44JulwtS&_nc_zt=23&_nc_ht=scontent-lim1-1.xx&_nc_gid=_xXXl_IsTBNyb3ifJ8L-Ag&oh=00_AfIaRtX0oSVHqlXYb4OPn4kgsl04Lzty7UnBF6R3KtjznQ&oe=6825DB1F`,
+        title:'baños',
         description: 'Esta es la descripcion del proyecto 4, aqui se describe todo lo que se necesita saber de este proyecto y como lo aplica la empresa',
         galery: {
-            1: `./images/projects/negocios/project4.jpg`,
-            2: `./images/projects/negocios/project4.jpg`,
-            3: `./images/projects/negocios/project4.jpg`,
-            4: `./images/projects/negocios/project4.jpg`,
-            5: `./images/projects/negocios/project4.jpg`,
-            6: `./images/projects/negocios/project4.jpg`,
+            1: `https://scontent-lim1-1.xx.fbcdn.net/v/t1.6435-9/94138102_1292392840964726_5898726780319039488_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=cf85f3&_nc_eui2=AeGeH7kbXQotxePB4_IYqarwC3M1-3ElFcgLczX7cSUVyAGM4bp-UpEn0Zfq-_05V5sGtVscWOeD1vNZs7qpvi7R&_nc_ohc=A7_RjW2ElxgQ7kNvwFoBBAG&_nc_oc=Adn1Ip0PvjWJjKxzcJtUDYFZB5fB9a9s-evyQv-SD7qj7TVz3AmPB5FLrhPE-hOj_K5aooHplgxA68BbkguOFwlD&_nc_zt=23&_nc_ht=scontent-lim1-1.xx&_nc_gid=3cVfPgd_V9owCaJumtc7jg&oh=00_AfJl2P8qWPqrS4J1gGjlhSvR0ZG89sD2ZFzBUSbzZgauAg&oe=68475338`,
+            2: `https://scontent-lim1-1.xx.fbcdn.net/v/t1.6435-9/94111053_1292392854298058_8042160394417995776_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=cf85f3&_nc_eui2=AeEQ02qDiT2Po8Z5-YTsef38QxjNn9IE5PNDGM2f0gTk8zXOzSGUReLh1YSMGdVyqzPA9DR80GFm8xLyGvi7OqYN&_nc_ohc=MKwlMytRikEQ7kNvwF8CNIA&_nc_oc=AdknDvKFDWhvysIhnvgFIAPwxg4TjfQRf4SJE1B7vsFyxc7ac62rUzQByx6kdH8PYtAj86EkJ16U22eeNFueLBYh&_nc_zt=23&_nc_ht=scontent-lim1-1.xx&_nc_gid=uMZeX0GsaE6Guc3QMxKYZg&oh=00_AfJa99MLoSJX_BP66wu0QlhgamHalOTsJc_bM09LGOctKA&oe=68476775`,
+            3: `https://scontent-lim1-1.xx.fbcdn.net/v/t39.30808-6/476917192_2569614853242512_123771469750570138_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeGLl6bzeqULGa_hWE_Qr1cmNVNgRDVZYIQ1U2BENVlghBjKr1MttzZ7bkZK4M_l-1fOe-d9TozYNAVg8S6iuhzO&_nc_ohc=xPFGuQ4fWT0Q7kNvwGDvFxT&_nc_oc=AdlM_UkRf3bO-nGppyNDPfPqwp7-u2Q7hXOVEr65bNw6FNwmOegQdeyDhb7UwSOsZVTVDcY5FzrhNYuhM30HPgS2&_nc_zt=23&_nc_ht=scontent-lim1-1.xx&_nc_gid=8GT25M5jwiXPT2mxFl9IAA&oh=00_AfJFVwdHF_SBrIU2qE_2JcklntCjJabSDBgQiu_GBnGLYQ&oe=6825CB9E`,
+            4: `https://scontent-lim1-1.xx.fbcdn.net/v/t39.30808-6/476837332_2571135393090458_4260037022838576239_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeFsdAbSY0SiLznvxPe-Lr0nd2CQYTedAZJ3YJBhN50BkmlZttWXnoLi6JlUMtB343mMxaqEihF7ZdU7Q9WqRg3B&_nc_ohc=43gNvFalZMMQ7kNvwFrv12W&_nc_oc=AdkjWpT6BHlZnER5zL5azgrCz5Ni9q1bSxK_r9FSqQH8rbZd3z-ZrjyShozNldOPaNcMQjp5ritaM-fzJLhwU6iX&_nc_zt=23&_nc_ht=scontent-lim1-1.xx&_nc_gid=CE7673U8cTwzu-iqH2xrCA&oh=00_AfKv_K1J1VX9IBb1MM58UtnAIqx0Sj1h_z_Pt98Yx--IOw&oe=6825B5F2`,
+            5: `https://scontent-lim1-1.xx.fbcdn.net/v/t39.30808-6/477379716_2571135573090440_7803705681128041084_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeGwJhtBbOO722l5Knw-wSn1GinHCa1zYGcaKccJrXNgZ4-mhYLHZDCAMctLeE7EF8h3jfwN7SFZ8to3Q5_iOKrB&_nc_ohc=wkLYgGFsAgwQ7kNvwGLZAIq&_nc_oc=AdlKfZK4SAM67Rpb7-rprB8lvI7SAG5xnz2FtiUj4x_VFevL5D5yVJRMS02GFFmTXUcRNdO6I_o-HaBm4loE4z_z&_nc_zt=23&_nc_ht=scontent-lim1-1.xx&_nc_gid=8vpVCKTaNUj-MZeBxRbOzQ&oh=00_AfJtpS4L1kB2f_nPk8pVMunhZkYbT3UcQoxpPRIjxt7nGw&oe=6825BA27`,
+            6: `https://scontent-lim1-1.xx.fbcdn.net/v/t39.30808-6/275321427_1808335509370454_3390787226550343132_n.png?_nc_cat=104&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFS1FmOR7me8PLqKG1wSQcAKPz9K3N8Up0o_P0rc3xSnYEJW0fQRiqd-xyn67k1Oz8JDcb1QD8HpOzsoYHXtK5S&_nc_ohc=GbGJvC0LwIEQ7kNvwGpJAHP&_nc_oc=AdmktDjCYCzcWfxiVRNA_yP04052j6yIq6KMSn2dK6osFyDObXrr2HprbnED7tnXkLGQakHtwEAl3Tq-yU3rfsu8&_nc_zt=23&_nc_ht=scontent-lim1-1.xx&_nc_gid=B3wBG_mYbrihXD6QLq6png&oh=00_AfKujgjr7mDOs_sf5b-2Yj9lUTynTFYlYu9wHq9MBBAyEg&oe=6825C012`,
         }
     },
 
