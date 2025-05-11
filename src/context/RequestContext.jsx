@@ -189,7 +189,7 @@ export const RequestProvider = ({ children }) => {
 
   useEffect(() => {
     if (user?.id) {
-      fetchRequests(user.id);
+      fetchRequests();
     }
   }, [user?.id]);
 
