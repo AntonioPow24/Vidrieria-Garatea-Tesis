@@ -11,7 +11,6 @@ const statusOptions = ["Pendientes", "Completados", "Cancelados"];
 const RequestContainer = () => {
 
   const { requests } = useRequestsContext()
-    console.log(requests);
     
   const [selectedStatus, setSelectedStatus] = useState("Pendientes") 
 
