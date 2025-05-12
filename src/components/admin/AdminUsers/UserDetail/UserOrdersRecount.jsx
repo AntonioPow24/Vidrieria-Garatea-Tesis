@@ -1,5 +1,5 @@
 import React from 'react'
-import { useAdminUsersContext } from '../../../../../context/AdminUsersContext/AdminUsersContext'
+import { useAdminUsersContext } from '../../../../context/AdminUsersContext/AdminUsersContext'
 
 const UserOrdersRecount = ({ completedOrders, pendingOrders, cancelledOrders }) => {
 

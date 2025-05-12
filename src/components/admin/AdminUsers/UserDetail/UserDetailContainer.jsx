@@ -2,7 +2,7 @@ import React from 'react'
 import UserPersonalData from './PersonalData/UserPersonalData'
 import UserOrdersRecount from './UserOrdersRecount'
 import UserExtraData from './UserExtraData'
-import { useAdminUsersContext } from '../../../../../context/AdminUsersContext/AdminUsersContext'
+import { useAdminUsersContext } from '../../../../context/AdminUsersContext/AdminUsersContext'
 
 const UserDetailContainer = () => {
 

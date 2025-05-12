@@ -3,7 +3,8 @@ import HeaderBar from '../../components/shared/adminSimple/HeaderBar'
 import SearchContainer from '../../components/admin/AdminUsers/principal/searcher/SearchContainer'
 import useSearchUser from '../../hooks/adminSearch/useSearchUser'
 import TableUserContainer from '../../components/admin/AdminUsers/principal/table/TableUserContainer'
-import UserDetailContainer from '../../components/admin/AdminUsers/principal/UserDetail/UserDetailContainer'
+import UserDetailContainer from '../../components/admin/AdminUsers/UserDetail/UserDetailContainer'
+
 
 const UsersAdmin = () => {
 

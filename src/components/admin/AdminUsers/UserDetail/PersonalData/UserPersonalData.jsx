@@ -1,6 +1,7 @@
 import React from 'react'
-import { useAdminUsersContext } from '../../../../../../context/AdminUsersContext/AdminUsersContext'
+
 import DataField from './DataField'
+import { useAdminUsersContext } from '../../../../../context/AdminUsersContext/AdminUsersContext'
 
 
 const UserPersonalData = ({ userName, lastName, email, id, createdDate, totalOrders }) => {
