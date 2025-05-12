@@ -2,11 +2,15 @@ import { useState } from "react"
 import ProductsMain from "./main/ProductsMain"
 import useSearchProduct from "../../../../hooks/productsHooks/useSearchProduct"
 import ProductsFeatures from "./features/ProductsFeatures"
+import { statusData } from "../../../../data/statusData"
 
 const ProductsAdminContainer = () => {
 
-    const [categoryFilter, setCategoryFilter] = useState(99)
-    const [statusFilter, setStatusFilter] = useState(1)
+    const allCategories = statusData.ALL_CATEGORIES
+    const allActiveStatus = statusData.ALL_ACTIVE_STATUS
+
+    const [categoryFilter, setCategoryFilter] = useState(allCategories)
+    const [statusFilter, setStatusFilter] = useState(allActiveStatus)
   
     const changeCategory = ( newCategory ) => setCategoryFilter( newCategory )
     const changeStatus = ( newStatus ) => setStatusFilter( newStatus )

@@ -5,7 +5,7 @@ import TableBody from "../../../../../shared/adminTable/TableBody"
 
 
 const ContainerTable = ({ filteredProducts }) => {
-  
+    
     return (
 
     <div className="px-[22px] pb-[22px] overflow-y-auto max-h-[710px]">

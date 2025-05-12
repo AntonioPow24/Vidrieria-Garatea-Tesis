@@ -6,8 +6,9 @@ import DropDownList from "./DropDownList";
 
 const FilteredBar = ({ changeCategory, categoryfilter, changeStatus, statusFilter }) => {
 
-    const { allCategories } = useAdminProductsContext()
-    
+    const { allCategories } = useAdminProductsContext()   
+
+
     return (
       <div className="px-[22px] py-[22px] flex gap-6">
           <div className="flex items-center gap-2">

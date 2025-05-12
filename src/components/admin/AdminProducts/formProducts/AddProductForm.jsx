@@ -152,16 +152,16 @@ const AddProductForm = ({ productId, methodForm }) => {
           <div className="grid grid-cols-3 md:grid-cols-3 gap-3">
             {categoryProducts.map((cat) => (
               <button
-                key={cat.categoryId}
+                key={cat.id}
                 type="button"
                 className={`flex items-center gap-2 p-4 border rounded-[6px] transition-all duration-300 ${
-                  productInfo.categoryId === cat.categoryId ? "border-purple-500 bg-purpleElectricBg  border-none" : "border-[#07070760] hover:bg-[#cecece28] dark:border-adminTextWhite"
+                  productInfo.categoryId === cat.id ? "border-purple-500 bg-purpleElectricBg  border-none" : "border-[#07070760] hover:bg-[#cecece28] dark:border-adminTextWhite"
                 }`}
-                onClick={() => handleCategoryChange(cat.categoryId)}
+                onClick={() => handleCategoryChange(cat.id)}
               >
                   <div
                         className={`grid place-items-center w-6 h-6 ${
-                        productInfo.categoryId === cat.categoryId ? "text-white " : "text-gray-500 "
+                        productInfo.categoryId === cat.id ? "text-white " : "text-gray-500 "
                         } rounded transition-all duration-300`}
                   >
                         <svg
