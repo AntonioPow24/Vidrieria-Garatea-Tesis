@@ -17,7 +17,7 @@ const UserExtraData = ({ totalBuy, ROLES }) => {
       {extraDataArray.map(({ id, label, value, valueClass, align }) => (
         <div
           key={id}
-          className={`flex flex-col justify-between items-center ${align} w-1/2  bg-userDetailBg rounded-[14px] px-[14px] py-[18px] gap-3`}
+          className={`flex-1 flex flex-col justify-center items-center h-[96px]  ${align}  bg-userDetailBg rounded-[14px] px-[14px] py-[18px] gap-3`}
         >
           {loadingSelectedUser ? (
             <SmallLoader message="Cargando" />
