@@ -5,6 +5,7 @@ import { dataProducts } from '../../data/dataProducts';
 const AdminProductsContext = createContext();
 
 export const AdminProductsProvider = ({ children }) => {
+  const [allCategories, setAllCategories] = useState([]);
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -79,6 +80,20 @@ export const AdminProductsProvider = ({ children }) => {
     return product ? { ...product } : null;
   }
 
+  const fetchCategories = async () => {
+    try{
+      const response = await axios.get('http://apiorders.somee.com/api/v1/category/list');
+      const data = await response.data;
+      setAllCategories(data);
+    } catch(err){
+      console.error('Error fetching categories:', err);
+    }
+  };
+
+  useEffect(() => {
+    fetchCategories();
+  }, []);
+
   useEffect(() => {
     //TODO realizar fetch
     // fetchProducts();
@@ -89,6 +104,7 @@ export const AdminProductsProvider = ({ children }) => {
     <AdminProductsContext.Provider
       value={{
         products,
+        allCategories,
         loading,
         error,
         addProduct,

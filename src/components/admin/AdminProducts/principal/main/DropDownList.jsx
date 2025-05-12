@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const DropDownList = ({ changeFunction, optionsArray, titleButton }) => {
+const DropDownList = ({ changeFunction, optionsArray, titleButton, sectionMode="noId" }) => {
 
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -23,7 +23,19 @@ const DropDownList = ({ changeFunction, optionsArray, titleButton }) => {
         {isDropdownOpen && (
           <div className="absolute right-0 mt-2 w-[200px] bg-white dark:bg-[#404040]  rounded-md shadow-lg py-2 transition-all duration-300">
 
-            { optionsArray.map( option => 
+            { sectionMode === "yesId" ? 
+            
+              optionsArray.map( option => 
+                <span
+                  key={ option.id } 
+                  className='optionStyle cursor-pointer'
+                  onClick={ () => changeFunction( option.id ) }
+                >
+                  { option.option }
+                </span>
+              ) 
+            : 
+            optionsArray.map( option => 
                 <span
                     key={ option } 
                     className='optionStyle cursor-pointer'

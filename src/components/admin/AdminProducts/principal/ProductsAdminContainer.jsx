@@ -5,11 +5,11 @@ import ProductsFeatures from "./features/ProductsFeatures"
 
 const ProductsAdminContainer = () => {
 
-    const [categoryFilter, setCategoryFilter] = useState('todos')
-    const [statusFilter, setStatusFilter] = useState(true)
+    const [categoryFilter, setCategoryFilter] = useState(99)
+    const [statusFilter, setStatusFilter] = useState(1)
   
     const changeCategory = ( newCategory ) => setCategoryFilter( newCategory )
-    const changeStatus = ( newStatus ) => setStatusFilter( newStatus === 'habilitado'? true : false )
+    const changeStatus = ( newStatus ) => setStatusFilter( newStatus )
   
     const { query, handleSearch, filteredProducts } = useSearchProduct( categoryFilter, statusFilter )
   
