@@ -1,5 +1,6 @@
 import React from 'react'
 import { useAdminUsersContext } from '../../../../context/AdminUsersContext/AdminUsersContext'
+import SmallLoader from '../../../shared/AdminLoaders/SmallLoader'
 
 const UserExtraData = ({ totalBuy, ROLES }) => {
   const { loadingSelectedUser } = useAdminUsersContext()
@@ -7,8 +8,8 @@ const UserExtraData = ({ totalBuy, ROLES }) => {
 
   // Array dinámico para los datos
   const extraDataArray = [
-    { id: 1, label: 'Total comprado', value: `S/. ${totalBuy}`, valueClass: 'text-white', align: 'items-start' },
-    { id: 2, label: 'Rol', value: rol, valueClass: 'text-sky-400', align: 'items-end' },
+    { id: 1, label: 'Total comprado', value: `S/. ${totalBuy}`,valueClass: 'text-adminTextWhite', align: 'items-start' },
+    { id: 2, label: 'Rol', value: rol, valueClass: 'text-skyBlueApp', align: 'items-end' },
   ]
 
   return (
@@ -16,17 +17,14 @@ const UserExtraData = ({ totalBuy, ROLES }) => {
       {extraDataArray.map(({ id, label, value, valueClass, align }) => (
         <div
           key={id}
-          className={`flex flex-col justify-center items-center ${align} w-1/2 h-[100px] bg-userDetailBg rounded-[14px] px-5 py-3`}
+          className={`flex flex-col justify-between items-center ${align} w-1/2  bg-userDetailBg rounded-[14px] px-[14px] py-[18px] gap-3`}
         >
           {loadingSelectedUser ? (
-            <div className="flex justify-center items-center gap-3 w-full">
-              <span className="text-adminTextWhite">Cargando data</span>
-              <div className="w-5 h-5 border-4 border-t-transparent border-white rounded-full animate-spin"></div>
-            </div>
+            <SmallLoader message="Cargando" />
           ) : (
             <>
-              <span className={`text-[12px] text-adminTextWhite ${valueClass}`}>{label}</span>
-              <span className={`text-[1.8rem] font-bold leading-snug ${valueClass}`}>{value}</span>
+              <span className={`text-[14px] ${valueClass}`}>{label}</span>
+              <span className={`text-[20px] font-bold leading-snug ${valueClass && valueClass}`}>{value === "user" ? "Usuario" : value === "admin" ? "Administrador" : value }</span>
             </>
           )}
         </div>

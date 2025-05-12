@@ -1,5 +1,6 @@
 import React from 'react'
 import { useAdminUsersContext } from '../../../../context/AdminUsersContext/AdminUsersContext'
+import SmallLoader from '../../../shared/AdminLoaders/SmallLoader'
 
 const UserOrdersRecount = ({ completedOrders, pendingOrders, cancelledOrders }) => {
 
@@ -31,10 +32,7 @@ const UserOrdersRecount = ({ completedOrders, pendingOrders, cancelledOrders }) 
               >
                 {
                   loadingSelectedUser ?
-                    <div className='flex justify-center items-center gap-3 w-full'>
-                      <span className='text-adminTextWhite'>Cargando data</span>
-                        <div class="spinner"></div>
-                      </div>
+                  <SmallLoader message={ 'Cargando data' } />
                   :
                     <span className='text-text-white'>{ recount } { label }</span>
                 }
