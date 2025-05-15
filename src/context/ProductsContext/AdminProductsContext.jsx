@@ -48,8 +48,10 @@ export const AdminProductsProvider = ({ children }) => {
 
   // Editar un producto
   const editProduct = async (productId, updatedData) => {
-    console.log('recibido en editar id ', productId);
-    console.log('en editar producto estamos recibiendo', updatedData);
+    console.log("Datos recibidos en el context:");
+      updatedData.forEach((value, key) => {
+        console.log(`${key}:`, value);
+    });
     
     try {
       const response = await axios.put(`http://apiorders.somee.com/api/v1/product/update`, 
@@ -72,6 +74,7 @@ export const AdminProductsProvider = ({ children }) => {
     }
   };
 
+  // 
   const updateProductStatus = async (productId, statusToUpdate) => {
     
     try {

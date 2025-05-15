@@ -30,18 +30,42 @@ const AddProductForm = ({ productId, methodForm, productStatus, closeModal }) =>
     return;
     }
 
-    const formData = {...productInfo}
+    // const formData = {...productInfo}
 
-      if (methodForm === "editar") {
-      formData.id = productId;
+    //   if (methodForm === "editar") {
+    //   formData.id = productId;
+    // }
+
+    const formData = new FormData();
+
+    formData.append("titleName", productInfo.titleName);
+    formData.append("description", productInfo.description);
+    formData.append("price", productInfo.price);
+    formData.append("stock", productInfo.stock);
+    formData.append("categoryId", productInfo.categoryId);
+  
+    if (productInfo.file.length > 0) {
+      console.log("si hay imagen");
+      
+      formData.append("Photos", productInfo.file);
     }
 
-    console.log("que vamos a enviar", formData);
+    if (methodForm === "editar") {
+      formData.append("id", productId);
+    }
+
+
+    console.log("Datos enviados en FormData:");
+      formData.forEach((value, key) => {
+    console.log(`${key}:`, value);
+    });
+    
     setIsLoading(true);
 
     try {
         setIsLoading(true);
         if (methodForm === "editar") {
+            
             const statusToUpdate = isDisabled ? 0 : 1;
 
             if (productStatus !== statusToUpdate) {
