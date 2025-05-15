@@ -45,20 +45,15 @@ const AddProductForm = ({ productId, methodForm, productStatus, closeModal }) =>
     formData.append("categoryId", productInfo.categoryId);
   
     if (productInfo.file.length > 0) {
-      console.log("si hay imagen");
       
-      formData.append("Photos", productInfo.file);
+      productInfo.file.forEach((file) => {
+        formData.append("Photos", file);
+      });
     }
 
     if (methodForm === "editar") {
       formData.append("id", productId);
     }
-
-
-    console.log("Datos enviados en FormData:");
-      formData.forEach((value, key) => {
-    console.log(`${key}:`, value);
-    });
     
     setIsLoading(true);
 
@@ -76,8 +71,6 @@ const AddProductForm = ({ productId, methodForm, productStatus, closeModal }) =>
         } else {
             await addProduct(formData);
         }
-
-        console.log("Formulario enviado con éxito:");
         if (closeModal) {
           closeModal();
         }

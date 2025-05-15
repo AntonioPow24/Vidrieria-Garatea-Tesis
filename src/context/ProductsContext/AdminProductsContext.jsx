@@ -48,19 +48,14 @@ export const AdminProductsProvider = ({ children }) => {
 
   // Editar un producto
   const editProduct = async (productId, updatedData) => {
-    console.log("Datos recibidos en el context:");
-      updatedData.forEach((value, key) => {
-        console.log(`${key}:`, value);
-    });
     
     try {
-      const response = await axios.put(`http://apiorders.somee.com/api/v1/product/update`, 
+      const response = await axios.put(`http://localhost:5294/api/v1/product/update`, 
         updatedData, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('authToken')}`,
         },
       });
-      console.log('respuesta de editar producto', response);
       
       setProducts((prev) =>
         prev.map((product) =>
@@ -68,7 +63,6 @@ export const AdminProductsProvider = ({ children }) => {
         )
       );
     } catch (err) {
-      console.log('error al editar producto', err);
       
       setError('Error al editar el producto');
     }
@@ -90,8 +84,6 @@ export const AdminProductsProvider = ({ children }) => {
             product.id === productId ? { ...product, status: statusToUpdate } : product
           )
       );
-
-      console.log('El producto ha sido cambiado de estado', response);
     } catch (err) {
       setError('Error al cambiar el estado del producto');
     }
