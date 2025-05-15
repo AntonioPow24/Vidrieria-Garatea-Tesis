@@ -74,10 +74,6 @@ export const useAddProductForm = (methodForm, productId) => {
     };
 
     const handleStatusChange = (checked) => {
-        // Usar api que cambia directamente el estado y localmente cambiar el estado de isDisabled
-        const stateToChange = checked ? 1 : 0
-
-        // await updateProductStatus(productId, stateToChange)
         setIsDisabled(checked)
     }
 
@@ -106,32 +102,6 @@ export const useAddProductForm = (methodForm, productId) => {
         }
     };
 
-//       const handleImageChange = (e) => {
-//     const file = e.target.files?.[0];
-//     if (file) {
-//       if (file.type !== "image/jpeg" && file.type !== "image/png") {
-//         alert("Solo se permiten archivos JPG o PNG");
-//         return;
-//       }
-
-//       // TODO: CONVERTIR Y MANDAR LA IAMGEN EN FILE Y NO EN BASE64
-//       // const reader = new FileReader();
-//       // reader.onloadend = () => {
-//       //   setImagePreview(reader.result);
-//       //   setProductInfo((prev) => ({ ...prev, imageUrl: reader.result })); 
-//       //   console.log(reader.result);
-        
-//       // };
-//       // reader.readAsDataURL(file);
-
-      
-//       // Establecemos el archivo como 'file' en el estado
-//       setProductInfo((prev) => ({ ...prev, file }));
-//       console.log(file);
-      
-//       setImagePreview(URL.createObjectURL(file));
-//     }
-//   };
     const handleDeleteImage = () => {
         setImagePreview(null);
         setProductInfo((prevState) => ({

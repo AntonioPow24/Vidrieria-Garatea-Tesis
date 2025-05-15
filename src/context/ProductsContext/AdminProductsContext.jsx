@@ -50,7 +50,7 @@ export const AdminProductsProvider = ({ children }) => {
   const editProduct = async (productId, updatedData) => {
     
     try {
-      const response = await axios.put(`http://localhost:5294/api/v1/product/update`, 
+      const response = await axios.put(`http://apiorders.somee.com/api/v1/product/update`, 
         updatedData, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('authToken')}`,
