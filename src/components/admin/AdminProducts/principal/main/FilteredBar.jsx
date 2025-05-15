@@ -19,7 +19,7 @@ const FilteredBar = ({ changeCategory, categoryfilter, changeStatus, statusFilte
           <DropDownList 
             changeFunction={ changeCategory } 
             optionsArray={[
-              {id: 99, option:'todos'},
+              {id: 99, option:'Todas las categorías'},
               ...allCategories
                 .map(({id, titleCategory}) => ({id, option: titleCategory}
               ))] }

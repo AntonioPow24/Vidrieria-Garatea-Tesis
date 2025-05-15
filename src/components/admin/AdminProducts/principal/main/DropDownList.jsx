@@ -11,8 +11,8 @@ const DropDownList = ({ changeFunction, optionsArray, titleButton, sectionMode="
 
 
   return (
-    <div className="relative z-20" onClick={toggleDropdown}>
-        <button className='text-adminTextPurple  bg-transparent  dark:text-skyBlueApp flex items-center capitalize transition-all duration-300' type="button"
+    <div className={`relative z-20 `} onClick={toggleDropdown}>
+        <button className='text-adminTextPurple  bg-transparent  dark:text-skyBlueApp flex justify-between items-center capitalize transition-all duration-300 w-full gap' type="button"
         >
             { titleButton } 
             <svg className="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
@@ -21,7 +21,7 @@ const DropDownList = ({ changeFunction, optionsArray, titleButton, sectionMode="
         </button>
         
         {isDropdownOpen && (
-          <div className="absolute right-0 mt-2 w-[200px] bg-white dark:bg-[#404040]  rounded-md shadow-lg py-2 transition-all duration-300">
+          <div className="absolute left-0 mt-2 w-[200px] bg-white dark:bg-[#404040]  rounded-md shadow-lg py-2 transition-all duration-300">
 
             { sectionMode === "yesId" ? 
             

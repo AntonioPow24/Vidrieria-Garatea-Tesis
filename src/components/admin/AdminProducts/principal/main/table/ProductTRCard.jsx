@@ -5,7 +5,7 @@ import Modal from "../../../../../shared/Modal"
 import AddProductForm from "../../../formProducts/AddProductForm"
 
 
-const ProductTRCard = ({productId, titleName, categoryId, valorization, stock, status, price,imageUrl  }) => {
+const ProductTRCard = ({id, titleName, categoryId, valorization, stock, status, price,images  }) => {
 
 
     const { deleteProduct, allCategories } = useAdminProductsContext()
@@ -15,15 +15,15 @@ const ProductTRCard = ({productId, titleName, categoryId, valorization, stock, s
 
   return (
     <>
-        <tr className='border-y-2  border-[#A3A3A34F] max-h-[64px] hover:bg-[#e4e4e4] dark:hover:bg-[#303030]  transition-all duration-300'>
+        <tr className='border-y-2  border-[#A3A3A34F] h-[64px] hover:bg-[#e4e4e4] dark:hover:bg-[#303030]  transition-all duration-300'>
 
             <td className='text-center w-[70px]'>
-                <span className='text-base text-adminTextDark dark:text-adminTextWhite transition-all duration-300 cursor-default'>{ productId }</span> 
+                <span className='text-base text-adminTextDark dark:text-adminTextWhite transition-all duration-300 cursor-default'>{ id }</span> 
             </td>
 
-            <td className='flex items-center justify-start gap-2'>
+            <td className='flex items-center justify-start h-[64px] gap-2 '>
                 <div className="max-w-[30px] flex items-center">
-                    <img src={ imageUrl } alt="" />
+                    <img src={ images[0]?.url } alt="" />
                 </div>
                 <h3 className='text-base text-adminTextDark dark:text-adminTextWhite transition-all duration-300 cursor-default'>{ titleName }</h3>
             </td>
@@ -87,27 +87,33 @@ const ProductTRCard = ({productId, titleName, categoryId, valorization, stock, s
                             <i className="fa-solid fa-pen-to-square text-2xl text text-adminTextDark dark:text-textWhiteTransparent font-thin transition-all duration-300"></i>
                         </button>
 
-                        <button
+                        {/* <button
                             className={`flex justify-center items-center`}
                             onClick={ () => deleteProduct( productId ) }
                         >
                             <i className="fa-solid fa-trash text-2xl text text-logOut  transition-all duration-300"></i>
-                        </button>
+                        </button> */}
                     </div>
                 </div>
             </td>
             
         </tr>
-            <Modal
-                toggleModal={toggleModal}
-                isModal={isModalOpen}
-                anotherClass="w-[100%] h-[100%] flex items-center justify-center"
-            >
-                <AddProductForm 
-                    methodForm={'editar'}
-                    productId={ productId }
-                />
-            </Modal>
+        
+        {
+            isModalOpen && 
+                <Modal
+                    toggleModal={toggleModal}
+                    isModal={isModalOpen}
+                    anotherClass="w-[100%] h-[100%] flex items-center justify-center"
+                >
+                    <AddProductForm 
+                        methodForm={'editar'}
+                        productId={ id }
+                        productStatus={ status }
+                        closeModal={ toggleModal }
+                    />
+                </Modal>
+        }
     </>
   )
 }

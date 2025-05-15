@@ -11,7 +11,7 @@ const TableBody = ({ tableData, tableName }) => {
             tableData.map( tr =>{
               
               if( tableName === 'productsTable' ){
-                return <ProductTRCard key={ tr.productId } {...tr} />
+                return <ProductTRCard key={ tr.id } {...tr} />
               } else if (  tableName === 'userTable' ){
                 return <UserTRCard key={ tr.id } {...tr} />
               }}
