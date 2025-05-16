@@ -3,6 +3,7 @@ import React from 'react'
 import DataField from './DataField'
 import { useAdminUsersContext } from '../../../../../context/AdminUsersContext/AdminUsersContext'
 import SmallLoader from '../../../../shared/AdminLoaders/SmallLoader'
+import { truncateId } from '../../../../../utils/truncateIdUser'
 
 
 const UserPersonalData = ({ userName, lastName, email, id, createdDate, totalOrders }) => {
@@ -35,7 +36,7 @@ const UserPersonalData = ({ userName, lastName, email, id, createdDate, totalOrd
                         />
                         <DataField 
                             label={ 'ID de usuario' }
-                            field={ id }
+                            field={ truncateId(id) }
                         />
                     </div>
                 </div>

@@ -2,9 +2,9 @@ import React from 'react'
 import { useAdminUsersContext } from '../../../../context/AdminUsersContext/AdminUsersContext'
 import SmallLoader from '../../../shared/AdminLoaders/SmallLoader'
 
-const UserExtraData = ({ totalBuy, ROLES }) => {
+const UserExtraData = ({ totalBuy, roles }) => {
   const { loadingSelectedUser } = useAdminUsersContext()
-  const rol = ROLES ? ROLES[0] : 'Sin rol'
+  const rol = roles ? roles[0] : 'Sin rol'
 
   // Array dinámico para los datos
   const extraDataArray = [

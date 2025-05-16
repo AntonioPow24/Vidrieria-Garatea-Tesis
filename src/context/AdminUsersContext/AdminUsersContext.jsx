@@ -18,12 +18,13 @@ export const AdminUsersProvider = ({ children }) => {
     setLoading(true);
     setError(null);
     try {
-      const response = await axios.get('/api/v1/users/admin', {
+      const response = await axios.get('http://apiorders.somee.com/api/v1/user/paginationAdmin', {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('authToken')}`,
         },
       });
-      setUsers(response.data); // Almacenar la lista de usuarios
+      setUsers(response.data);
+      setSelectedUserTable(response.data[0]) // Almacenar la lista de usuarios
     } catch (err) {
       setError('Error al obtener los usuarios');
     } finally {
@@ -36,7 +37,7 @@ export const AdminUsersProvider = ({ children }) => {
     setLoading(true);
     setError(null);
     try {
-      const response = await axios.get(`/api/v1/users/admin/${id}`, {
+      const response = await axios.get(`http://apiorders.somee.com/api/v1/user/admin/${id}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('authToken')}`,
         },
@@ -70,25 +71,25 @@ export const AdminUsersProvider = ({ children }) => {
 
   const selectUser = async (id) => {
     // TODO: Descomentar codigo real, se esta realizando simulacion
-    // setLoadingSelectedUser(true);
-    // setError(null);
-    // try {
-    //   const user = await fetchUserById(id);
-    //   setSelectedUserTable(user);
+     setLoadingSelectedUser(true);
+     setError(null);
+     try {
+       const user = await fetchUserById(id);
+       setSelectedUserTable(user);
 
-    //   setTimeout(() => {
-    //    setLoadingSelectedUser(false);
-    //    }, 800);
-    // } catch (err) {
-    //   setError('Error al seleccionar el usuario');
-    // }
+       setTimeout(() => {
+       setLoadingSelectedUser(false);
+        }, 800);
+     } catch (err) {
+       setError('Error al seleccionar el usuario');
+     }
 
     // Al realizar esta funcion, activaremos el loadingSelectedUser por 0.6s y despues mostraremos el usuario seleccionado
-    setSelectedUserTable( users.find( user => user.id === id ))
-    setLoadingSelectedUser(true);
-    setTimeout(() => {
-      setLoadingSelectedUser(false);
-    }, 800); // Simulando un tiempo de carga de 0.6 segundos
+    //setSelectedUserTable( users.find( user => user.id === id ))
+    //setLoadingSelectedUser(true);
+    //setTimeout(() => {
+    //  setLoadingSelectedUser(false);
+    //}, 800); // Simulando un tiempo de carga de 0.6 segundos
     // Simulando la carga de un usuario seleccionado
 
 
@@ -99,12 +100,12 @@ export const AdminUsersProvider = ({ children }) => {
   // Usar useEffect para cargar los usuarios cuando el componente se monte
   useEffect(() => {
     // TODO: CODIGO DE PRUEBA, ELIMINAR DESPUES
-    // fetchUsers();
-    setUsers(dataUsers); // Inicializar con un array vacío para evitar errores en el renderizado
+     fetchUsers();
+    //setUsers(dataUsers); // Inicializar con un array vacío para evitar errores en el renderizado
 
-    if (dataUsers.length > 0) {
-      setSelectedUserTable(dataUsers[0]);
-    }
+    //if (dataUsers.length > 0) {
+    //  setSelectedUserTable(dataUsers[0]);
+    //}
   }, []);
 
   return (
