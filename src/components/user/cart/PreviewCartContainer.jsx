@@ -8,12 +8,8 @@ import { useCartContext } from '../../../context/CartContext'
 
 
 const PreviewCartContainer = () => {
-
-
-    // Destrucutracion del CartContext
     const { cart, closeCart,total, toggleCart } = useCartContext()
-
-    // Estilos para el Contenedor Preview Carrito   
+ 
     const containerStyle = 'w-[500px] z-20 flex flex-col bg-appBgWhite  bigPhone:w-[390px] '
     const paddingStyle = 'px-[20px] py-[10px]'
     const borderStyle = 'border-b border-[#c4c4c4]'

@@ -12,7 +12,7 @@ const UserProductsContextProvider = ({ children }) => {
 
     const [allCategories, setAllCategories] = useState([]);
 
-    const [currentCategory, setCurrentCategory] = useState(null); // La categoría que el usuario está viendo
+    const [currentCategory, setCurrentCategory] = useState(null);
 
     const [ searchQuery, setSearchQuery ] = useState('')
 
@@ -73,7 +73,6 @@ const UserProductsContextProvider = ({ children }) => {
                     stock: data.stock,
                 };
             }
-            // Si es un detalle completo del producto, devuelve todos los datos
             return data;
 
         } catch (err) {
@@ -98,7 +97,6 @@ const UserProductsContextProvider = ({ children }) => {
     };
 
 
-    // Funcion top 2 Productos con mas valorización
     // todo FETCH al backend PARA TRAERME LOS MEJORES 2 PRODUCTOS
     const twoTopProducts = () => {
 
