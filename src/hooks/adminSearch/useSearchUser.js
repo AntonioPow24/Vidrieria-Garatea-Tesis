@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useAdminUsersContext } from "../../context/AdminUsersContext/AdminUsersContext";
 
 const useSearchUser = () => {
-  const { users } = useAdminUsersContext();  // Suponiendo que tienes este contexto
+  const { users } = useAdminUsersContext();
   const [query, setQuery] = useState('');
   const [filteredUsers, setFilteredUsers] = useState(users);
 

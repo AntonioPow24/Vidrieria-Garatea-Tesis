@@ -23,7 +23,6 @@ const UsersAdmin = () => {
           </main>
         </section>
 
-        {/* SECCION PARA EL DETALLE DE USUARIO */}
         <section className='flex-1 userDetailContainer py-[30px] px-[18px] max-w-[340px] 1570:max-w-[290px]'>
           <UserDetailContainer />
         </section>
