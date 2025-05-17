@@ -24,7 +24,10 @@ export const AdminUsersProvider = ({ children }) => {
         },
       });
       setUsers(response.data);
-      setSelectedUserTable(response.data[0]) // Almacenar la lista de usuarios
+      if (response.data.length > 0) {
+        const firstUser = await fetchUserById(response.data[0].id);
+        setSelectedUserTable(firstUser);
+      }
     } catch (err) {
       setError('Error al obtener los usuarios');
     } finally {
@@ -42,6 +45,7 @@ export const AdminUsersProvider = ({ children }) => {
           Authorization: `Bearer ${localStorage.getItem('authToken')}`,
         },
       });
+      
       return response.data; // Retorna la información del usuario
     } catch (err) {
       setError('Error al obtener el usuario');

@@ -7,10 +7,6 @@ const useSearchUser = () => {
   const [filteredUsers, setFilteredUsers] = useState(users);
 
   useEffect(() => {
-    console.log(filteredUsers);
-    
-    console.log('el query actual es: ', query);
-    
     if (users && users.length > 0) {
       const filterUsers = () => {
         return users.filter(  user => {
