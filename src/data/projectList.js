@@ -23,7 +23,7 @@ export const projectList = [
 
     {
         id:2,
-        img:'',
+        img:'https://i.postimg.cc/jdFXBpDB/instituciones-foto1.jpg',
         title:'instituciones',
         description: 'Esta es la descripcion del proyecto 2, aqui se describe todo lo que se necesita saber de este proyecto y como lo aplica la empresa',
         galery: {
@@ -38,7 +38,7 @@ export const projectList = [
 
     {
         id:3,
-        img:``,
+        img:`https://i.postimg.cc/DZT5B1SZ/comerciales-foto1.jpg`,
         title:'comerciales',
         description: 'Esta es la descripcion del proyecto 3, aqui se describe todo lo que se necesita saber de este proyecto y como lo aplica la empresa',
         galery: {
@@ -53,7 +53,7 @@ export const projectList = [
 
     {
         id:4,
-        img:``,
+        img:`https://i.postimg.cc/BnH58XvB/ba-os-foto1.jpg`,
         title:'baños',
         description: 'Esta es la descripcion del proyecto 4, aqui se describe todo lo que se necesita saber de este proyecto y como lo aplica la empresa',
         galery: {
