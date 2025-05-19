@@ -17,7 +17,7 @@ const ProductTRCard = ({id, titleName, categoryId, valorization, stock, status, 
     <>
         <tr className='border-y-2  border-[#A3A3A34F] h-[64px] hover:bg-[#e4e4e4] dark:hover:bg-[#303030]  transition-all duration-300'>
 
-            <td className='text-center w-[70px]'>
+            <td className='text-center'>
                 <span className='text-base text-adminTextDark dark:text-adminTextWhite transition-all duration-300 cursor-default'>{ id }</span> 
             </td>
 
@@ -25,11 +25,11 @@ const ProductTRCard = ({id, titleName, categoryId, valorization, stock, status, 
                 <div className="max-w-[30px] flex items-center">
                     <img src={ images[0]?.url } alt="" />
                 </div>
-                <h3 className='text-base text-adminTextDark dark:text-adminTextWhite transition-all duration-300 cursor-default'>{ titleName }</h3>
+                <h3 className='text-base text-adminTextDark dark:text-adminTextWhite transition-all duration-300 cursor-default 1500:text-[14px]'>{ titleName }</h3>
             </td>
 
             <td className='text-center'>
-                <span className='text-center capitalize font-medium text-adminTextDark dark:text-adminTextWhite transition-all duration-300 cursor-default'>
+                <span className='text-center capitalize font-medium text-adminTextDark dark:text-adminTextWhite transition-all duration-300 cursor-default 1500:text-[14px]'>
                     { allCategories.find( category => category.id === categoryId ).titleCategory }
                 </span>
             </td>
@@ -37,7 +37,7 @@ const ProductTRCard = ({id, titleName, categoryId, valorization, stock, status, 
             <td className='text-center'>
                 <div className="">
                     <p 
-                        className='text-adminTextPurple font-bold text-xl flex justify-center items-center gap-2 cursor-default'
+                        className='text-adminTextPurple font-bold text-xl flex justify-center items-center gap-2 cursor-default 1500:text-[16px]'
                     >
                         { valorization } 
                         <i className="fa-solid fa-cart-shopping pt-1"></i>
@@ -48,7 +48,7 @@ const ProductTRCard = ({id, titleName, categoryId, valorization, stock, status, 
             <td>
                 <div className="">
                     <p 
-                        className='text-[#e7bc2e] dark:text-[#bea032] transition-all duration-300 font-bold text-xl flex justify-center items-center gap-2 cursor-default'
+                        className='text-[#e7bc2e] dark:text-[#bea032] transition-all duration-300 font-bold text-xl flex justify-center items-center gap-2 cursor-default 1500:text-[16px]'
                     >
                         { stock } 
                         <i className="fa-solid fa-box-open pt-1"></i>
@@ -59,7 +59,7 @@ const ProductTRCard = ({id, titleName, categoryId, valorization, stock, status, 
             <td className='text-center'>
                 <div>
                     <span 
-                        className='text-center capitalize font-medium text-adminTextDark dark:text-adminTextWhite transition-all duration-300 text-xl cursor-default'
+                        className='text-center capitalize font-medium text-adminTextDark dark:text-adminTextWhite transition-all duration-300 text-xl cursor-default 1500:text-[14px]'
                     >
                         S/{price.toFixed(2)}
                     </span>
@@ -69,7 +69,7 @@ const ProductTRCard = ({id, titleName, categoryId, valorization, stock, status, 
             <td className='text-center'>
                 <div>
                     <span 
-                        className={`text-center capitalize font-medium 
+                        className={`1500:text-[16px] text-center capitalize font-medium 
                         ${ status === 1? 'text-success' : 'text-logOut' } transition-all duration-300 text-xl cursor-default`}
                     >
                         { status === 1 ? 'Habilitado' : 'Deshabilitado' }
@@ -84,7 +84,7 @@ const ProductTRCard = ({id, titleName, categoryId, valorization, stock, status, 
                             className={`flex justify-center items-center`}
                             onClick={ toggleModal }
                         >
-                            <i className="fa-solid fa-pen-to-square text-2xl text text-adminTextDark dark:text-textWhiteTransparent font-thin transition-all duration-300"></i>
+                            <i className="fa-solid fa-pen-to-square text-2xl text text-adminTextDark 1500:text-[18px] dark:text-textWhiteTransparent font-thin transition-all duration-300"></i>
                         </button>
 
                         {/* <button

@@ -21,6 +21,10 @@
     .inputBox{
         @apply relative my-[25px]
     }
+
+    .fieldOnTableAdmin{
+        @apply 1500:text-[14px] 
+    }
   }
 
 
