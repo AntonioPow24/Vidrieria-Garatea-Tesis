@@ -7,7 +7,7 @@ const TableHead = ({ headFieldsData }) => {
               {
                   headFieldsData?.map( field => (
                       <th key={ field.id } className={ field.classStyle }>
-                          <span className='text-adminTextDark dark:text-adminTextWhite transition-all duration-300 text-[18px]'>{ field.label }</span>
+                          <span className='text-adminTextDark dark:text-adminTextWhite transition-all duration-300 text-[18px] 1500:text-[14px]'>{ field.label }</span>
                       </th>
                   ))
               }

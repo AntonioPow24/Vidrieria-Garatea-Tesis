@@ -23,7 +23,7 @@ const UsersAdmin = () => {
           </main>
         </section>
 
-        <section className='flex-1 userDetailContainer py-[30px] px-[18px] max-w-[340px] 1570:max-w-[290px]'>
+        <section className='flex-1 userDetailContainer py-[30px] px-[18px] max-w-[340px] 1570:max-w-[290px] 1570:px-[12px]'>
           <UserDetailContainer />
         </section>
 

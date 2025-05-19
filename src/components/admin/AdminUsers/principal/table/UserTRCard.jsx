@@ -15,7 +15,7 @@ const UserTRCard = ({id, userName, lastName, email, roles}) => {
         
         onClick={ () => handleViewUserDetails( id ) }
     >
-        <td className='w-[10%]'>
+        <td className=''>
             <div className='flex justify-center items-center'>
                 <div className='w-[58px] h-[58px] rounded-full overflow-hidden bg-red-500'>
                     <img 
@@ -27,42 +27,42 @@ const UserTRCard = ({id, userName, lastName, email, roles}) => {
             </div>
         </td>
 
-        <td className='w-[5%]'>
+        <td className=''>
             <div className='flex justify-center items-center'>
-                <span className='text-center text-adminTextDark dark:text-adminTextWhite transition-all duration-300 cursor-default'>
+                <span className='text-center text-adminTextDark dark:text-adminTextWhite transition-all duration-300 cursor-default fieldOnTableAdmin'>
                     { truncateId(id) }
                 </span>
             </div>
         </td>
 
-        <td className='w-[22%]'>
+        <td className=''>
             <div className='flex justify-center items-center'>
-                <span className='text-center capitalize font-medium text-adminTextDark dark:text-adminTextWhite transition-all duration-300 cursor-default'>
+                <span className='text-center capitalize font-medium text-adminTextDark dark:text-adminTextWhite transition-all duration-300 cursor-default fieldOnTableAdmin'>
                     { userName }
                 </span>
             </div>
         </td>
 
-        <td className='w-[22%]'>
+        <td className=''>
             <div className='flex justify-center items-center'>
-                <span className='text-center capitalize font-medium text-adminTextDark dark:text-adminTextWhite transition-all duration-300 cursor-default'>
+                <span className='text-center capitalize font-medium text-adminTextDark dark:text-adminTextWhite transition-all duration-300 cursor-default fieldOnTableAdmin'>
                     { lastName }
                 </span>
             </div>
         </td>
 
-        <td className='w-[31%]'>
+        <td className=''>
             <div className='flex justify-center items-center'>
-                <span className='text-center font-medium text-adminTextDark dark:text-adminTextWhite transition-all duration-300 cursor-default'>
+                <span className='text-center font-medium text-adminTextDark dark:text-adminTextWhite transition-all duration-300 cursor-default fieldOnTableAdmin'>
                     { email }
                 </span>
             </div>
         </td>
 
-        <td className='w-[10%]'>
+        <td className=''>
             <div className='flex justify-center items-center'>
-                <span className='text-center capitalize font-medium text-adminTextDark dark:text-adminTextWhite transition-all duration-300 cursor-default'>
-                    { roles[0] }
+                <span className='text-center capitalize font-medium text-adminTextDark dark:text-adminTextWhite transition-all duration-300 cursor-default fieldOnTableAdmin '>
+                    { (roles[0]).toLowerCase() }
                 </span>
             </div>
         </td>     

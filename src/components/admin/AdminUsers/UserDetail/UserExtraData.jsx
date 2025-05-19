@@ -23,8 +23,8 @@ const UserExtraData = ({ totalBuy, roles }) => {
             <SmallLoader message="Cargando" />
           ) : (
             <>
-              <span className={`text-[14px] ${valueClass}`}>{label}</span>
-              <span className={`text-[20px] font-bold leading-snug ${valueClass && valueClass}`}>{value === "user" ? "Usuario" : value === "admin" ? "Administrador" : value }</span>
+              <span className={`text-[14px] 1570:text-[12px] ${valueClass}`}>{label}</span>
+              <span className={`text-[20px] 1570:text-[16px] font-bold leading-snug ${valueClass && valueClass}`}>{value === "user" ? "Usuario" : value === "admin" ? "Administrador" : value }</span>
             </>
           )}
         </div>
