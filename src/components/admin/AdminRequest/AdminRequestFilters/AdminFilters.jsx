@@ -22,22 +22,24 @@ const AdminFilters = ({optionsToFilter}) => {
             width: "170px",
             display: 'flex',
             justifyContent: 'center',
-            transition: 'all 0.3s ease',
+            transition: 'all 0.3s',
+            height: '100%',
         }),
         option: (base, state) => ({
             ...base,
             backgroundColor: state.isSelected ? '#6445BC' : darkTheme ? '#232323' : "#f5f5f5",
-            color: state.isSelected ? '#fff' : darkTheme ? "#EDEDED" : '#404040',
+            color: state.isSelected ? '#fff' : darkTheme ? "#b8b7b7" : '#404040',
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
             cursor: 'pointer',
             padding: '10px 12px',
+            transition: 'all 0.3s ease'
             
         }),
         singleValue: (base) => ({
             ...base,
-            color: darkTheme ? "#EDEDED" : '#404040' ,
+            color: darkTheme ? "#b8b7b7" : '#404040' ,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -57,12 +59,13 @@ const AdminFilters = ({optionsToFilter}) => {
         boxShadow: 'none',
         borderRadius: '6px',
         marginTop: '6px',
+        transition: 'all 0.3s ease'
   }),
     };
     const DropdownIndicator = () => null;
     
   return (
-    <div>
+    <>
       <Select 
         options={optionsToFilter}
         defaultValue={optionsToFilter[0]}
@@ -89,7 +92,7 @@ const AdminFilters = ({optionsToFilter}) => {
         }}
         components={{DropdownIndicator}}
       />
-    </div>
+    </>
   )
 }
 

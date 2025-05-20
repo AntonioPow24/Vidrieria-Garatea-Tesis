@@ -33,7 +33,7 @@ const AdminRequestStats = () => {
   return (
     <div className='flex justify-between gap-[30px]'>
         <div className='flex justify-between flex-1 gap-[30px]'>     
-            <div className='px-[20px] py-[20px] bg-adminBgWhite rounded-[12px] flex justify-between gap-[1.5rem] dark:bg-appBgBlack transition-all duration-300 flex-1'>
+            <div className='px-[20px] py-[20px] bg-adminBgWhite rounded-[12px] flex justify-between gap-[1.5rem] dark:bg-appBgBlack transition-all duration-300 flex-1 shadow-md'>
                 <AdminStat 
                     statValueColor={"green"}
                     statTitle={"Completados"}
@@ -77,7 +77,7 @@ const AdminRequestStats = () => {
                 />
             </div>
 
-            <div className='px-[20px] py-[20px] bg-adminBgWhite rounded-[12px] flex justify-between gap-[1.5rem] dark:bg-appBgBlack transition-all duration-300 flex-1'>
+            <div className='px-[20px] py-[20px] bg-adminBgWhite rounded-[12px] flex justify-between gap-[1.5rem] dark:bg-appBgBlack transition-all duration-300 flex-1 shadow-md'>
 
                 <AdminStat 
                     statValueColor={"blue"}
@@ -123,7 +123,7 @@ const AdminRequestStats = () => {
             </div>
         </div>
 
-        <div className='flex justify-between items-center px-[20px] py-[20px] bg-dashboardPurpleBg rounded-[12px] transition-all duration-300'>
+        <div className='flex justify-between items-center px-[20px] py-[20px] bg-dashboardPurpleBg rounded-[12px] transition-all duration-300 shadow-md'>
             <AdminStat
                 statValueColor={"white"}
                 statTitle={"Total pedidos"}
