@@ -17,7 +17,11 @@ const UsersAdmin = () => {
           <HeaderBar titleSection={ 'Usuarios' }  quantity={ 20 }/>
 
           <main className='flex flex-col gap-[22px] pl-[22px] py-[22px] flex-1 overflow-hidden'>
-            <SearchContainer query={ query } handleSearch={ handleSearch } />
+            <SearchContainer 
+              query={ query } 
+              handleSearch={ handleSearch }
+              placeholder={ 'Buscar usuario por nombre o correo' } 
+            />
 
             <TableUserContainer filteredUsers={ filteredUsers } />
           </main>
