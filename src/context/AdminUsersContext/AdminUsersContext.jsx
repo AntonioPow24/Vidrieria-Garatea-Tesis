@@ -1,8 +1,10 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import axios from 'axios';
 import { dataUsers } from '../../data/dataUsers';
+import { getApiUrl } from '../../utils/getApiURL';
 
 const AdminUsersContext = createContext();
+
 
 export const AdminUsersProvider = ({ children }) => {
   const [users, setUsers] = useState([]);
@@ -14,10 +16,11 @@ export const AdminUsersProvider = ({ children }) => {
   const [loadingSelectedUser, setLoadingSelectedUser] = useState(false);
 
   const fetchUsers = async () => {
+    const apiUrl = getApiUrl();
     setLoading(true);
     setError(null);
     try {
-      const response = await axios.get('http://apiorders.somee.com/api/v1/user/paginationAdmin', {
+      const response = await axios.get(`${apiUrl}/user/paginationAdmin`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('authToken')}`,
         },
@@ -35,10 +38,11 @@ export const AdminUsersProvider = ({ children }) => {
   };
 
   const fetchUserById = async (id) => {
+    const apiUrl = getApiUrl();
     setLoading(true);
     setError(null);
     try {
-      const response = await axios.get(`http://apiorders.somee.com/api/v1/user/admin/${id}`, {
+      const response = await axios.get(`${apiUrl}/user/admin/${id}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('authToken')}`,
         },
