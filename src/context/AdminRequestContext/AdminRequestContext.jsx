@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import axios from 'axios';
+import { getApiUrl } from '../../utils/getApiURL';
 
 
 const AdminRequestContext = createContext();
@@ -20,18 +21,19 @@ export const AdminRequestProvider = ({ children }) => {
 
     const fetchRequests = async () => {
         const token = localStorage.getItem('authToken');
+        const apiUrl = getApiUrl();
 
         setLoading(true);
         setError(null);
         try {
-        const response = await axios.get("http://apiorders.somee.com/api/v1/order/list", 
+        const response = await axios.get(`${apiUrl}/order/list`, 
         {
             headers: {
             Authorization: `Bearer ${token}`,
             },
         });
         setRequests(response.data);
-
+        
         } catch (err) {
         console.log(err);
         
@@ -43,9 +45,11 @@ export const AdminRequestProvider = ({ children }) => {
 
     const fetchStats = async () => {
         const token = localStorage.getItem('authToken');
+        const apiUrl = getApiUrl();
+
         setLoadingStats(true);
         try {
-            const response = await axios.get("http://apiorders.somee.com/api/v1/report/totalOrders", {
+            const response = await axios.get(`${apiUrl}/report/totalOrders`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             setStats(response.data);

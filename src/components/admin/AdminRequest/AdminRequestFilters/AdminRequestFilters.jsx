@@ -2,6 +2,7 @@
 import SearchContainer from '../../AdminUsers/principal/searcher/SearchContainer'
 import { useAdminRequestContext } from '../../../../context/AdminRequestContext/AdminRequestContext';
 import AdminFilters from './AdminFilters';
+import AdminMonthFilter from './AdminMonthFilter';
 
 
 const optionsToFilter = [
@@ -25,6 +26,7 @@ const AdminRequestFilters = () => {
 
       <section className='flex gap-[30px]'>
           <AdminFilters optionsToFilter={optionsToFilter} />
+          <AdminMonthFilter />
       </section>
     </div>
   )
