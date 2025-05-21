@@ -3,6 +3,7 @@ import { dataProducts } from "../../data/dataProducts";
 import { categoryProducts } from "../../data/categoryProducts";
 import axios from "axios";
 import { use } from "react";
+import { getApiUrl } from "../../utils/getApiURL";
 
 
 export const UserProductsContext = createContext();
@@ -21,12 +22,12 @@ const UserProductsContextProvider = ({ children }) => {
 
 
     const fetchProducts = async (categoryId) => {
-
+        const apiUrl = getApiUrl();
         const timer = new Promise((resolve) => setTimeout(resolve, 800));
 
         setIsLoadingProducts(true); 
         try {
-            const response = await axios.get(`http://apiorders.somee.com/api/v1/product/list`, {
+            const response = await axios.get(`${apiUrl}/product/list`, {
                 params: { categoryId },
             });
             const data = response.data;
@@ -43,7 +44,7 @@ const UserProductsContextProvider = ({ children }) => {
     const productCache = useRef({}); 
 
     const getProductDetails = async (id,isCartItem=false) => {
-
+        const apiUrl = getApiUrl();
         if (!id) {
             console.error("El ID del producto es inválido:", id);
             throw new Error("El ID del producto es inválido.");
@@ -58,7 +59,7 @@ const UserProductsContextProvider = ({ children }) => {
 
             const timer = new Promise((resolve) => setTimeout(resolve, 1000));
 
-            const response = await axios.get(`http://apiorders.somee.com/api/v1/product/${id}`);
+            const response = await axios.get(`${apiUrl}/product/${id}`);
             const data = response.data;
 
             productCache.current[id] = data; 
@@ -86,9 +87,9 @@ const UserProductsContextProvider = ({ children }) => {
     };
 
     const fetchCategories = async () => {
-
+        const apiUrl = getApiUrl();
         try{
-            const response = await axios.get('http://apiorders.somee.com/api/v1/category/list');
+            const response = await axios.get(`${apiUrl}/category/list`);
             const data = await response.data;
             setAllCategories(data);
         } catch(err){

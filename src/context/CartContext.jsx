@@ -2,9 +2,9 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useUserProductsContext } from "./ProductsContext/UserProductsContext";
 import axios from "axios";
+import { getApiUrl } from "../utils/getApiURL";
 
 // TODO: NECESITO GUARDAR EN UNA VARIABLE EL shoppingCartId, para mandarlo en el clearCart, falta crear eso
-
 // ARREGLO DEL CARRITO( SOLO ES REFERENCIA)
 const defaultCart = [
     {
@@ -253,7 +253,7 @@ const CartContextProvider = ({children}) =>{
     useEffect(() => {
 
       const fetchCartFromDatabase = async () => {
-      
+      const apiUrl = getApiUrl();
       
       try {
           const token = localStorage.getItem("authToken");
@@ -267,7 +267,7 @@ const CartContextProvider = ({children}) =>{
             },
           };
 
-          const response = await axios.get("http://apiorders.somee.com/api/v1/shoppingCart", config); 
+          const response = await axios.get(`${apiUrl}/shoppingCart`, config); 
 
           const data = response.data.shoppingCartItems
 

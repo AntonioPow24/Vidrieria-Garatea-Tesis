@@ -1,8 +1,7 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import axios from "axios";
 import { useAuth } from "./UserContext";
-
-
+import { getApiUrl } from "../utils/getApiURL";
 
 const pruebaPedidos = [
   {
@@ -194,6 +193,7 @@ export const RequestProvider = ({ children }) => {
   }, [user?.id]);
 
   const fetchRequests = async (id) => {
+    const apiUrl = getApiUrl();
     const token = localStorage.getItem("authToken");
     if (!token) {
       return [];
@@ -202,7 +202,7 @@ export const RequestProvider = ({ children }) => {
     setLoading(true);
     setError(null);
     try {
-      const response = await axios.get("http://apiorders.somee.com/api/v1/order/user", 
+      const response = await axios.get(`${apiUrl}/order/user`, 
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -217,11 +217,12 @@ export const RequestProvider = ({ children }) => {
   };
 
   const addRequest = async (newRequest, navigate) => {
+    const apiUrl = getApiUrl();
     setLoading(true);
     setError(null);
 
     try {
-      const response = await axios.post("http://apiorders.somee.com/api/v1/order", 
+      const response = await axios.post(`${apiUrl}/order`, 
       newRequest, 
       {
       headers: { Authorization: `Bearer ${localStorage.getItem("authToken")}` },
@@ -246,9 +247,10 @@ export const RequestProvider = ({ children }) => {
   };
 
   const updateRequestState = async (id, newStatusCode) => {
+    const apiUrl = getApiUrl();
     try {
       const response = await axios.put(
-        "http://apiorders.somee.com/api/v1/order",
+        `${apiUrl}/order`,
         { orderId : id , 
           status: newStatusCode 
         },
@@ -277,8 +279,9 @@ export const RequestProvider = ({ children }) => {
   };
     
   const getRequestById = async(id) => {
+    const apiUrl = getApiUrl();
     try {
-      const response = await axios.get(`http://apiorders.somee.com/api/v1/order/${id}`, {
+      const response = await axios.get(`${apiUrl}/order/${id}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem("authToken")}` },
       });
 
