@@ -29,7 +29,7 @@ const HomeCarousel = ({ projectList }) => {
 
             <div className="list">
                 {
-                    projectList && projectList.map( project =>
+                    Array.isArray(projectList) && projectList.map( project =>
                         <div 
                             className={` projectItem w-full h-full absolute inset-0 ${project.id === (currentIndex + 1) ? 'block' : 'hidden'}`}
                             key={project.id}

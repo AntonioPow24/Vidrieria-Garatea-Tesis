@@ -15,7 +15,7 @@ const ProductsContainer = () => {
         :
         <div className="containerProducts">
           {
-            products?.map( product => 
+            Array.isArray(products) && products?.map( product => 
               <ProductCard 
                   key={ product.id} 
                   { ...product }  

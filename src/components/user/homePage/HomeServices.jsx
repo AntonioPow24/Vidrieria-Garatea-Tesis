@@ -28,7 +28,7 @@ const HomeServices = () => {
         <div className="flex items-center justify-center gap-[56px] 1780:flex-col">
             <div className={"flex flex-col "}>
                 {
-                    ourServices && ourServices.map( service => 
+                    Array.isArray(ourServices) && ourServices.map( service => 
                         <button
                             key={service.title}
                             onClick={() => handleChangeServiceFilter(service.title)}

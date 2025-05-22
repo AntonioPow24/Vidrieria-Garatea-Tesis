@@ -64,7 +64,7 @@ const Footer = () => {
 
                     <div className="flex flex-col gap-[10px] 1360:items-center">
                         {
-                            allCategories?.map( category => 
+                            Array.isArray(allCategories) && allCategories?.map( category => 
                                 <Link
                                     key={category.id}
                                     to={`/tienda/${category.nameCategory}`}
