@@ -10,7 +10,7 @@ Información institucional con lema: “Calidad, seriedad y garantía”.
 
 Botón de navegación a tienda y proyectos.
 
-Imagen de fondo tipo fachada de vidrio.
+Imagen de fondo tipo fachada de vidrio..
 
 📷 ![image](https://github.com/user-attachments/assets/f925cbbd-f243-4a39-b27a-39708d3d28e5)
 
