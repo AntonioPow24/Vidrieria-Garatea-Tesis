@@ -13,7 +13,7 @@ const ShopCategory = () => {
 
   const { allCategories, setCurrentCategory } = useUserProductsContext()
 
-  const category = allCategories.find(c => c.nameCategory === categoryName);
+  const category = Array.isArray(allCategories) && allCategories.find(c => c.nameCategory === categoryName);
 
   const handleChangeCategory = (categoryName) => {
     const selectedCategory = allCategories.find(c => c.nameCategory === categoryName);
