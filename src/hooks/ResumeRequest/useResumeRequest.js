@@ -3,6 +3,7 @@ import { useCartContext } from '../../context/CartContext';
 import { useRequestsContext } from '../../context/RequestContext';
 import { useUserProductsContext } from '../../context/ProductsContext/UserProductsContext';
 import { useNavigate } from 'react-router-dom';
+import { getApiUrl } from '../../utils/getApiURL';
 
 // TODO: EN LA CITY, YA NO MANDAMOS STRING, MANDAMOS CITYID
 
@@ -34,7 +35,9 @@ const useResumeRequest = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null)
 
-    const isValidRequest = () => {
+  const apiUrl = getApiUrl();
+
+  const isValidRequest = () => {
 
       const phoneNumberRegex = /^\d{9}$/;
       const dniRegex = /^\d{8}$/;
@@ -128,7 +131,7 @@ const useResumeRequest = () => {
   useEffect(() => {
     const fetchCities = async () => {
       try {
-        const response = await fetch('http://apiorders.somee.com/api/v1/city/list');
+        const response = await fetch(`${apiUrl}/city/list`);
         const data = await response.json();
         setAllCities(data);
       } catch (error) {
