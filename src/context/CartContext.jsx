@@ -112,7 +112,7 @@ const CartContext = createContext()
 
 
 const CartContextProvider = ({children}) =>{
-
+    const apiUrl = getApiUrl();
 
      // USEROUTER
     const navigate = useNavigate()
@@ -276,7 +276,7 @@ const CartContextProvider = ({children}) =>{
             localStorage.setItem("previewCart", JSON.stringify(data));
             setCart(response.data);  
 
-            await axios.delete("/api/cart");
+            await axios.delete(`${apiUrl}/api/v1/cart`);
           } else{            
             setCart([])
           }
