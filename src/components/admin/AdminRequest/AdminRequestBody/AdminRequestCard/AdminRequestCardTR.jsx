@@ -4,7 +4,7 @@ import { useAdminProductsContext } from '../../../../../context/ProductsContext/
 const AdminRequestCardTR = ({productId, price, quantity}) => {
     const {products} = useAdminProductsContext()
 
-    const product = products.find(product => product.id === productId)
+    const product = Array.isArray(products) && products.find(product => product.id === productId)
   return (
     <tr>
         <td className='text-[12px] text-adminTextDark dark:text-adminTextWhite transition-all duration-300 cursor-default  '>
