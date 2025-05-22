@@ -34,7 +34,7 @@ const ProductTRCard = ({id, titleName, categoryId, valorization, stock, status, 
 
             <td className='text-center'>
                 <span className='text-center capitalize font-medium text-adminTextDark dark:text-adminTextWhite transition-all duration-300 cursor-default 1500:text-[14px]'>
-                    { allCategories?.find( category => category.id === categoryId )?.titleCategory }
+                    { Array.isArray(allCategories) && allCategories?.find( category => category.id === categoryId )?.titleCategory }
                 </span>
             </td>
 

@@ -23,7 +23,7 @@ const FilteredBar = ({ changeCategory, categoryfilter, changeStatus, statusFilte
               ...allCategories
                 .map(({id, titleCategory}) => ({id, option: titleCategory}
               ))] }
-            titleButton={ categoryfilter === 99 ? 'Todas las categorías' : allCategories.find( category => category.id === categoryfilter ).titleCategory }
+            titleButton={ categoryfilter === 99 ? 'Todas las categorías' : Array.isArray(allCategories) && allCategories.find( category => category.id === categoryfilter ).titleCategory }
             sectionMode={ 'yesId' } 
           />
           
