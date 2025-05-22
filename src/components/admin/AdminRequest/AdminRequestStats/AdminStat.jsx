@@ -49,12 +49,12 @@ const AdminStat = ({
       onClick={onClick}
     >
       <div 
-        className={`text-[40px] font-semibold text-center`}
+        className={`text-[40px] font-semibold text-center transition-all duration-300`}
         style={{ color: colorToStat }}
       >
         {displayValue}
       </div>
-        <div className={`text-[18px] text-center font-medium ${mainStat ? "text-text-white" : "text-[#AAA]"} ${active && "text-[#808080] dark:text-[#c4c4c4]"} `}>
+        <div className={`transition-all duration-300 text-[18px] text-center font-medium ${mainStat ? "text-text-white" : "text-[#AAA]"} ${active && "text-[#808080] dark:text-[#c4c4c4]"} `}>
             {statTitle}
         </div>
     </div>

@@ -43,14 +43,14 @@ const AdminMonthFilter = () => {
 
   return (
     <div 
-        className='w-[170px]  bg-adminBgWhite dark:bg-appBgBlack rounded-[6px]  flex justify-center items-center transition-all duration-300 relative'
+        className='w-[170px]  bg-adminBgWhite dark:bg-appBgBlack rounded-[6px]  flex justify-center items-center transition-all duration-300 relative z-[20]'
         ref={filterRef}
     >
         <div 
             className='flex items-center justify-between w-full cursor-pointer px-[10px]'
             onClick={handleOpenFilter}
         >
-            <span className='text-[16px] text-adminTextDark dark:text-adminTextWhite'>
+            <span className='text-[16px] text-adminTextDark dark:text-adminTextWhite transition-all duration-300'>
                 {showMonthLabel(selectedMonth) || "Todos los meses" }
             </span>
             <OrderListIcon />

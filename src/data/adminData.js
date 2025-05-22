@@ -62,3 +62,8 @@ export const MONTHS = [
     }
 ];
 
+export const STATUS_REQUEST_CODES = {
+    PENDING_REQUEST_CODE: 0,
+    COMPLETED_REQUEST_CODE: 1,
+    CANCELLED_REQUEST_CODE: 2,
+}

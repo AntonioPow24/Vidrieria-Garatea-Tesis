@@ -22,8 +22,9 @@ const AdminFilters = ({optionsToFilter}) => {
             width: "170px",
             display: 'flex',
             justifyContent: 'center',
-            transition: 'all 0.3s',
+            transition: 'all 0.3s ease ',
             height: '100%',
+            zIndex: 30,
         }),
         option: (base, state) => ({
             ...base,
@@ -34,7 +35,8 @@ const AdminFilters = ({optionsToFilter}) => {
             alignItems: 'center',
             cursor: 'pointer',
             padding: '10px 12px',
-            transition: 'all 0.3s ease'
+            transition: 'all 0.3s ease',
+            zIndex: 30,
             
         }),
         singleValue: (base) => ({
@@ -59,7 +61,8 @@ const AdminFilters = ({optionsToFilter}) => {
         boxShadow: 'none',
         borderRadius: '6px',
         marginTop: '6px',
-        transition: 'all 0.3s ease'
+        transition: 'all 0.3s ease',
+        zIndex: 30,
   }),
     };
     const DropdownIndicator = () => null;

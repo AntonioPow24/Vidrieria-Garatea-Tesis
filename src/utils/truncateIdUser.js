@@ -1,1 +1,1 @@
-export const truncateId = (id) => id.slice(0,6)
+export const truncateId = (id) => id?.slice(0,6)

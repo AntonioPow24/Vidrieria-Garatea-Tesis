@@ -21,6 +21,7 @@ export default {
         'adminTextDark':'#404040',
         'adminTextWhite':'#b8b7b7',
         'adminTextPurple':'#9D78E5',
+        'adminTextPending':'#EEBD10',
 
         'adminInputBg':'#ECECEC',
         'userDetailBg':'#10101099',
