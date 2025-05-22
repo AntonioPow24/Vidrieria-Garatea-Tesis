@@ -8,7 +8,7 @@ import AddProductForm from "../../../formProducts/AddProductForm"
 const ProductTRCard = ({id, titleName, categoryId, valorization, stock, status, price,images  }) => {
 
 
-    const { deleteProduct, allCategories } = useAdminProductsContext()
+    const { allCategories } = useAdminProductsContext()
     
     const { isModalOpen, toggleModal } =useModal()
 

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useAuth } from "../../context/UserContext";
+import { getApiUrl } from "../../utils/getApiURL";
 
 
 const useUpdateUser = () => {
@@ -8,6 +9,8 @@ const useUpdateUser = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState( false )
+
+  const apiUrl = getApiUrl();
 
     const hasEmptyFields = ( updateUserState ) => Object.entries(updateUserState).some(
     ([key, value]) =>
@@ -22,7 +25,7 @@ const useUpdateUser = () => {
     try {
       const token = localStorage.getItem("authToken");
       const response = await axios.put(
-        `http://apiorders.somee.com/api/v1/user/update`,
+        `${apiUrl}/user/update`,
         updatedFields,
         {
           headers: {
