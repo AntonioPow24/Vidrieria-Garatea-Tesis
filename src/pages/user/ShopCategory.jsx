@@ -16,7 +16,7 @@ const ShopCategory = () => {
   const category = Array.isArray(allCategories) && allCategories.find(c => c.nameCategory === categoryName);
 
   const handleChangeCategory = (categoryName) => {
-    const selectedCategory = allCategories.find(c => c.nameCategory === categoryName);
+    const selectedCategory = Array.isArray(allCategories) && allCategories.find(c => c.nameCategory === categoryName);
     if (selectedCategory) {
       navigate(`/tienda/${selectedCategory.nameCategory}`);
       setCurrentCategory(selectedCategory.id);
