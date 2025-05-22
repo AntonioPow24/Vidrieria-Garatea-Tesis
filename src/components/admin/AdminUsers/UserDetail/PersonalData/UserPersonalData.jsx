@@ -1,6 +1,9 @@
 import React from 'react'
-import { useAdminUsersContext } from '../../../../../../context/AdminUsersContext/AdminUsersContext'
+
 import DataField from './DataField'
+import { useAdminUsersContext } from '../../../../../context/AdminUsersContext/AdminUsersContext'
+import SmallLoader from '../../../../shared/AdminLoaders/SmallLoader'
+import { truncateId } from '../../../../../utils/truncateIdUser'
 
 
 const UserPersonalData = ({ userName, lastName, email, id, createdDate, totalOrders }) => {
@@ -10,10 +13,7 @@ const UserPersonalData = ({ userName, lastName, email, id, createdDate, totalOrd
   return (
     <section className='flex flex-col gap-[15px] py-[20px] px-[12px] rounded-[10px] bg-userDetailBg h-[174px] justify-center'>
         {loadingSelectedUser ?
-            <div className='flex justify-center items-center gap-3 w-full'>
-                <span className='text-adminTextWhite'>Cargando data</span>
-                <div class="spinner"></div>
-            </div>
+            <SmallLoader message={ 'Cargando data' } />
             :
             <>
                 <div className='flex  gap-[12px]'>
@@ -36,7 +36,7 @@ const UserPersonalData = ({ userName, lastName, email, id, createdDate, totalOrd
                         />
                         <DataField 
                             label={ 'ID de usuario' }
-                            field={ id }
+                            field={ truncateId(id) }
                         />
                     </div>
                 </div>

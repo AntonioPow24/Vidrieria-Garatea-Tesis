@@ -1,5 +1,5 @@
 .bgImage{
-    background: url('./projects/bgProjects.png');
+    background: url('https://res.cloudinary.com/dmmmdnkcu/image/upload/v1747062596/bgProjects_pwcn9y.png');
 }
 
 .galleryContainer{
@@ -12,4 +12,26 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     gap: 30px;
+    grid-template-rows: repeat(2, 300px);
+}
+
+@media (max-width: 455px) {
+    .galleryContainerMax {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-template-rows: repeat(auto-fit, 200px);
+    }
+}
+
+.showViewMessage:hover .message{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000000b6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border-radius: 10px;
 }

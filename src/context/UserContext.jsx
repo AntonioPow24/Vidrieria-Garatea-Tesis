@@ -1,9 +1,9 @@
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import { createContext, useContext, useEffect, useState } from "react";
+import { getApiUrl } from "../utils/getApiURL";
 
 const UserContext = createContext();
-
 // Usuario de prueba
 const userTest = {
   id: "1",
@@ -38,11 +38,12 @@ export const UserProvider = ({ children }) => {
 
 
     const initializeUser = async () => {
+      const apiUrl = getApiUrl();
       const token = localStorage.getItem("authToken");
       if (token) {
         try {
           setLoading(true);
-          const response = await axios.get("http://apiorders.somee.com/api/v1/user", {
+          const response = await axios.get(`${apiUrl}/user`, {
             headers: { Authorization: `Bearer ${token}` },
           });
           
@@ -62,9 +63,10 @@ export const UserProvider = ({ children }) => {
     };
 
     const login = async (email, password, closeAuth) => {
+        const apiUrl = getApiUrl();
         setLoading(true);
         try {
-        const response = await axios.post("http://apiorders.somee.com/api/v1/user/login", { email, password });
+        const response = await axios.post(`${apiUrl}/user/login`, { email, password });
 
         const { token } = response.data;
         localStorage.setItem("authToken", token);
@@ -82,10 +84,11 @@ export const UserProvider = ({ children }) => {
     };
 
     const register = async (formData, closeAuth) => {
+      const apiUrl = getApiUrl();
       setLoading(true);
       try {
           await axios.post(
-              "http://apiorders.somee.com/api/v1/user/register",
+              `${apiUrl}/user/register`,
               formData
           );
 

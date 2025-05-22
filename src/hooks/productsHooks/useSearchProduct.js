@@ -16,9 +16,9 @@ const useSearchProduct = (categoryFilter,statusFilter) => {
               return products.filter(product => {
                   const matchesQuery = product.titleName.toLowerCase().includes(query.toLowerCase());
                   
-                  const matchesCategory = categoryFilter === 'todos' || product.category === categoryFilter;
+                  const matchesCategory = categoryFilter === 99 || product.categoryId === categoryFilter;
 
-                  const matchesStatus = statusFilter === 'todos' || product.isAvailable === statusFilter;
+                  const matchesStatus =  product.status === statusFilter;
 
                   return matchesQuery && matchesCategory && matchesStatus;
               });

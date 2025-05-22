@@ -182,7 +182,7 @@ const NavBar = () => {
                         onClick={sesionVerify}
                     >
                         <i className="text-3xl fa-regular fa-circle-user"></i>
-                        <span className='text-xl smallPhone:hidden'> 
+                        <span className='text-xl smallPhone:hidden iniciar-sesion-text'> 
                             {
                                 user ? user.userName? user.userName : user.email : 'Iniciar Sesion'
 

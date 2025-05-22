@@ -1,8 +1,10 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import axios from 'axios';
 import { dataUsers } from '../../data/dataUsers';
+import { getApiUrl } from '../../utils/getApiURL';
 
 const AdminUsersContext = createContext();
+
 
 export const AdminUsersProvider = ({ children }) => {
   const [users, setUsers] = useState([]);
@@ -11,19 +13,23 @@ export const AdminUsersProvider = ({ children }) => {
 
 
   const [selectedUserTable, setSelectedUserTable] = useState(null);
-  const [loadingSelectedUser, setLoadingSelectedUser] = useState(false); // Estado para almacenar el usuario seleccionado
+  const [loadingSelectedUser, setLoadingSelectedUser] = useState(false);
 
-  // Obtener todos los usuarios
   const fetchUsers = async () => {
+    const apiUrl = getApiUrl();
     setLoading(true);
     setError(null);
     try {
-      const response = await axios.get('/api/v1/users/admin', {
+      const response = await axios.get(`${apiUrl}/user/paginationAdmin`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('authToken')}`,
         },
       });
-      setUsers(response.data); // Almacenar la lista de usuarios
+      setUsers(response.data);
+      if (response.data.length > 0) {
+        const firstUser = await fetchUserById(response.data[0].id);
+        setSelectedUserTable(firstUser);
+      }
     } catch (err) {
       setError('Error al obtener los usuarios');
     } finally {
@@ -31,26 +37,26 @@ export const AdminUsersProvider = ({ children }) => {
     }
   };
 
-  // Obtener un usuario específico por ID (retorna los datos)
   const fetchUserById = async (id) => {
+    const apiUrl = getApiUrl();
     setLoading(true);
     setError(null);
     try {
-      const response = await axios.get(`/api/v1/users/admin/${id}`, {
+      const response = await axios.get(`${apiUrl}/user/admin/${id}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('authToken')}`,
         },
       });
-      return response.data; // Retorna la información del usuario
+      
+      return response.data;
     } catch (err) {
       setError('Error al obtener el usuario');
-      return null; // En caso de error, retornar null
+      return null;
     } finally {
       setLoading(false);
     }
   };
 
-  // Eliminar un usuario por ID
   const deleteUser = async (id) => {
     setLoading(true);
     setError(null);
@@ -69,42 +75,24 @@ export const AdminUsersProvider = ({ children }) => {
   };
 
   const selectUser = async (id) => {
-    // TODO: Descomentar codigo real, se esta realizando simulacion
-    // setLoadingSelectedUser(true);
-    // setError(null);
-    // try {
-    //   const user = await fetchUserById(id);
-    //   setSelectedUserTable(user);
+     setLoadingSelectedUser(true);
+     setError(null);
+     try {
+       const user = await fetchUserById(id);
+       setSelectedUserTable(user);
 
-    //   setTimeout(() => {
-    //    setLoadingSelectedUser(false);
-    //    }, 800);
-    // } catch (err) {
-    //   setError('Error al seleccionar el usuario');
-    // }
-
-    // Al realizar esta funcion, activaremos el loadingSelectedUser por 0.6s y despues mostraremos el usuario seleccionado
-    setSelectedUserTable( users.find( user => user.id === id ))
-    setLoadingSelectedUser(true);
-    setTimeout(() => {
-      setLoadingSelectedUser(false);
-    }, 800); // Simulando un tiempo de carga de 0.6 segundos
-    // Simulando la carga de un usuario seleccionado
-
-
+       setTimeout(() => {
+       setLoadingSelectedUser(false);
+        }, 800);
+     } catch (err) {
+       setError('Error al seleccionar el usuario');
+     }
 
   };
 
 
-  // Usar useEffect para cargar los usuarios cuando el componente se monte
   useEffect(() => {
-    // TODO: CODIGO DE PRUEBA, ELIMINAR DESPUES
-    // fetchUsers();
-    setUsers(dataUsers); // Inicializar con un array vacío para evitar errores en el renderizado
-
-    if (dataUsers.length > 0) {
-      setSelectedUserTable(dataUsers[0]);
-    }
+     fetchUsers();
   }, []);
 
   return (

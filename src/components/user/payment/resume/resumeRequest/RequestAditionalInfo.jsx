@@ -14,13 +14,15 @@ const RequestAditionalInfo = ({ setDNI, setPhoneNumber, setAddress, deliveryMeth
             className="bg-[#3D3D3D] px-[10px] py-[6px] text-text-white rounded-[4px] border-none outline-none w-[50%] smallTablet:text-[12px]"
             type="text" 
             placeholder="DNI"
+            maxLength={8}
             onChange={(e) => setDNI(e.target.value)} 
             required 
           />
 
           <input 
             className="bg-[#3D3D3D] px-[10px] py-[6px] text-text-white rounded-[4px] border-none outline-none w-[50%] smallTablet:text-[12px]"
-            type="text" 
+            type="text"
+            maxLength={9} 
             placeholder="Numero de celular"
             onChange={(e) => setPhoneNumber(e.target.value)} 
             required 

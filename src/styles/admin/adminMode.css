@@ -54,3 +54,51 @@
        transform: rotate(1turn);
     }
  }
+
+
+ .TbodyScrollingY {
+    overflow-y: auto;
+}
+
+.TbodyScrollingY::-webkit-scrollbar {
+    width: 4px; 
+}
+
+
+.TbodyScrollingY::-webkit-scrollbar-thumb {
+    background-color: #54c0e1;
+    border-radius: 10px;
+}
+
+
+.TbodyScrollingY::-webkit-scrollbar-track {
+    background-color: none;
+    border-radius: 10px;
+}
+
+ .TBodyRequestProducts {
+    overflow-y: auto;
+}
+
+.TBodyRequestProducts::-webkit-scrollbar {
+    width: 4px; 
+}
+
+
+.TBodyRequestProducts::-webkit-scrollbar-thumb {
+    background-color: #a7a7a7;
+    border-radius: 10px;
+}
+
+
+.TBodyRequestProducts::-webkit-scrollbar-track {
+    background-color: none;
+    border-radius: 10px;
+}
+
+.RequestsAdminGrid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    grid-template-rows: repeat(auto-fit, 324px);
+    gap: 30px;
+}

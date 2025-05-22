@@ -7,9 +7,12 @@
         @apply block px-4 py-2 text-gray-800 dark:text-adminTextWhite hover:bg-gray-200 dark:hover:bg-gray-600 transition-all duration-300 capitalize ;
     }
     .theadProduct{
-        @apply text-[18px] text-adminTextDark dark:text-adminTextWhite py-4 transition-all duration-300
+        @apply text-[18px] text-adminTextDark dark:text-adminTextWhite py-4 transition-all duration-300 1500:text-[14px]
     }
 
+    .theadFieldSmall {
+        @apply text-[14px] dark:text-[#c5c5c58a] transition-all duration-300
+    }
     .formBox{
         @apply absolute w-[50%] h-[100%] right-0 flex items-center text-center text-textDark px-[40px]
     }
@@ -20,6 +23,13 @@
 
     .inputBox{
         @apply relative my-[25px]
+    }
+
+    .fieldOnTableAdmin{
+        @apply 1500:text-[14px] 
+    }
+    .normalAdminText{
+        @apply text-[14px] 1500:text-[12px] dark:text-adminTextWhite transition-all duration-300 cursor-default
     }
   }
 

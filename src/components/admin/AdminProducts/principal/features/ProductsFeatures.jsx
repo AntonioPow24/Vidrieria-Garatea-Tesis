@@ -50,7 +50,7 @@ const ProductsFeatures = ({ query, handleSearch }) => {
                 
                 <AddProductForm 
                   methodForm={ 'agregar' }
-                  
+                  closeModal={ toggleProductModal }
                 />
   
               </Modal>

@@ -5,7 +5,7 @@ import { usersHeadFields } from '../../../../../data/tHeadData'
 
 const TableUserContainer = ({filteredUsers}) => {
   return (
-    <section className='w-full dark:bg-appBgBlack bg-adminBgWhite z-10 transition-all duration-300 flex flex-col rounded-[8px] overflow-hidden'>
+    <section className='w-full dark:bg-appBgBlack bg-adminBgWhite z-10 transition-all duration-300 flex flex-col rounded-[8px] overflow-hidden overflow-y-auto TbodyScrollingY'>
 
       <table className='w-full table-fixed'>
           <TableHead headFieldsData={ usersHeadFields } />
