@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { usePasswordValidation } from "./usePasswordValidation";
 import axios from "axios";
+import { getApiUrl } from "../../utils/getApiURL";
 
 
 export const usePasswordChange = () => {
@@ -33,7 +34,7 @@ export const usePasswordChange = () => {
 
     const changePassword = async () => {
 
-
+        const apiUrl = getApiUrl();
 
         if (!isFormValid) {
         setError("Por favor, complete los campos correctamente.");
@@ -51,7 +52,7 @@ export const usePasswordChange = () => {
         }
 
         const response = await axios.post(
-            "http://apiorders.somee.com/api/v1/user/resetPassword", 
+            `${apiUrl}/user/resetPassword`, 
             {
                 currentPassword: enteredCurrentPassword,
                 newPassword: newPassword,
