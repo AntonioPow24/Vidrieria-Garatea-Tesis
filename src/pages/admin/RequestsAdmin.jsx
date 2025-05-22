@@ -5,7 +5,7 @@ import AdminRequestBody from '../../components/admin/AdminRequest/AdminRequestBo
 
 const RequestsAdmin = () => {
   return (
-    <section className='p-[30px] flex flex-col gap-[30px] h-[100dvh]'>
+    <section className='p-[30px] flex flex-col gap-[30px] h-[100dvh] overflow-hidden overflow-y-auto TBodyRequestProducts'>
       <AdminRequestStats />
 
       <AdminRequestFilters />

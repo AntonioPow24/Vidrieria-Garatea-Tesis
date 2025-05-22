@@ -2,6 +2,12 @@ import { createContext, useContext, useState, useEffect } from 'react';
 import axios from 'axios';
 import { getApiUrl } from '../../utils/getApiURL';
 
+const statusLabelMap = [
+  { code: 0, label: "PENDIENTE" },
+  { code: 1, label: "COMPLETADO" },
+  { code: 2, label: "CANCELADO" },
+
+]
 
 const AdminRequestContext = createContext();
 
@@ -18,6 +24,7 @@ export const AdminRequestProvider = ({ children }) => {
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedMonth, setSelectedMonth] = useState(null);
     const [orderType, setOrderType] = useState('recientes');
+
 
     const fetchRequests = async () => {
         const token = localStorage.getItem('authToken');
@@ -39,7 +46,7 @@ export const AdminRequestProvider = ({ children }) => {
         
         setError('Error al obtener los pedidos');
         } finally {
-        setLoading(false);
+            setLoading(false);
         }
     };
 
@@ -60,8 +67,38 @@ export const AdminRequestProvider = ({ children }) => {
         }
     };
 
+    const updateRequestState = async (id, newStatusCode) => {
+        const apiUrl = getApiUrl();
 
-
+        try {
+        const response = await axios.put(
+            `${apiUrl}/order`,
+            { orderId : id , 
+            status: newStatusCode 
+            },
+            {
+            headers: { Authorization: `Bearer ${localStorage.getItem("authToken")}` },
+            }
+        );
+        
+        setRequests((prev) =>{
+            
+            const updatedRequests = prev.map((request) =>{
+            const statusLabelCheck = statusLabelMap.find((status) => status.code === newStatusCode);
+            return request.id === id
+                ? { ...request, status: newStatusCode, statusLabel: statusLabelCheck.label  }
+                : request
+            }
+            )
+            return updatedRequests;
+            }
+        );
+ 
+        } catch (err) {
+        console.error("Error al actualizar estado del pedido:", err);
+        setError("Error al actualizar el estado del pedido.");
+        }
+    };
     useEffect(() => {
         fetchRequests();
     }, []);
@@ -81,6 +118,7 @@ export const AdminRequestProvider = ({ children }) => {
             loadingStats,
             fetchRequests,
             fetchStats,
+            updateRequestState,
             activeStatus, setActiveStatus,
             activeLocation, setActiveLocation,
             searchQuery, setSearchQuery,

@@ -1,17 +1,31 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const DropDownList = ({ changeFunction, optionsArray, titleButton, sectionMode="noId" }) => {
 
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const filterRef = useRef(null);
 
     const toggleDropdown = () => {
       setIsDropdownOpen(prevState => !prevState);
     };
 
+    useEffect(() => {
+            const handleClickOutside = (event) => {
+                if (filterRef.current && !filterRef.current.contains(event.target)) {
+                    setIsDropdownOpen(false);
+                }
+            };
+            if (isDropdownOpen) {
+                document.addEventListener('mousedown', handleClickOutside);
+            }
+            return () => {
+                document.removeEventListener('mousedown', handleClickOutside);
+            };
+      }, [isDropdownOpen]);
 
 
   return (
-    <div className={`relative z-20 `} onClick={toggleDropdown}>
+    <div className={`relative z-20 `} onClick={toggleDropdown} ref={filterRef}>
         <button className='text-adminTextPurple  bg-transparent  dark:text-skyBlueApp flex justify-between items-center capitalize transition-all duration-300 w-full gap' type="button"
         >
             { titleButton } 

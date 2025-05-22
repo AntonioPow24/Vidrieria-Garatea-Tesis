@@ -22,15 +22,19 @@ const ProductTRCard = ({id, titleName, categoryId, valorization, stock, status, 
             </td>
 
             <td className='flex items-center justify-start h-[64px] gap-2 '>
-                <div className="max-w-[30px] flex items-center">
-                    <img src={ images[0]?.url } alt="" />
+                <div className="max-w-[30px] h-full flex items-center overflow-hidden">
+                    <img 
+                        src={ images[0]?.url } 
+                        alt=""
+                        className="object-contain h-full" 
+                    />
                 </div>
                 <h3 className='text-base text-adminTextDark dark:text-adminTextWhite transition-all duration-300 cursor-default 1500:text-[14px]'>{ titleName }</h3>
             </td>
 
             <td className='text-center'>
                 <span className='text-center capitalize font-medium text-adminTextDark dark:text-adminTextWhite transition-all duration-300 cursor-default 1500:text-[14px]'>
-                    { allCategories.find( category => category.id === categoryId ).titleCategory }
+                    { allCategories?.find( category => category.id === categoryId )?.titleCategory }
                 </span>
             </td>
 
