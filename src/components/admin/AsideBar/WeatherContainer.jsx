@@ -7,7 +7,7 @@ import WeatherInfo from './WeatherInfo'
 const WeatherContainer = () => {
 
     const { weatherData, loading, error } = useWeather( 'chimbote' )
-
+    
 
 
   return (
