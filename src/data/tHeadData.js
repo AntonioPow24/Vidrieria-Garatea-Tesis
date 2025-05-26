@@ -25,3 +25,14 @@ export const requestProductsHeadFields = [
     { id: '3', label: 'Cntd', classStyle: 'theadFieldSmall w-[10%] text-center text-[#C5C5C5] font-thin ' },
     { id: '4', label: 'Precio', classStyle: 'theadFieldSmall text-[18px]  w-[22.5%] text-right text-[#C5C5C5] font-thin ' },
 ]
+
+
+export const soldProductsDashboardHeadFields = [
+    { id: '1', label: 'Producto', classStyle: 'theadFieldSmall text-left w-[46%] text-[#C5C5C5] font-thin ' },
+
+    { id: '2', label: 'Veces vendido', classStyle: 'theadFieldSmall text-center w-[22%] text-adminTextPurple font-semibold' },
+
+    { id: '3', label: 'Precio', classStyle: 'theadFieldSmall w-[22%] text-center text-[#C5C5C5] font-thin ' },
+
+    { id: '4', label: 'Stock', classStyle: 'theadFieldSmall text-[18px]  w-[22%] text-center text-[#C5C5C5] font-thin ' },
+]

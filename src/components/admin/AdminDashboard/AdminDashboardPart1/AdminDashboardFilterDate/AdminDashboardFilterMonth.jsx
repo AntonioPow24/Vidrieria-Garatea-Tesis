@@ -34,7 +34,7 @@ const { selectedMonth, selectMonth } = useDashboardFilterDate();
 
   return (
     <div 
-        className='min-w-[150px]  bg-adminBgWhite dark:bg-appBgBlack rounded-[6px]  flex justify-center items-center transition-all duration-300 relative z-[20] py-1'
+        className='1780:min-w-[180px] min-w-[150px]  bg-adminBgWhite dark:bg-appBgBlack rounded-[6px]  flex justify-center items-center transition-all duration-300 relative z-[20] py-1'
         ref={filterRef}
     >
         <div 

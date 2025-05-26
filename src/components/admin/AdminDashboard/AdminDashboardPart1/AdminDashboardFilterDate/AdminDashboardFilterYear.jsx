@@ -32,7 +32,7 @@ const AdminDashboardFilterYear = () => {
 
     return (
         <div
-            className='w-[120px] bg-adminBgWhite dark:bg-appBgBlack rounded-[6px] flex justify-center items-center transition-all duration-300 relative z-[20]'
+            className='1780:w-[140px] w-[120px] bg-adminBgWhite dark:bg-appBgBlack rounded-[6px] flex justify-center items-center transition-all duration-300 relative z-[20]'
             ref={filterRef}
         >
             <div

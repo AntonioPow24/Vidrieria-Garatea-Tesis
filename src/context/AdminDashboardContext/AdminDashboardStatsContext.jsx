@@ -52,7 +52,6 @@ const AdminDashboardStatsProvider = ({ children }) => {
         try {
           const month = selectedMonth + 1;
           const year = selectedYear;
-            console.log('params enviados:', { month, year });
           const [
                 newUsersByMotnhRes,
                 cardStatsRes,
@@ -126,9 +125,6 @@ const AdminDashboardStatsProvider = ({ children }) => {
       }
 
         fetchAllStats();
-
-        console.log("selectedMonth", selectedMonth + 1);
-        console.log("selectedYear", selectedYear);
         
   }, [selectedMonth, selectedYear]);
 
