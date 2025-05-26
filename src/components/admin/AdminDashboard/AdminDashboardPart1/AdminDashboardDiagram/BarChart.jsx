@@ -5,6 +5,26 @@ import am5themes_Animated from '@amcharts/amcharts5/themes/Animated';
 
 const BarChart = ({ data }) => {
   useEffect(() => {
+    const monthMap = {
+      January: 'Ene',
+      February: 'Feb',
+      March: 'Mar',
+      April: 'Abr',
+      May: 'May',
+      June: 'Jun',
+      July: 'Jul',
+      August: 'Ago',
+      September: 'Sep',
+      October: 'Oct',
+      November: 'Nov',
+      December: 'Dic'
+    };
+
+    const transformedData = data.map(item => ({
+      ...item,
+      month: monthMap[item.month] || item.month
+    }));
+
     let root = am5.Root.new('chartdiv');
 
     root.setThemes([am5themes_Animated.new(root)]);
@@ -110,9 +130,9 @@ const BarChart = ({ data }) => {
       });
     });
 
-    xAxis.data.setAll(data);
-    salesSeries.data.setAll(data);
-    productsSeries.data.setAll(data);
+    xAxis.data.setAll(transformedData);
+    salesSeries.data.setAll(transformedData);
+    productsSeries.data.setAll(transformedData);
 
     chart.set("cursor", am5xy.XYCursor.new(root, {}));
 
@@ -125,7 +145,7 @@ const BarChart = ({ data }) => {
     return () => root.dispose();
   }, [data]);
 
-  return <div id="chartdiv" style={{ width: '100%', height: '400px' }}></div>;
+  return <div id="chartdiv" className='w-full min-h-[320px]' ></div>;
 };
 
 export default BarChart;
