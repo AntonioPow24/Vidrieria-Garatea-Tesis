@@ -8,14 +8,18 @@ import NavBar from '../components/user/navbar/NavBar'
 import { useAuth } from '../context/UserContext'
 import CartContextProvider from '../context/CartContext'
 import UserProductsContextProvider from '../context/ProductsContext/UserProductsContext'
+import { getUserRole } from '../utils/decodeToken'
 
 
 
 
 const UserLayout = () => {
 
-    const { user } = useAuth()
-   
+  useAuth()
+
+  const userRole = getUserRole()
+    
+
   return (
 
     <UserProductsContextProvider>
@@ -24,7 +28,7 @@ const UserLayout = () => {
         <div>
 
           <NavBar />
-            {user && user.roles[0] === 'ADMIN'? <Navigate to={'/ADMIN'}/> : <Outlet /> } 
+            {userRole === 'ADMIN'? <Navigate to={'/ADMIN'}/> : <Outlet /> } 
           <Footer />
 
         </div>

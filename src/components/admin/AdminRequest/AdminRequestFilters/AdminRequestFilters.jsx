@@ -21,7 +21,7 @@ const AdminRequestFilters = () => {
       <SearchContainer 
         query={ searchQuery } 
         handleSearch={ e => setSearchQuery(e.target.value) }
-        placeholder={ 'Buscar solicitud por nombre o correo' }
+        placeholder={ 'Buscar solicitud por nombre o dni' }
       />
 
       <section className='flex gap-[30px]'>

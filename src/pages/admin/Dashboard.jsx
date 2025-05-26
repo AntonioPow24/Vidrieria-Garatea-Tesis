@@ -1,10 +1,14 @@
-import React from 'react'
+import AdminDashboardPart1 from "../../components/admin/AdminDashboard/AdminDashboardPart1/AdminDashboardPart1"
+import AdminDashboardPart2 from "../../components/admin/AdminDashboard/AdminDashboardPart2/AdminDashboardPart2"
 
 const Dashboard = () => {
   return (
-    <div>
-      Dashboard
-    </div>
+    <section className="flex gap-[20px] p-[20px] h-[100dvh] ">
+      <AdminDashboardPart1 />
+
+      {/* SEGUNDA PARTE */}
+      <AdminDashboardPart2 />
+    </section>
   )
 }
 

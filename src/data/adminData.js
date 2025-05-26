@@ -62,6 +62,29 @@ export const MONTHS = [
     }
 ];
 
+export const YEARS = [
+    { 
+        id: 2023,
+        short: '23',
+        full: '2023' 
+    },
+    { 
+        id: 2024,
+        short: '24',
+        full: '2024' 
+    },
+    { 
+        id: 2025,
+        short: '25',
+        full: '2025' 
+    },
+    { 
+        id: 2026,
+        short: '26',
+        full: '2026' 
+    },
+]
+
 export const STATUS_REQUEST_CODES = {
     PENDING_REQUEST_CODE: 0,
     COMPLETED_REQUEST_CODE: 1,

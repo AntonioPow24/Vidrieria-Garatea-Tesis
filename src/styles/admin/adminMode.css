@@ -102,3 +102,23 @@
     grid-template-rows: repeat(auto-fit, 324px);
     gap: 30px;
 }
+
+ .DashboardScrolling {
+    overflow-y: auto;
+}
+
+.DashboardScrolling::-webkit-scrollbar {
+    width: 0px; 
+}
+
+
+.DashboardScrolling::-webkit-scrollbar-thumb {
+    background-color: #a7a7a7;
+    border-radius: 10px;
+}
+
+
+.DashboardScrolling::-webkit-scrollbar-track {
+    background-color: none;
+    border-radius: 10px;
+}
