@@ -35,7 +35,7 @@ const AdminDashboardPart1 = () => {
 
 
   return (
-      <section className="flex flex-col gap-[20px] justify-between flex-1 1520:overflow-y-auto DashboardScrolling">
+      <section className="flex flex-col gap-[20px] justify-between flex-1 1300to1780:overflow-y-auto DashFirstPartScroll">
         <div className='min-h-[158px] max-h-[158px]  rounded-xl overflow-hidden'>
             <AdminDashboardBanner />
         </div>
@@ -89,7 +89,7 @@ const AdminDashboardPart1 = () => {
             </div>
 
             <div className='flex flex-1 flex-col gap-[20px] justify-between'>
-                <div className='flex flex-1 gap-[20px] justify-between 1442:flex-col'>
+                <div className='flex flex-1 gap-[20px] justify-between 1300to1442:flex-col'>
                     <div className='flex-1'>
                         <AdminDashboardTable tableBodyData={tableData.productsSoldByMonth}/>
                     </div>

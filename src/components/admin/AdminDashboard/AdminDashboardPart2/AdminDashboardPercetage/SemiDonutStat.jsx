@@ -22,7 +22,7 @@ export default function SemiDonutStat({ data }) {
 
   return (
     <div className="flex flex-col items-center justify-center p-[10px] bg-adminBgWhite dark:bg-appBgBlack rounded-lg duration-300 transition-all">
-      <h2 className="text-xl font-semibold text-gray-800">Pedidos Entregados</h2>
+      <h2 className="text-xl font-semibold text-adminTextDark dark:text-text-white transition-all duration-300">Pedidos Entregados</h2>
 
       <div className="relative">
         <svg height={radius * 2} width={radius * 2} className="transform -rotate-90">
@@ -69,7 +69,7 @@ export default function SemiDonutStat({ data }) {
       </div>
 
       <motion.p
-        className="text-gray-600 text-sm text-center"
+        className="text-adminTextDark text-sm text-center dark:text-text-white transition-all duration-300"
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.8 }}
