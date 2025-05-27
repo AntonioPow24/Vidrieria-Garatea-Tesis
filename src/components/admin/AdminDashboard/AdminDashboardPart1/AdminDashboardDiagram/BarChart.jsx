@@ -41,7 +41,7 @@ const BarChart = ({ data }) => {
 
     let xRenderer = am5xy.AxisRendererX.new(root, { minGridDistance: 30 });
     xRenderer.labels.template.setAll({
-      text: "{category.slice(0,3)}"
+      text: "{category.slice(0,3)}",
     });
 
     let xAxis = chart.xAxes.push(
@@ -54,6 +54,10 @@ const BarChart = ({ data }) => {
     );
 
     let yRenderer = am5xy.AxisRendererY.new(root, {});
+
+    yRenderer.labels.template.setAll({
+      fill: "#909090"
+    });
     yRenderer.grid.template.setAll({ strokeOpacity: 0.1 });
     xRenderer.grid.template.setAll({ strokeOpacity: 0. });
 
