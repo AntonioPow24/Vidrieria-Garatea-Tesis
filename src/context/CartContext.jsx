@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useUserProductsContext } from "./ProductsContext/UserProductsContext";
 import axios from "axios";
 import { getApiUrl } from "../utils/getApiURL";
+import { set } from "date-fns";
 
 // TODO: NECESITO GUARDAR EN UNA VARIABLE EL shoppingCartId, para mandarlo en el clearCart, falta crear eso
 // ARREGLO DEL CARRITO( SOLO ES REFERENCIA)
@@ -232,6 +233,38 @@ const CartContextProvider = ({children}) =>{
       }
     };
 
+    const saveCartToDatabase = async () => {
+      const apiUrl = getApiUrl();
+      const token = localStorage.getItem("authToken");
+
+      try {
+        const config = {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        };
+        
+        const shoppingCartItems = cart.map(item => ({
+          productId: item.id, 
+          quantity: item.quantity
+        }));
+
+        const body = { shoppingCartItems: shoppingCartItems };
+        console.log("Saving cart to database:", body);
+        const response = await axios.put(`${apiUrl}/shoppingCart`, { body }, config);
+
+        if (response.status === 200) {
+          console.log("Carrito guardado exitosamente en la base de datos.");
+        }
+      } catch (error) {
+        console.error("Error al guardar el carrito en la base de datos:", error);
+      } finally {
+        localStorage.removeItem("previewCart");
+        setCart([]);
+      }
+    };
+
 
 
 
@@ -270,14 +303,17 @@ const CartContextProvider = ({children}) =>{
           const response = await axios.get(`${apiUrl}/shoppingCart`, config); 
 
           const data = response.data.shoppingCartItems
+          const cartId = response.data.shoppingCartId
 
           if (data.ok && data.length > 0) {
 
             localStorage.setItem("previewCart", JSON.stringify(data));
+            console.log("Cart fetched from DB:", data);
             setCart(response.data);  
 
-            await axios.delete(`${apiUrl}/api/v1/cart`);
-          } else{            
+            await axios.delete(`${apiUrl}/api/v1/shoppingCart/${cartId}`);
+          } else{
+            console.log("Cart is empty or not found in DB");            
             setCart([])
           }
         } catch (err) {
@@ -313,7 +349,7 @@ const CartContextProvider = ({children}) =>{
 
     return (
 
-        <CartContext.Provider value={{ cart , setCart , continuePurchase,increaseProductCount , decreaseProductCount,deleteProduct,addProductToCart, isCartModal, toggleCart, openCart, closeCart, total, totalItemsCart }}>
+        <CartContext.Provider value={{ cart , setCart , continuePurchase,increaseProductCount , decreaseProductCount,deleteProduct,addProductToCart, isCartModal, toggleCart, openCart, closeCart, total, totalItemsCart, saveCartToDatabase }}>
             {children}
         </CartContext.Provider>
     )

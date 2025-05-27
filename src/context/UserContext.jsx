@@ -1,7 +1,7 @@
 import axios from "axios";
-import { jwtDecode } from "jwt-decode";
 import { createContext, useContext, useEffect, useState } from "react";
 import { getApiUrl } from "../utils/getApiURL";
+
 
 const UserContext = createContext();
 // Usuario de prueba
@@ -102,19 +102,13 @@ export const UserProvider = ({ children }) => {
           setLoading(false);
       }
     };
-
-    const logout = () => {
-        localStorage.removeItem("authToken");
-        setUser(null);
-    };
-
     useEffect(() => {
         initializeUser()
     },[])
 
 
   return (
-      <UserContext.Provider value={{ user, login, register, logout, loading, error, setUser }}>
+      <UserContext.Provider value={{ user, login, register, loading, error, setUser }}>
           {children}
       </UserContext.Provider>
   );
