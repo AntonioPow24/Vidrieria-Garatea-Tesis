@@ -53,7 +53,7 @@ const UserProductsContextProvider = ({ children }) => {
         if (productCache.current[id]) {
             return productCache.current[id];
         }
-        
+
         try {
             setIsLoadingDetails(true);
 
@@ -61,6 +61,8 @@ const UserProductsContextProvider = ({ children }) => {
 
             const response = await axios.get(`${apiUrl}/product/${id}`);
             const data = response.data;
+            console.log(response);
+            
 
             productCache.current[id] = data; 
             

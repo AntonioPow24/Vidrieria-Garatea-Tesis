@@ -4,11 +4,14 @@ import { useAuth } from "../../context/UserContext";
 
 export const useLogout = () => {
   const { setUser } = useAuth();
-  const { saveCartToDatabase, cart } = useCartContext();
+  const cartContext = useCartContext();
+  const cart = cartContext?.cart || [];
+  const saveCartToDatabase = cartContext?.saveCartToDatabase;
 
   const logout = async () => {
     try {
-      if (cart.length > 0) {
+      if (cart.length > 0 && typeof saveCartToDatabase === "function") {
+        console.log("El carrito tiene productos");
         await saveCartToDatabase();
       }
     } catch (error) {
@@ -16,7 +19,6 @@ export const useLogout = () => {
     } finally {
       localStorage.removeItem("authToken");
       setUser(null);
-      console.log("Sesión cerrada correctamente.");
     }
   };
 

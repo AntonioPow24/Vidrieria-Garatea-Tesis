@@ -4,107 +4,7 @@ import { useUserProductsContext } from "./ProductsContext/UserProductsContext";
 import axios from "axios";
 import { getApiUrl } from "../utils/getApiURL";
 import { set } from "date-fns";
-
-// TODO: NECESITO GUARDAR EN UNA VARIABLE EL shoppingCartId, para mandarlo en el clearCart, falta crear eso
-// ARREGLO DEL CARRITO( SOLO ES REFERENCIA)
-const defaultCart = [
-    {
-      productId: 1,
-      img: "/public/images/banca/plin.png",
-      titleName: "Silicona Dowsil 300gr SuperPegamento 4rt5skr",
-      description:"Esta es una descripcion del producto",
-      price: 13,
-      idCategory:6,
-      imgUrl:"htttps:shwjeuwtu.csgkg.com",
-      stock:40,
-      quantity: 1,
-      valorization:2
-    },
-    {
-      productId: 2,
-      img: "./images/siliconas/Silicona Dowsil.png",
-      titleName: "Silicona Dowsil 300gr SuperPegamento 4rt5skr",
-      description:"Esta es una descripcion del producto",
-      price: 13,
-      idCategory:6,
-      imgUrl:"htttps:shwjeuwtu.csgkg.com",
-      stock:40,
-      quantity: 1,
-      valorization:8
-    },
-    {
-      productId: 3,
-      img: "./images/siliconas/Silicona Dowsil.png",
-      titleName: "Silicona Dowsil 300gr SuperPegamento 4rt5skr",
-      description:"Esta es una descripcion del producto",
-      price: 13,
-      idCategory:6,
-      imgUrl:"htttps:shwjeuwtu.csgkg.com",
-      stock:40,
-      quantity: 1,
-      valorization:5
-    },
-    {
-      productId: 4,
-      img: "./images/siliconas/Silicona Dowsil.png",
-      titleName: "Silicona Dowsil 300gr SuperPegamento 4rt5skr",
-      description:"Esta es una descripcion del producto",
-      price: 13,
-      idCategory:6,
-      imgUrl:"htttps:shwjeuwtu.csgkg.com",
-      stock:40,
-      quantity: 1,
-      valorization:7
-    },
-    {
-      productId: 5,
-      img: "./images/siliconas/Silicona Dowsil.png",
-      titleName: "Silicona Dowsil 300gr SuperPegamento 4rt5skr",
-      description:"Esta es una descripcion del producto",
-      price: 13,
-      idCategory:6,
-      imgUrl:"htttps:shwjeuwtu.csgkg.com",
-      stock:40,
-      quantity: 1,
-      valorization:4
-    },
-    {
-      productId: 6,
-      img: "./images/siliconas/Silicona Dowsil.png",
-      titleName: "Silicona Dowsil 300gr SuperPegamento 4rt5skr",
-      description:"Esta es una descripcion del producto",
-      price: 13,
-      idCategory:6,
-      imgUrl:"htttps:shwjeuwtu.csgkg.com",
-      stock:40,
-      quantity: 1,
-      valorization:7
-    },
-    {
-      productId: 7,
-      img: "./images/siliconas/Silicona Dowsil.png",
-      titleName: "Silicona Dowsil 300gr SuperPegamento 4rt5skr",
-      description:"Esta es una descripcion del producto",
-      price: 13,
-      idCategory:6,
-      imgUrl:"htttps:shwjeuwtu.csgkg.com",
-      stock:40,
-      quantity: 1,
-      valorization:7
-    },
-    {
-      productId: 8,
-      img: "./images/siliconas/Silicona Dowsil.png",
-      titleName: "Silicona Dowsil 300gr SuperPegamento 4rt5skr",
-      description:"Esta es una descripcion del producto",
-      price: 13,
-      idCategory:6,
-      imgUrl:"htttps:shwjeuwtu.csgkg.com",
-      stock:40,
-      quantity: 1,
-      valorization:3
-    }
-  ]
+import { useAuth } from "./UserContext";
 
 // const defaultCart = []
 
@@ -119,6 +19,7 @@ const CartContextProvider = ({children}) =>{
     const navigate = useNavigate()
 
     const { getProductDetails } = useUserProductsContext()
+    const { user } = useAuth()
 
     const [cart, setCart] = useState( [] )
 
@@ -241,22 +142,18 @@ const CartContextProvider = ({children}) =>{
         const config = {
           headers: {
             Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
           },
         };
         
-        const shoppingCartItems = cart.map(item => ({
-          productId: item.id, 
-          quantity: item.quantity
-        }));
+      const payload = {
+        ShoppingCartItems: cart.map(i => ({
+          productId: i.id,
+          quantity: i.quantity
+        }))
+      };
 
-        const body = { shoppingCartItems: shoppingCartItems };
-        console.log("Saving cart to database:", body);
-        const response = await axios.put(`${apiUrl}/shoppingCart`, { body }, config);
+      await axios.put(`${apiUrl}/shoppingCart`, payload, config);
 
-        if (response.status === 200) {
-          console.log("Carrito guardado exitosamente en la base de datos.");
-        }
       } catch (error) {
         console.error("Error al guardar el carrito en la base de datos:", error);
       } finally {
@@ -284,68 +181,45 @@ const CartContextProvider = ({children}) =>{
 
 
     useEffect(() => {
+      const preview = localStorage.getItem("previewCart");
+      if (preview) {
+        setCart(JSON.parse(preview));
+        return;
+      }
 
-      const fetchCartFromDatabase = async () => {
+    const fetchCartFromDatabase = async () => {
       const apiUrl = getApiUrl();
       
       try {
           const token = localStorage.getItem("authToken");
-          if (!token) {
-            return [];
-          }
+          if (!token) return
 
-          const config = {
-            headers: {
-              Authorization: `Bearer ${token}`, 
-            },
-          };
+          const { data } = await axios.get(`${apiUrl}/shoppingCart`, {
+            headers: { Authorization: `Bearer ${token}` }
+          })
 
-          const response = await axios.get(`${apiUrl}/shoppingCart`, config); 
+          const previewItems = data.shoppingCartItems.map(item => ({
+            id: item.productId,
+            quantity: item.quantity
+          }));
 
-          const data = response.data.shoppingCartItems
-          const cartId = response.data.shoppingCartId
+          setCart(previewItems);
+          localStorage.setItem("previewCart", JSON.stringify(previewItems))
 
-          if (data.ok && data.length > 0) {
-
-            localStorage.setItem("previewCart", JSON.stringify(data));
-            console.log("Cart fetched from DB:", data);
-            setCart(response.data);  
-
-            await axios.delete(`${apiUrl}/api/v1/shoppingCart/${cartId}`);
-          } else{
-            console.log("Cart is empty or not found in DB");            
-            setCart([])
-          }
         } catch (err) {
           console.error("Error fetching cart from DB", err);
           setCart([])
         } 
-      };
+    };
 
       fetchCartFromDatabase();
 
-    }, [ setCart ]);
+    }, [ user ]);
 
 
-      useEffect(() => {
-        calculateTotal(); 
-      }, [cart])
-
-      useEffect(() => {
-        const handleBeforeUnload = async (event) => {
-
-          await saveCartToDatabase();
-
-          localStorage.removeItem("previewCart");
-        };
-    
-        window.addEventListener("beforeunload", handleBeforeUnload);
-    
-        return () => {
-          window.removeEventListener("beforeunload", handleBeforeUnload);
-        };
-      }, [cart]);
-
+    useEffect(() => {
+      calculateTotal(); 
+    }, [cart])
 
     return (
 
