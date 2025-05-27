@@ -1,9 +1,10 @@
+import AdminDashboardTableTR from "../../admin/AdminDashboard/AdminDashboardPart1/AdminDashboardTable/AdminDashboardTableTR";
 import ProductTRCard from "../../admin/AdminProducts/principal/main/table/ProductTRCard";
 import AdminRequestCardTR from "../../admin/AdminRequest/AdminRequestBody/AdminRequestCard/AdminRequestCardTR";
 import UserTRCard from "../../admin/AdminUsers/principal/table/UserTRCard";
 
 const TableBody = ({ tableData, tableName }) => {
-
+    
     return (
       <tbody>
         {
@@ -17,6 +18,8 @@ const TableBody = ({ tableData, tableName }) => {
                 return <UserTRCard key={ tr.id } {...tr} />
               } else if ( tableName === 'requestProductsTable' ){
                 return <AdminRequestCardTR key={tr.productId} {...tr} />
+              } else if ( tableName === 'dashboardTableProducts' ) {
+                return <AdminDashboardTableTR key={tr.id} {...tr} />
               }
             }
             )
