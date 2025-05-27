@@ -1,32 +1,31 @@
-import React from 'react'
+import React, { memo, useMemo } from 'react'
 import { useAdminUsersContext } from '../../../../../context/AdminUsersContext/AdminUsersContext';
 
 const AdminDashboardLastPending = ({data}) => {
 
     const { users } = useAdminUsersContext();
-    console.log(data);
     
-  return (
-    <section className='lastPendingGrid h-full gap-[20px]'>
-        {
-            data.map((order) => (
-                <OrderCardDashboard 
-                    key={order.id} 
-                    {...order}
-                    user={
-                        users.find(user => user.id === order.userId) || {}
-                    }
-                />
-            ))
-        }
-    </section>
-  )
+    const ordersList = useMemo(() => {
+        return data.map(order => (
+        <OrderCardDashboard
+            key={order.id}
+            {...order}
+            user={users.find(u => u.id === order.userId) || {}}
+        />
+        ))
+    }, [data, users])
+
+    return (
+        <section className='lastPendingGrid h-full gap-[20px]'>
+        {ordersList}
+        </section>
+    )
 }
 
-export default AdminDashboardLastPending
+export default memo(AdminDashboardLastPending)
 
 
-const OrderCardDashboard = ({statusLabel, totalOrder,address, cityId,createdDate,user}) => {
+const OrderCardDashboard = memo(({statusLabel, totalOrder,address, cityId,createdDate,user}) => {
 
     return (
         <article className='bg-adminBgWhite dark:bg-appBgBlack p-[10px] rounded-xl flex gap-[10px] shadow-[0px_4px_20px_rgba(0,0,0,0.1)] dark:shadow-[0px_4px_20px_rgba(0,0,0,0.2)] transition-all duration-300 justify-between'>
@@ -75,4 +74,4 @@ const OrderCardDashboard = ({statusLabel, totalOrder,address, cityId,createdDate
             </div>
         </article>
     )
-}
+})

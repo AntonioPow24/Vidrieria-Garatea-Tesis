@@ -21,7 +21,6 @@ const AdminDashboardStatsProvider = ({ children }) => {
     const [chartData, setChartData] = useState({
         allMonthsSales: [],
         relationOrderForPercentage: null,
-        lastPendingOrders: [],
     })
 
     const [tableData, setTableData] = useState({
@@ -44,6 +43,21 @@ const AdminDashboardStatsProvider = ({ children }) => {
         },
     };
 
+    const [lastPendingOrders, setLastPendingOrders] = useState([]);
+
+  useEffect(() => {
+    const fetchLastPending = async () => {
+      try {
+        const res = await axios.get(`${apiUrl}/report/topOrders`, axiosConfig);
+        setLastPendingOrders(res.data.result);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+    fetchLastPending();
+  }, []);
+
+
   useEffect(() => {
       const fetchAllStats = async () => {
           
@@ -58,7 +72,6 @@ const AdminDashboardStatsProvider = ({ children }) => {
                 relationOrderForPercentageRes,
                 productsSoldByMonthRes,
                 topProductByMonthRes,
-                lastPendingOrdersRes,
                 allMonthsSalesRes,
                 topUserByMonthRes,
             ] = await Promise.all([
@@ -82,7 +95,6 @@ const AdminDashboardStatsProvider = ({ children }) => {
                     params: { month, year },
                     ...axiosConfig,
                 }),
-                axios.get(`${apiUrl}/report/topOrders`, axiosConfig),
                 axios.get(`${apiUrl}/report/salesByMonth`, {
                     params: { year },
                     ...axiosConfig,
@@ -101,7 +113,6 @@ const AdminDashboardStatsProvider = ({ children }) => {
             setChartData({
               allMonthsSales: allMonthsSalesRes.data,
               relationOrderForPercentage: relationOrderForPercentageRes.data,
-              lastPendingOrders: lastPendingOrdersRes.data.result,
             })
 
             setTableData({
@@ -136,7 +147,8 @@ const AdminDashboardStatsProvider = ({ children }) => {
           cardStats,
           chartData,
           tableData,
-          topStats, 
+          topStats,
+          lastPendingOrders, 
         }}
     >
       {children}

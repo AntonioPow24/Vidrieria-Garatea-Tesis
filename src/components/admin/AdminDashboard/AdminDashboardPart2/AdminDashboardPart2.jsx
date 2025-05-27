@@ -12,7 +12,8 @@ const AdminDashboardPart2 = () => {
           cardStats,
           chartData,
           tableData,
-          topStats, 
+          topStats,
+          lastPendingOrders, 
     } = useAdminDashboardStatsContext()
 
     const emptyDonutData = {
@@ -37,7 +38,7 @@ const AdminDashboardPart2 = () => {
 
         <div className='flex-1'>
           <AdminDashboardLastPending 
-            data={loading ? [] : chartData.lastPendingOrders}
+            data={lastPendingOrders}
           />
         </div>
       </div>
