@@ -15,15 +15,17 @@ const PreviewCartItem = ({classComponent,id, quantity}) => {
   const [ productDetails, setProductDetails ] = useState(null)
   const [ isLoadingDetails, setIsLoadingDetails ] = useState(false)
 
+  
+  
   useEffect(() => {
-    if (!id) {
-      return;
-    }
-    
+    if (!id) return;
+
     const fetchDetails = async () => {
       setIsLoadingDetails(true);
       try {
         const details = await getProductDetails(id, true);
+        console.log(details);
+        
         setProductDetails(details);
         
       } catch (error) {
@@ -35,7 +37,7 @@ const PreviewCartItem = ({classComponent,id, quantity}) => {
     
     fetchDetails();
 
-  }, [id, getProductDetails]);
+  }, [id, quantity]);
   
   
   const { images, titleName, price, stock  } = productDetails || {}
@@ -47,7 +49,7 @@ const PreviewCartItem = ({classComponent,id, quantity}) => {
   return (
     <article className={`${classComponent} flex gap-5 previewCartItem h-[120px]`}>
       {
-        isLoadingDetails ?
+        isLoadingDetails || !productDetails ?
           <Loader mode="dark" message={"Cargando item"} />
         :
         <>

@@ -2,12 +2,13 @@ import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { dropDownLinks } from './NavBar';
 import { categoryProducts } from '../../../data/categoryProducts';
-import { useAuth } from '../../../context/UserContext';
+import { useLogout } from '../../../hooks/logout/useLogout';
+
 
 
 
 const DropDown = ({setDropDowns , toElement=''}) => {
-    const { logout } = useAuth()
+    const { logout } = useLogout();
 
     const dropdownRef = useRef(null);
 

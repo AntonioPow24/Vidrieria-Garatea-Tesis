@@ -1,7 +1,7 @@
-import { useAuth } from "../../../context/UserContext"
+import { useLogout } from "../../../hooks/logout/useLogout";
 
 const AsideLogOut = () => {
-    const { logout } = useAuth()
+    const { logout } = useLogout();
 
     return (
       <div className=" flex items-center justify-center mb-6">
