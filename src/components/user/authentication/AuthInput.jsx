@@ -17,7 +17,7 @@ const AuthInput = ({ type, placeholder, required, iconClass, value, onChange,inp
         required={ required }
         value={ value }
         onChange={ onChange }
-        className='w-[100%] bg-adminTextDark rounded-[8px] outline-none border-none text-[16px] text-text-white' 
+        className='w-[100%] bg-adminTextDark rounded-[8px] outline-none border-none text-[14px] text-text-white py-[10px] px-[10px] 648:py-[6px]' 
       />
 
       {type === 'password' ? 
