@@ -66,6 +66,7 @@ export default {
       '580':{'max':'580px'},
 
 
+      '648':{'max':'648px'},
       '685':{'max':'685px'},
 
       'smallTablet':{'max':'620px'} ,
