@@ -25,7 +25,7 @@ const HomeCarousel = ({ projectList }) => {
 
   return (
     <section>
-        <div className="slider w-full h-[700px] relative overflow-hidden">
+        <div className="slider w-full h-[600px] bigPhone:h-[480px] relative overflow-hidden">
 
             <div className="list">
                 {
@@ -37,11 +37,11 @@ const HomeCarousel = ({ projectList }) => {
                             <img 
                                 src={project.img} 
                                 alt={project.title}
-                                className='w-full h-full object-cover '
+                                className='w-full h-full  object-cover '
                             />
 
                             <div className="content absolute top-0 left-0 w-full  text-center z-10">
-                                <div className="description  text-6xl 685:text-4xl pt-7 text-text-white">
+                                <div className="description  text-6xl 685:text-3xl  pt-7 text-text-white">
                                     <span className='capitalize'>{project.title}</span>
                                 </div>
 
@@ -61,7 +61,7 @@ const HomeCarousel = ({ projectList }) => {
                 {
                     projectList && projectList.map( project  => 
                         <div 
-                            className="thumbItem w-[150px] h-[220px] shrink-0 relative rounded-[20px] overflow-hidden"
+                            className="thumbItem w-[150px] h-[220px] bigPhone:h-[180px] bigPhone:w-[120px] shrink-0 relative rounded-[20px] overflow-hidden"
                             key={project.id}
                         >
                             <img 
