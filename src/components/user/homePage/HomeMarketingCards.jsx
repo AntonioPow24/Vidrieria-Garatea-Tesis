@@ -40,7 +40,7 @@ const HomeMarketingCards = () => {
 
 
           <div className="flex  1570:items-center flex-col pt-4 gap-6">
-            <h3 className='text-text-white text-[35px] tablet:text-center'>
+            <h3 className='text-text-white text-[30px] tablet:text-center'>
               Conoce todos nuestros <span className='text-skyBlueApp font-medium'>productos!</span>
             </h3>
 
