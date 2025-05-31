@@ -117,9 +117,6 @@ export const useAddProductForm = (methodForm, productId) => {
         return file;
     };
 
-    useEffect(() =>{
-        console.log("Producto ha sido cambiado de estado a ", isDisabled);
-    },[isDisabled])
     return {
         productInfo,
         setProductInfo,

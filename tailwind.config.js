@@ -63,6 +63,7 @@ export default {
       'bigPhone':{'max':'520px'} ,
       // => @media (min-width: 768px) { ... }
 
+      '500':{'max':'500px'},
       '580':{'max':'580px'},
 
 
@@ -75,7 +76,7 @@ export default {
       '700':{'max':'700px'} ,
       
       '720':{'max':'720px'} ,
-      
+
       '722':{'max':'722px'} ,
 
       '730':{'max':'730px'} ,

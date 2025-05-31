@@ -7,41 +7,41 @@ const MarketingCard = ( { product } ) => {
   const { addProductToCart } = useCartContext()
 
   // Destructurar el product
-  const {productId,titleName,imageUrl,price} = product
+  const {id,titleName,images,price} = product
 
 
   // Estilos para el maquetado
 
-  const containerStyle='marketingCard pl-[16px] pr-[20px] py-3 flex max-w-[420px] h-[228px] rounded-[16px] '
+  const containerStyle='marketingCard p-[10px] flex  rounded-[16px] '
 
   const buttonStyle= 'bg-text-blueClient px-[16px] py-[7px] text-base text-text-white rounded-[6px] flex gap-3 items-center justify-center hover:bg-[#606bd1] transition-all duration-300'
 
   return (
-    <article className={`${containerStyle}`}>
-      <div className="flex max-w-[140px] min-w-[50px]">
+    <article className={`${containerStyle} 500:flex-col gap-2`}>
+      <div className="flex items-center justify-center w-[200px] h-[140px] 500:w-full">
         <img 
-            className='object-cover' 
-            src={imageUrl} 
+            className='object-contain w-full h-full' 
+            src={images?.[0].url} 
             alt={`imagen de ${titleName}`} 
         />
       </div>
 
-      <div className="flex flex-col justify-between py-2">
-        <div className='mt-6 flex flex-col gap-4 bigPhone:mt-0 '>
-          <h3 className='text-textDark  text-[17px] text-center font-bold bigPhone:text-[14px]'>{titleName}</h3>
+      <div className="flex flex-col justify-between gap-4">
+        <div className='flex flex-col gap-4 bigPhone:mt-0 '>
+          <h3 className='text-textDark  text-[16px] text-center bigPhone:text-[14px]'>{titleName}</h3>
 
           <div className="flex gap-3 items-center justify-center">
 
-            <span className='text-2xl bigPhone:text-xl'>{`S/. ${price.toFixed(2)}`}</span>
+            <span className='text-[14px]'>{`S/. ${price.toFixed(2)}`}</span>
 
           </div>
         </div>
 
         <button 
           className={`${buttonStyle}`}
-          onClick={ () => addProductToCart( productId, 1 ) }
+          onClick={ () => { if(id) return addProductToCart( id, 1 ) }}
         >
-          <span>Agregar al carrito</span>
+          <span className='580:text-[14px]'>Agregar al carrito</span>
           <i className="fa-solid fa-cart-shopping mt-[2px]"></i>
         </button>
 

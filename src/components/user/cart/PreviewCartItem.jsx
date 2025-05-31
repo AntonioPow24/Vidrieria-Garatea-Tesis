@@ -24,7 +24,6 @@ const PreviewCartItem = ({classComponent,id, quantity}) => {
       setIsLoadingDetails(true);
       try {
         const details = await getProductDetails(id, true);
-        console.log(details);
         
         setProductDetails(details);
         
