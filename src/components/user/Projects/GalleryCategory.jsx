@@ -12,10 +12,10 @@ const GalleryCategory = ({categoryFilter, categoryActive}) => {
             projectList.map( project => 
                 <button
                     key={project.id}
-                    className={` max-w-[333px] w-full py-[11px] rounded-[10px] border border-[#4d4d4d] ${project.title === categoryActive? 'bg-[#54BFE17D]' : 'bg-projectBg'} `}
+                    className={` max-w-[333px] w-full 722:max-w-[220px] py-[11px] 722:py-[8px] rounded-[10px] border border-[#4d4d4d] ${project.title === categoryActive? 'bg-[#54BFE17D]' : 'bg-projectBg'} `}
                     onClick={ () => changeCategory( project.title ) }
                 >
-                    <span className={`text-2xl capitalize ${project.title === categoryActive ? 'text-text-white': 'text-skyBlueApp'} `}>{project.title}</span>
+                    <span className={`text-2xl 722:text-[18px] capitalize ${project.title === categoryActive ? 'text-text-white': 'text-skyBlueApp'} `}>{project.title}</span>
                 </button>
 
                 

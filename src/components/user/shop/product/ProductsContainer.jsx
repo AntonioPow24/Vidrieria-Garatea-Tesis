@@ -1,4 +1,5 @@
 import { useUserProductsContext } from "../../../../context/ProductsContext/UserProductsContext"
+import Loader from "../../../shared/Loader"
 import LoaderBig from "../../../shared/LoaderBig"
 import ProductCard from "./ProductCard"
 
@@ -11,7 +12,7 @@ const ProductsContainer = () => {
     <section className='px-[65px] py-[54px] flex-1 580:px-[20px] max-h-[936px] overflow-y-auto containerProductsScroll'>
       {
         isLoadingProducts ?
-          <LoaderBig message={"Cargando productos"} />
+          <Loader message={"Cargando productos"} />
         :
         <div className="containerProducts">
           {

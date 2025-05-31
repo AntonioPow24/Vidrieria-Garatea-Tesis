@@ -101,7 +101,7 @@ const NavBar = () => {
 
     const navLinksStyle =` laptop:absolute  laptop:bg-[rgba(0,0,0,0.3)] laptop:backdrop-blur-[90px] laptop:top-[100%] laptop:left-0 laptop:w-full laptop:py-5 laptop:px-[2%] laptop:justify-center tabletMin:flex hidden items-center`
 
-    const navLinkResponsiveStyle = `${isMenuOpen? `flex flex-col absolute top-[100%] left-0 w-full py-5 px-[2%] ` : 'hidden'} `  
+    const navLinkResponsiveStyle = `${isMenuOpen? `flex flex-col absolute top-[100%] left-0 w-full py-5 px-[2%] bg-[#404040] ` : 'hidden'} `  
 
     const titleEnterprice = isMenuOpen || 'smallTablet:hidden'
 
@@ -127,12 +127,12 @@ const NavBar = () => {
                 </Link>
             </div>
 
-            <div className="flex items-center gap-14 bigTablet:gap-5">
+            <div className={`flex items-center 849:gap-[20px] gap-[30px]`}>
 
             
                 {/* Icono del menú para pantallas más pequeñas */}
                 <div className="tabletMin:hidden">
-                    <i className={`text-text-white text-3xl fa-solid  ${isMenuOpen? 'fa-x pr-4' : 'fa-bars'} cursor-pointer`} onClick={toggleMenu}></i>
+                    <i className={`text-text-white text-2xl fa-solid  ${isMenuOpen? 'fa-x pr-4' : 'fa-bars'} cursor-pointer`} onClick={toggleMenu}></i>
                 </div>
 
 
@@ -156,11 +156,11 @@ const NavBar = () => {
 
 
                 {/* CARRITO Y PERFIL */}
-                <div className={`flex items-center text-text-white gap-8 ${isMenuOpen && 'hidden'} `}>
+                <div className={`flex items-center text-text-white gap-[20px] ${isMenuOpen && 'hidden'} `}>
 
                     <div>
                         <i 
-                            className=" text-3xl fa-solid fa-cart-shopping cursor-pointer"
+                            className=" text-2xl fa-solid fa-cart-shopping cursor-pointer"
                             onClick={ toggleCart }
                         ></i>
 
@@ -181,8 +181,8 @@ const NavBar = () => {
                         className="flex gap-2 items-center cursor-pointer relative"
                         onClick={sesionVerify}
                     >
-                        <i className="text-3xl fa-regular fa-circle-user"></i>
-                        <span className='text-xl smallPhone:hidden iniciar-sesion-text'> 
+                        <i className="text-2xl fa-regular fa-circle-user"></i>
+                        <span className='text-xl bigPhone:hidden iniciar-sesion-text'> 
                             {
                                 user ? user.userName? user.userName : user.email : 'Iniciar Sesion'
 

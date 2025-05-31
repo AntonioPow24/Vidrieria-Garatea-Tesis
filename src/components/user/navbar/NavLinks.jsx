@@ -32,7 +32,7 @@ const NavLinks = ({navLinksStyle , linksClient , dropDowns, setDropDowns ,handle
                             onClick={ () => handleLinkClick( link )}
                         >
                             <span 
-                                className='capitalize  text-2xl'
+                                className='capitalize  text-xl'
 
                             >
                                 {link}
