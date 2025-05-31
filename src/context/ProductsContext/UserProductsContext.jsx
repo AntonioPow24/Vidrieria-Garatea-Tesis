@@ -61,9 +61,7 @@ const UserProductsContextProvider = ({ children }) => {
 
             const response = await axios.get(`${apiUrl}/product/${id}`);
             const data = response.data;
-            console.log(response);
             
-
             productCache.current[id] = data; 
             
             await timer;
