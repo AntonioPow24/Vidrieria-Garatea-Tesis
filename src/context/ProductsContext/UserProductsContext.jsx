@@ -99,20 +99,20 @@ const UserProductsContextProvider = ({ children }) => {
 
 
     // todo FETCH al backend PARA TRAERME LOS MEJORES 2 PRODUCTOS
-    const twoTopProducts = () => {
+    const twoTopProducts = async () => {
 
-        if(dataProducts.length <= 2) return dataProducts
+        const apiUrl = getApiUrl();
 
-        // Ordenar el array por valorization, en caso de empate, por precio
-        dataProducts.sort((a,b) => {
-            if(a.valorization === b.valorization){
-                return b.price - a.price
-            }
-    
-            return b.valorization - a.valorization
-        })
-    
-        return dataProducts.slice(0,2)
+        try {
+            const { data } = await axios.get(`${apiUrl}/report/topProducts`, 
+            );
+
+            const top = data.result || [];
+            return top.slice(0, 2);
+        } catch (err) {
+            console.error("Error fetching top products:", err);
+            return [];
+        }
     }
 
 

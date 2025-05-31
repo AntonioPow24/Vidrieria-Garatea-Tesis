@@ -11,7 +11,6 @@ export const useLogout = () => {
   const logout = async () => {
     try {
       if (cart.length > 0 && typeof saveCartToDatabase === "function") {
-        console.log("El carrito tiene productos");
         await saveCartToDatabase();
       }
     } catch (error) {

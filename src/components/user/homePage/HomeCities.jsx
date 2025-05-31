@@ -11,7 +11,7 @@ const HomeCities = () => {
     <section className={`${containerStyle}`}>
 
         <div className={`${flexCenterStyle} max-w-[593px] smallDesktop:max-w-full `}>
-            <p className='text-text-white text-[55px] leading-tight smallDesktop:text-center 685:text-[40px] bigPhone:text-3xl'>
+            <p className='text-text-white text-[50px] 1000:text-[40px] leading-tight smallDesktop:text-center 685:text-[40px] bigPhone:text-3xl'>
                 Brindamos 
                 <span className='text-text-blueClient'> servicio de vidrieria </span>
                 en localidades como:
