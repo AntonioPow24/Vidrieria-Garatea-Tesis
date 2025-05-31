@@ -10,14 +10,14 @@ const PaidStepsComplete = () => {
       <div className='flex gap-2 580:flex-col 580:gap-6'>
         <div className=' w-[240px] h-[300px] rounded-[10px] overflow-hidden'>
           <img 
-            src="https://i.ibb.co/VZtxcsD/Frame-5.png" 
+            src="https://i.postimg.cc/Hs2pfqn2/Step1.png" 
             alt=""
             className='w-full h-full object-cover' 
           />
         </div>
         <div className=' w-[240px] h-[300px] rounded-[10px] overflow-hidden'>
           <img 
-            src="https://i.ibb.co/Jjwfp6Ln/Frame-6-2.png" 
+            src="https://i.postimg.cc/fTZzqzzy/Step2.png" 
             alt=""
             className='w-full h-full object-cover' 
           />
