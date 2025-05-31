@@ -69,8 +69,8 @@ const AuthForm = ({ methodForm,closeAuth }) => {
 
 
   return (
-    <div className={`formBox z-10 ${methodForm}`}>
-        <form className={`formAuth ${ methodForm === 'register' && 'register' } `}>
+    <div className={`formBox px-[40px] 648:px-[20px] z-10 ${methodForm}`}>
+        <form className={`formAuth flex flex-col gap-[20px] ${ methodForm === 'register' && 'register' } `}>
             <h2 className='text-[32px] font-medium text-text-white'>{methodForm === 'login'? 'Ingresar' : 'Registrarse'}</h2>
             
 
@@ -97,7 +97,7 @@ const AuthForm = ({ methodForm,closeAuth }) => {
                 />
 
                 {methodForm === "register" && (
-                    <ul className="flex gap-[25px] flex-wrap">
+                    <ul className="flex gap-[12px] flex-wrap">
                         <PasswordCondition condition={conditions.hasUpperCase} label="1 mayúscula" antoherClass='text-[12px]'/>
                         <PasswordCondition condition={conditions.hasLowerCase} label="1 minúscula" antoherClass='text-[12px]'/>
                         <PasswordCondition condition={conditions.hasMinLength} label="min. 8 caracteres" antoherClass='text-[12px]'/>
@@ -136,14 +136,16 @@ const AuthForm = ({ methodForm,closeAuth }) => {
 
 
             <button
-                className={`w-[100%] h-[48px] ${
+                className={`w-[100%] h-[48px] 648:h-[36px] ${
                         isFormValid ? "bg-[#48acca] hover:bg-[#59c5e6]" : "bg-gray-400 cursor-not-allowed"
-                        }] rounded-[8px] border-none shadow-sm cursor-pointer font-medium text-text-white transition-all duration-300 text-[20px]`} 
+                        }] rounded-[8px] border-none shadow-sm cursor-pointer font-medium text-text-white transition-all duration-300`} 
                 type="submit" 
                 disabled={loading || !isFormValid}
                 onClick={ handleSubmit }
             >
-                <span>{loading ? 'Cargando...' : methodForm ==='login' ? 'Iniciar sesión' : 'Crear cuenta'}</span> 
+                <span className='text-[18px] 648:text-[14px]'>
+                    {loading ? 'Cargando...' : methodForm ==='login' ? 'Iniciar sesión' : 'Crear cuenta'}
+                </span> 
             </button>
 
         </form>

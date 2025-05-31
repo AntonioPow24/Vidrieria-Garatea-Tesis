@@ -14,7 +14,7 @@
         @apply text-[14px] dark:text-[#c5c5c58a] transition-all duration-300
     }
     .formBox{
-        @apply absolute w-[50%] h-[100%] right-0 flex items-center text-center text-textDark px-[40px]
+        @apply absolute w-[50%] h-[100%] right-0 flex items-center text-center text-textDark
     }
 
     .formAuth{
@@ -22,7 +22,7 @@
     }
 
     .inputBox{
-        @apply relative my-[25px]
+        @apply relative
     }
 
     .fieldOnTableAdmin{
