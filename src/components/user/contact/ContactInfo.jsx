@@ -6,12 +6,7 @@ const ContactInfo = () => {
       <div className='w-[480px] flex flex-col justify-between'>
         
         <div className='flex justify-between items-center 849:flex-col 849:gap-[1.4em]'>
-              <div className='flex flex-col w-[220px] gap-[8px] p-[12px] bg-[#1a1a1a] rounded-[8px] transition-all duration-300 hover:translate-y-[-4px] 849:w-full 849:items-center'>
-                    <span className='text-[#F9F9F9A8] text-[20px] cursor-default'>Razón social</span>
-                    <span className='text-[16px] text-text-white cursor-default'>Vidriería Garatea E.I.R.L</span>
-              </div>
-
-              <div className='flex flex-col w-[220px] gap-[8px] p-[12px] bg-[#1a1a1a] rounded-[8px] transition-all duration-300 hover:translate-y-[-4px] 849:w-full justify-center 849:items-center'>
+              <div className='flex flex-col w-full gap-[8px] p-[12px] bg-[#1a1a1a] rounded-[8px] transition-all duration-300 hover:translate-y-[-4px] 849:w-full 849:items-center'>
                     <span className='text-[#F9F9F9A8] text-[20px] cursor-default'>Razón social</span>
                     <span className='text-[16px] text-text-white cursor-default'>Vidriería Garatea E.I.R.L</span>
               </div>
