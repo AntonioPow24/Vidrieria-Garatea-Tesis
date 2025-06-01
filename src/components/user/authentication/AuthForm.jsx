@@ -3,11 +3,12 @@ import { useAuth } from '../../../context/UserContext';
 import AuthInput from './AuthInput'
 import PasswordCondition from '../profile/main/PasswordCondition';
 import { usePasswordValidation } from '../../../hooks/ProfileHooks/usePasswordValidation';
+import SmallLoader from '../../shared/AdminLoaders/SmallLoader';
 
 
 const AuthForm = ({ methodForm,closeAuth }) => {
 
-    const { login,register, error, loading } = useAuth();
+    const { login,register, error, clearError, loading } = useAuth();
 
     const { conditions, validatePassword } = usePasswordValidation();
 
@@ -24,7 +25,12 @@ const AuthForm = ({ methodForm,closeAuth }) => {
 
 
     
-    // Usar useEffect para validar la contraseña solo cuando el usuario escriba
+    useEffect(() => {
+        if (!error) return;
+        const t = setTimeout(() => clearError(), 3000);
+        return () => clearTimeout(t);
+    }, [error, clearError]);
+
     useEffect(() => {
         if (methodForm === 'register') {
         setIsPasswordValid(validatePassword(formData.password));
@@ -138,14 +144,24 @@ const AuthForm = ({ methodForm,closeAuth }) => {
             <button
                 className={`w-[100%] h-[48px] 648:h-[36px] ${
                         isFormValid ? "bg-[#48acca] hover:bg-[#59c5e6]" : "bg-gray-400 cursor-not-allowed"
-                        }] rounded-[8px] border-none shadow-sm cursor-pointer font-medium text-text-white transition-all duration-300`} 
+                        }] rounded-[8px] border-none shadow-sm cursor-pointer font-medium text-text-white transition-all duration-300 relative`} 
                 type="submit" 
                 disabled={loading || !isFormValid}
                 onClick={ handleSubmit }
             >
                 <span className='text-[18px] 648:text-[14px]'>
-                    {loading ? 'Cargando...' : methodForm ==='login' ? 'Iniciar sesión' : 'Crear cuenta'}
+                    {loading ? 
+                        <SmallLoader message={"Iniciando sesión"} colorText='text-text-white'/> : 
+                            methodForm ==='login' ? 
+                                'Iniciar sesión' : 'Crear cuenta'
+                    }
                 </span> 
+
+                <div className='absolute top-full flex justify-center w-full mt-1'>
+                    <span className='text-logOut text-[14px]'>
+                        {error && error}
+                    </span>
+                </div>
             </button>
 
         </form>

@@ -35,7 +35,7 @@ export const UserProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-
+    const clearError = () => setError(null);
 
     const initializeUser = async () => {
       const apiUrl = getApiUrl();
@@ -108,7 +108,16 @@ export const UserProvider = ({ children }) => {
 
 
   return (
-      <UserContext.Provider value={{ user, login, register, loading, error, setUser }}>
+      <UserContext.Provider 
+        value={{ 
+          user, 
+          login, 
+          register, 
+          loading, 
+          error, 
+          setUser,
+          clearError, 
+        }}>
           {children}
       </UserContext.Provider>
   );
