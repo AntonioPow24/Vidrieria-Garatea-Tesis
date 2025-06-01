@@ -85,6 +85,11 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#acb8e7",endCo
 }
 
 .containerProductsScroll {
+  max-height: none !important;
+  overflow-y: visible !important;
+}
+
+.containerProductsScroll {
     overflow-y: auto; 
 }
 

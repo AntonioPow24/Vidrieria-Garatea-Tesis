@@ -11,7 +11,7 @@ const ShopCategoryFilter = ({ id, nameCategory, titleCategory, changeCategory })
       onClick={ () => changeCategory( nameCategory ) }
     >
         <span 
-            className={` capitalize text-xl cursor-pointer categoryFilterSpan transition-all duration-300 ${id === currentCategory ? 'text-textDark' : 'text-text-white'  } smallTablet:text-[14px]`}
+            className={` capitalize text-[16px] cursor-pointer categoryFilterSpan transition-all duration-300 ${id === currentCategory ? 'text-textDark' : 'text-text-white'  } smallTablet:text-[14px]`}
         >
             { titleCategory }
         </span>
