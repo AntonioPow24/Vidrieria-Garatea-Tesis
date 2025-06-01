@@ -38,7 +38,7 @@ const ShopCategory = () => {
       
       <ShopHeader title={ category?.titleCategory } />
 
-      <main className='flex bg-appBgBlack bigTablet:flex-col '>
+      <main className='flex bg-appBgBlack 1070:flex-col '>
             <ShopAside 
               changeCategory={ handleChangeCategory } 
               allCategories={ allCategories }

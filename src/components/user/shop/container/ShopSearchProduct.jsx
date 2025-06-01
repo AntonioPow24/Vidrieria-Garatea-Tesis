@@ -12,11 +12,11 @@ const ShopSearchProduct = ({ containerStyle }) => {
 
   return (
     <div className={ containerStyle }>
-      <i className="fa-solid fa-magnifying-glass text-[22px] text-adminTextWhite dark:text-adminTextWhite transition-all duration-300"></i>
+      <i className="fa-solid fa-magnifying-glass text-[16px] text-adminTextWhite dark:text-adminTextWhite transition-all duration-300"></i>
 
       <input 
       type="text" 
-      className="h-full w-full border-none bg-transparent outline-none text-adminTextDark  text-xl transition-all duration-300"
+      className="h-full w-full border-none bg-transparent outline-none text-adminTextDark  text-[16px] transition-all duration-300"
       placeholder="Buscar producto por nombre"
       value={ searchQuery }
       onChange={ handleSearch }

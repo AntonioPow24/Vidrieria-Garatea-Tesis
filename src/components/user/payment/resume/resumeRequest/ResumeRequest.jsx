@@ -30,7 +30,7 @@ const ResumeRequest = () => {
   } = useResumeRequest(); 
 
   return (
-    <section className='flex flex-col p-[20px] bg-[#1B1B1B] rounded-[8px] gap-[22px] justify-between smallTablet:max-w-full'>
+    <section className='flex flex-col p-[20px] bg-[#1B1B1B] rounded-r-[8px] gap-[22px] justify-between smallTablet:max-w-full 580:rounded-[8px]'>
           <RequestDelivery
             allCities={ allCities }
             city={ city }

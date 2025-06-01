@@ -24,7 +24,7 @@ const RequestDelivery = ({ deliveryMethod, setCity, deliveryCost, handleDelivery
             </label>
           </div>
 
-          <div className=' w-full flex justify-start gap-[20px] h-[34px] smallTablet:gap-[4px]'>
+          <div className=' w-full flex justify-start gap-[20px] h-[34px] smallTablet:gap-[4px] 430:flex-col 430:h-full'>
             <label className='text-text-white text-[14px] flex items-center gap-2 smallTablet:text-[12px]'>
                 <input 
                 type="radio" 
@@ -38,7 +38,7 @@ const RequestDelivery = ({ deliveryMethod, setCity, deliveryCost, handleDelivery
 
             {/* EN CASO SE ESCOGA DOMOCILIO */}
             {deliveryMethod === 'domicilio' && (
-              <div className='flex gap-4 rounded-[6px] overflow-hidden flex-1 px-1 bg-[#3D3D3D] z-20'>
+              <div className='flex gap-4 rounded-[4px] overflow-hidden flex-1 px-1 bg-[#3D3D3D] z-20 430:mt-2 430:py-[2px]'>
                   <select 
                     className='p-[5px] text-text-white border-none  outline-none text-[14px] overflow-hidden smallTablet:text-[12px] flex-1 bg-transparent'
                     onChange={(e) => setCity(Number(e.target.value))}

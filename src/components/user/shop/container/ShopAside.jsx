@@ -7,10 +7,10 @@ const ShopAside = ({ changeCategory, allCategories }) => {
 
 
 
-    const searhStyle = 'flex gap-3 items-center rounded-[6px] max-w-[542px] w-full h-[42px] bg-adminBgWhite px-[10px] transition-all duration-300'
+    const searhStyle = 'flex gap-3 items-center rounded-[6px] w-full h-[42px] bg-adminBgWhite px-[10px] transition-all duration-300'
 
     return (
-      <aside className=' py-[26px] flex flex-col gap-[40px] bg-[#232323] max-w-[480px] w-full  bigTablet:max-w-full overflow-hidden'>
+      <aside className=' py-[26px] flex flex-col gap-[20px] bg-[#232323] bigTablet:max-w-full overflow-hidden'>
         
         <div className="flex gap-4 px-[16px] items-center bigTablet:justify-center">
   
@@ -18,7 +18,7 @@ const ShopAside = ({ changeCategory, allCategories }) => {
         </div>
   
   
-        <div className='flex flex-col tablet:flex-row tablet:gap-4 tablet:overflow-x-auto filterCategoriesScroll'>
+        <div className='flex flex-col tablet:flex-row tablet:gap-4 tablet:overflow-x-auto filterCategoriesScroll min-w-[400px] 950'>
           {
             allCategories.map( category => 
               <ShopCategoryFilter 
