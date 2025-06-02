@@ -8,11 +8,9 @@ import { getApiUrl } from '../../utils/getApiURL';
 // TODO: EN LA CITY, YA NO MANDAMOS STRING, MANDAMOS CITYID
 
 const useResumeRequest = () => {
-  const { cart, setCart } = useCartContext();
+  const { cart, setCart, total } = useCartContext();
 
   const { addRequest } = useRequestsContext();
-
-  const { total } = useCartContext()
 
   const { getProductDetails } = useUserProductsContext()
 
@@ -114,7 +112,7 @@ const useResumeRequest = () => {
     };
     
     await addRequest(newRequest, navigate)
-
+    localStorage.setItem("previewCart", JSON.stringify([]))
     setCart([]);
 
     setIsLoading(false);
