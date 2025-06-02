@@ -114,7 +114,7 @@ const useResumeRequest = () => {
     };
     
     await addRequest(newRequest, navigate)
-
+    localStorage.removeItem("previewCart");
     setCart([]);
 
     setIsLoading(false);
