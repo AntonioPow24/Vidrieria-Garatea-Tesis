@@ -9,7 +9,7 @@ const ProductsContainer = () => {
     
 
   return (
-    <section className='px-[65px] py-[54px] flex-1 580:px-[20px] max-h-[936px] overflow-y-auto containerProductsScroll'>
+    <section className='px-[30px] py-[54px] 1070:pt-0 1070:pb-[20px] flex-1 580:px-[20px] max-h-[936px]  containerProductsScroll'>
       {
         isLoadingProducts ?
           <Loader message={"Cargando productos"} />

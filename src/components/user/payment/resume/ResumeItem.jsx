@@ -33,7 +33,7 @@ const ResumeItem = ({ id, quantity }) => {
 // TODO ARREGLAR EL SIMBOLO, DEBE SER MAYOR O IGUAL
 
   return (
-    <article className='flex gap-[40px] border-b border-textWhiteTransparent 290 py-[20px] justify-between 580:flex-col 580:gap-[6px] '>
+    <article className='flex gap-[40px] border-b border-textWhiteTransparent 290 py-[20px] justify-between 580:flex-col 580:gap-[6px]'>
       <div className='flex gap-[20px] min-w-[340px] 580:max-w-full 580:min-w-[200px] 580:gap-[10px]'>
             <div className='w-[118px] h-[100px] flex justify-center bg-appBgBlack rounded-[6px] py-[4px] 580:h-[90px] 580:w-[106px]'>
                 <img 

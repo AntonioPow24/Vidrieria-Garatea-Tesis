@@ -14,7 +14,9 @@ const RequestContainer = () => {
     
   const [selectedStatus, setSelectedStatus] = useState("Pendientes") 
 
-  const filteredRequest = requests.filter(request => {
+  const filteredRequest = requests
+  .sort((a, b) => new Date(b.createdDate) - new Date(a.createdDate))
+  .filter(request => {
     const statusMap = {
       Pendientes: "PENDIENTE",
       Completados: "COMPLETADO",

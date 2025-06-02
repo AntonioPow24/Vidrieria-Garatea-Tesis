@@ -58,6 +58,8 @@ export default {
 
       '430':{'max':'430px'},
 
+      '442':{'max': '442px'},
+
       '455':{'max':'455px'},
 
       'bigPhone':{'max':'520px'} ,

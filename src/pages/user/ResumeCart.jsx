@@ -25,17 +25,19 @@ const ResumeCart = () => {
   }, [cart, navigate]);
 
   return (
-    <section>
+    <>
       {
         user ?
-          <section className='pt-[117px] bg-appBgBlack flex justify-center 849to1480:pt-[232px]'>
-            <ResumeItems />
-            <ResumeRequest />
+          <section className='pt-[120px] pb-[44px] bg-appBgBlack flex justify-center 849to1480:pt-[232px] smallTablet:px-4'>
+            <div className='flex gap-[20px] 1070:flex-col 580:w-full'>
+              <ResumeItems />
+              <ResumeRequest />
+            </div>
           </section>
           :
           <Navigate to={'/'} />
       }
-    </section>
+    </>
   )
 }
 
