@@ -20,7 +20,7 @@ const HomeServices = () => {
   return (
     <section className='px-[7%] pt-[50px]  pb-[120px] flex flex-col  gap-[56px]'>
 
-        <h3 className='text-text-white text-[55px] text-center pl-8 smallDesktop:text-[45px]'>
+        <h3 className='text-text-white text-[55px] text-center pl-8 smallDesktop:text-[45px] 442:pl-0'>
             Conoce nuestros
             <span className='text-text-blueClient'> servicios!</span>
         </h3>
