@@ -187,30 +187,30 @@ const CartContextProvider = ({children}) =>{
         return;
       }
 
-    const fetchCartFromDatabase = async () => {
-      const apiUrl = getApiUrl();
-      
-      try {
-          const token = localStorage.getItem("authToken");
-          if (!token) return
+      const fetchCartFromDatabase = async () => {
+        const apiUrl = getApiUrl();
+        
+        try {
+            const token = localStorage.getItem("authToken");
+            if (!token) return
 
-          const { data } = await axios.get(`${apiUrl}/shoppingCart`, {
-            headers: { Authorization: `Bearer ${token}` }
-          })
+            const { data } = await axios.get(`${apiUrl}/shoppingCart`, {
+              headers: { Authorization: `Bearer ${token}` }
+            })
 
-          const previewItems = data.shoppingCartItems.map(item => ({
-            id: item.productId,
-            quantity: item.quantity
-          }));
+            const previewItems = data.shoppingCartItems.map(item => ({
+              id: item.productId,
+              quantity: item.quantity
+            }));
 
-          setCart(previewItems);
-          localStorage.setItem("previewCart", JSON.stringify(previewItems))
+            setCart(previewItems);
+            localStorage.setItem("previewCart", JSON.stringify(previewItems))
 
-        } catch (err) {
-          console.error("Error fetching cart from DB", err);
-          setCart([])
-        } 
-    };
+          } catch (err) {
+            console.error("Error fetching cart from DB", err);
+            setCart([])
+          } 
+      };
 
       fetchCartFromDatabase();
 
