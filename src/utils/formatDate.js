@@ -32,3 +32,11 @@ export const getCurrentDateBanner = () => {
 
   return `${mes} ${dia}, ${año} ${horas}:${minutos}${periodo}`;
 }
+
+export const getHoursMinutes = (date) => {
+  const parsedDate = new Date(date);
+  const hours = parsedDate.getHours().toString().padStart(2, '0');
+  const minutes = parsedDate.getMinutes().toString().padStart(2, '0');
+
+  return `${hours}:${minutes} ${hours >= 12 ? 'pm' : 'am'}`;
+}
