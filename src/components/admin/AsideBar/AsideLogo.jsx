@@ -2,7 +2,7 @@ const AsideLogo = () => {
     return (
       <div className="flex py-[37px] px-[28px] gap-2">
           <div className="flex justify-center items-center w-[52px]">
-              <img src='/public/VidrieriaGarateaLogo.png' alt="" />
+              <img src='https://i.postimg.cc/cJ15ZVKL/Vidrieria-Garatea-Logo.png' alt="" />
           </div>
   
           <div className="flex flex-col gap-1 items-left justify-center transition-all duration-300">

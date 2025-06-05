@@ -3,12 +3,18 @@ import { STATUS_REQUEST_CODES } from '../../../../../data/adminData'
 import Modal from '../../../../shared/Modal'
 import { useAdminRequestContext } from '../../../../../context/AdminRequestContext/AdminRequestContext'
 import SmallLoader from '../../../../shared/AdminLoaders/SmallLoader'
+import { useAdminUsersContext } from '../../../../../context/AdminUsersContext/AdminUsersContext'
+import { useAdminProductsContext } from '../../../../../context/ProductsContext/AdminProductsContext'
+import { buildRequestPDFPayload } from '../../../../../utils/buildRequestPDFPayload'
+import AdminRequestCardCreatePDF from './AdminRequestCardCreatePDF'
 
 const AdminRequestCardActions = ({
-    id,
-    status,
+    request
 }) => {
     const { updateRequestState } = useAdminRequestContext()
+    const { users } = useAdminUsersContext()
+    const { products } = useAdminProductsContext()
+
     const [actionModalConfirm, setActionModalConfirm] = useState(false)
     const [statusToChangueMessage, setStatusToChangueMessage] = useState("")
     
@@ -53,6 +59,8 @@ const AdminRequestCardActions = ({
 
     }
 
+    const { id, status } = request
+
   return (
     <div className='flex justify-between items-center gap-[12px]'>
         { status === STATUS_REQUEST_CODES.PENDING_REQUEST_CODE ?
@@ -76,14 +84,11 @@ const AdminRequestCardActions = ({
                 </div>
             </>
             :   status === STATUS_REQUEST_CODES.COMPLETED_REQUEST_CODE &&
-                <div className='flex w-full'>
-                    <button 
-                        className='transition-all duration-300 bg-[#e7e7e7] dark:bg-[#303030] text-adminTextDark dark:text-adminTextWhite rounded-[4px] py-2 text-[14px] hover:bg-[#d7d7d7] dark:hover:bg-[#404040] w-full flex items-center gap-[10px] justify-center'
-                    >
-                        <i className="fa-solid fa-download"></i>
-                        <span>Descargar PDF</span>
-                    </button>
-                </div>
+                <AdminRequestCardCreatePDF 
+                    products={products}
+                    request={request}
+                    users={users}
+                />
         }
 
         {

@@ -16,7 +16,7 @@ const AdminRequestCard = ({request}) => {
             {
               request.status !== STATUS_REQUEST_CODES.CANCELLED_REQUEST_CODE &&
                 <AdminRequestCardActions
-                  {...request}
+                  request={request}
                 />
             }
     </article>
