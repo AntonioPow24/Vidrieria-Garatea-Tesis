@@ -27,21 +27,26 @@ export const useAddProductForm = (methodForm, productId) => {
                     
                     if (!product) return
 
-                        const logicDisabled = product.status === 0 ? true : false
-        
-                        setProductInfo({
-                            titleName: product.titleName || "",
-                            description: product.description || "",
-                            price: product.price || 0,
-                            stock: product.stock || 0,
-                            categoryId: product.categoryId || 0,
-                            file: null,
-                        })
-                        setImagePreview(product.images?.[0]?.url || null,)
-                        setIsDisabled(logicDisabled)
+                    const logicDisabled = product.status === 0 ? true : false
+    
+                    setProductInfo({
+                        titleName: product.titleName || "",
+                        description: product.description || "",
+                        price: product.price || 0,
+                        stock: product.stock || 0,
+                        categoryId: product.categoryId || 0,
+                        file: null,
+                    })
+                    setImagePreview(product.images?.[0]?.url || null,)
+                    setIsDisabled(logicDisabled)
 
-                    if (product.images?.[0]?.url) {
-                        const file = await convertUrlToFile(product.images[0].url, "image.jpg");
+                    const rawUrl = product.images?.[0]?.url || ""
+                    const secureUrl = rawUrl.startsWith("https")
+                    ? rawUrl
+                    : rawUrl.replace(/^http:\/\//, "https://")
+
+                    if (secureUrl) {
+                        const file = await convertUrlToFile(secureUrl, "image.jpg");
                         if(file) {
                             setProductInfo((prevState) => ({
                                 ...prevState,
@@ -72,6 +77,7 @@ export const useAddProductForm = (methodForm, productId) => {
             (methodForm === "editar" && !!imagePreview)
 
         setIsButtonDisabled(!(baseValid && hasImage));
+
     }, [productInfo]);
 
     const handleInputChange = (e) => {
