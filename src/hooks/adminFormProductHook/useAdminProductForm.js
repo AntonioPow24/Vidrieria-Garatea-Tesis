@@ -71,12 +71,13 @@ export const useAddProductForm = (methodForm, productId) => {
         price > 0 &&
         stock > 0 &&
         categoryId > 0
+        
+        const hasImage = 
+            (Array.isArray(file) && file.length > 0) ||
+            (methodForm === "editar" && !!imagePreview)
 
-        const hasImage =
-        (Array.isArray(file) && file.length > 0) ||
-        (methodForm === "editar" && !!imagePreview)
+        setIsButtonDisabled(!(baseValid && hasImage));
 
-        setIsButtonDisabled(!(baseValid && hasImage))
     }, [productInfo]);
 
     const handleInputChange = (e) => {
