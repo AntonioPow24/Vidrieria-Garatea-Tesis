@@ -25,7 +25,8 @@ export const useAddProductForm = (methodForm, productId) => {
                 try{
                     const product = await getProductDetailsById(productId)
                     
-                    if( product ) {
+                    if (!product) return
+
                         const logicDisabled = product.status === 0 ? true : false
         
                         setProductInfo({
@@ -38,9 +39,8 @@ export const useAddProductForm = (methodForm, productId) => {
                         })
                         setImagePreview(product.images?.[0]?.url || null,)
                         setIsDisabled(logicDisabled)
-                    }
 
-                    if (product.images?.[0]?.url && !productInfo.file) {
+                    if (product.images?.[0]?.url) {
                         const file = await convertUrlToFile(product.images[0].url, "image.jpg");
                         if(file) {
                             setProductInfo((prevState) => ({
@@ -60,9 +60,18 @@ export const useAddProductForm = (methodForm, productId) => {
 
     useEffect(() => {
         const { titleName, description, price, stock, categoryId, file } = productInfo
-        const isFormValid = titleName && description && price > 0 && stock > 0 && categoryId > 0 && file
+        const baseValid = 
+        !!titleName &&
+        !!description &&
+        price > 0 &&
+        stock > 0 &&
+        categoryId > 0
         
-        setIsButtonDisabled(!isFormValid);
+        const hasImage = 
+            (Array.isArray(file) && file.length > 0) ||
+            (methodForm === "editar" && !!imagePreview)
+
+        setIsButtonDisabled(!(baseValid && hasImage));
     }, [productInfo]);
 
     const handleInputChange = (e) => {
