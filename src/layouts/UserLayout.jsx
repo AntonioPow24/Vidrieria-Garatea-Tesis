@@ -9,6 +9,7 @@ import { useAuth } from '../context/UserContext'
 import CartContextProvider from '../context/CartContext'
 import UserProductsContextProvider from '../context/ProductsContext/UserProductsContext'
 import { getUserRole } from '../utils/decodeToken'
+import AutoScrollTop from '../components/shared/AutoScroll/AutoScrollTop'
 
 
 
@@ -26,7 +27,7 @@ const UserLayout = () => {
 
       <CartContextProvider>
         <div>
-
+          <AutoScrollTop />
           <NavBar />
             {userRole === 'ADMIN'? <Navigate to={'/ADMIN'}/> : <Outlet /> } 
           <Footer />
