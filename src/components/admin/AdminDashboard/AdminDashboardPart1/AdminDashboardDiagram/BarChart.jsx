@@ -81,7 +81,7 @@ const BarChart = ({ data }) => {
         name: 'Ventas realizadas',
         xAxis: xAxis,
         yAxis: yAxis,
-        valueYField: 'totalSalesByMonth',
+        valueYField: `totalSalesByMonth`,
         categoryXField: 'month',
         clustered: true,
         fill: am5.color("#54BFE1"),
@@ -91,16 +91,19 @@ const BarChart = ({ data }) => {
     );
     salesSeries.columns.template.setAll({
       fill: am5.color("#54BFE1"),
-      stroke: am5.color("#54BFE1")
+      stroke: am5.color("#54BFE1"),
+      width: am5.percent(100)
     });
     salesSeries.bullets.push(() => {
       return am5.Bullet.new(root, {
         locationY: 0.5,
         sprite: am5.Label.new(root, {
           text: "{valueY}",
-          centerY: am5.p50,
+          centerY: am5.percent(100),
           centerX: am5.p50,
-          populateText: true
+          populateText: true,
+          fill: am5.color("#ffffff"),
+          fontSize: 12
         })
       });
     });
@@ -120,16 +123,19 @@ const BarChart = ({ data }) => {
     );
     productsSeries.columns.template.setAll({
       fill: am5.color("#9D78E5"),
-      stroke: am5.color("#9D78E5")
+      stroke: am5.color("#9D78E5"),
+      width: am5.percent(70)
     });
     productsSeries.bullets.push(() => {
       return am5.Bullet.new(root, {
         locationY: 0.5,
         sprite: am5.Label.new(root, {
           text: "{valueY}",
-          centerY: am5.p50,
+          centerY: am5.percent(100),
           centerX: am5.p50,
-          populateText: true
+          populateText: true,
+          fill: am5.color("#ffffff"),
+          fontSize: 12
         })
       });
     });

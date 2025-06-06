@@ -3,6 +3,8 @@ import { useRequestsContext } from '../../../../context/RequestContext'
 import LoadingSpinner from '../../../shared/LoadingSpinner';
 import RequestDetailItem from './RequestDetailItem';
 import { useUserProductsContext } from '../../../../context/ProductsContext/UserProductsContext';
+import { Loader } from 'lucide-react';
+import SmallLoader from '../../../shared/AdminLoaders/SmallLoader';
 
 
 const detailTest = {
@@ -101,7 +103,7 @@ const RequestDetail = ( { orderId } ) => {
   return (
     <section className='z-[200] max-w-[520px] min-h-[100px] w-full bg-userDarkContrast flex flex-col justify-center items-center rounded-[12px] overflow-hidden 580:w-[340px] 580:rounded-[8px]'>
         {
-            isLoading ? <LoadingSpinner sizeSpinner={ '50' } />
+            isLoading ? <SmallLoader message={"Cargando detalles"} />
             : requestDetails &&
             <>
                 <div className='flex px-[14px] py-[15px] items-center justify-start w-full 580:px-[6px]'>

@@ -2,11 +2,13 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { useAdminDashboardContext } from "./AdminDashboardContext";
 import axios from "axios";
 import { getApiUrl } from "../../utils/getApiURL";
+import { useAdminProductsContext } from "../ProductsContext/AdminProductsContext";
 
 export const AdminDashboardStatsContext = createContext();
 
 const AdminDashboardStatsProvider = ({ children }) => {
     const {selectedMonth, selectedYear} = useAdminDashboardContext();
+    const {products} = useAdminProductsContext()
 
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -137,7 +139,7 @@ const AdminDashboardStatsProvider = ({ children }) => {
 
         fetchAllStats();
         
-  }, [selectedMonth, selectedYear]);
+  }, [selectedMonth, selectedYear, products]);
 
   return (
     <AdminDashboardStatsContext.Provider 
