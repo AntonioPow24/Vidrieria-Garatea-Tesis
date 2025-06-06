@@ -26,7 +26,7 @@ const RequestContainer = () => {
   });
 
   return (
-    <section className='py-[80px] px-[8%] bg-appBgBlack laptop:px-[0] flex flex-col gap-[30px]'>
+    <section className='py-[80px] px-[8%] 770:py-[20px] bg-appBgBlack laptop:px-[0] flex flex-col gap-[30px]'>
       
       <div className='flex  770:flex-col 770:gap-6'>
         <div className='flex max-w-[310px] w-full border-r border-textWhiteTransparent pb-[100px] 770to1480::max-w-[200px] 770:border-none 770:max-w-full 770:justify-center 770:pb-0'>
