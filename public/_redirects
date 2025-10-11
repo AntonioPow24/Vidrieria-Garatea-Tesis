@@ -1,2 +1,2 @@
 /*    /index.html   200
-/api/*  http://ecommercegaratea.somee.com/api/v1/:splat  200
+/api/*  http://ecommercegaratea.somee.com/api/:splat  200
