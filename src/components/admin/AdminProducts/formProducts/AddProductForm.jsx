@@ -122,7 +122,7 @@ const AddProductForm = ({ productId, methodForm, productStatus, closeModal }) =>
         <div className=" flex flex-col gap-[12px]">
           <label className="text-lg font-medium text-adminTextDark dark:text-adminTextWhite block">Categoría</label>
           <div className="grid grid-cols-3 md:grid-cols-3 gap-3">
-            {categoryProducts.map((cat) => (
+            {categoryProducts?.map((cat) => (
               <button
                 key={cat.id}
                 type="button"

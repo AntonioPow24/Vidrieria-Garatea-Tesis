@@ -76,7 +76,7 @@ const RequestDetail = ( { orderId } ) => {
                 setRequestDetails(response[0])
 
                 // Mapa para multiple fetch
-                const productDetailsPromises = response[0].orderItems.map( async item => getProductDetails(item.productId, true))
+                const productDetailsPromises = response[0].orderItems?.map( async item => getProductDetails(item.productId, true))
 
                 const productDetailsArray = await Promise.all(productDetailsPromises)
                 

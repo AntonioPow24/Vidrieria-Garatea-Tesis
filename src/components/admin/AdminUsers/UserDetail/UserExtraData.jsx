@@ -14,7 +14,7 @@ const UserExtraData = ({ totalBuy, roles }) => {
 
   return (
     <section className="flex w-full max-w-[430px] mx-auto gap-4">
-      {extraDataArray.map(({ id, label, value, valueClass, align }) => (
+      {extraDataArray?.map(({ id, label, value, valueClass, align }) => (
         <div
           key={id}
           className={`flex-1 flex flex-col justify-center items-center h-[96px]  ${align}  bg-userDetailBg rounded-[14px] px-[14px] py-[18px] gap-3`}

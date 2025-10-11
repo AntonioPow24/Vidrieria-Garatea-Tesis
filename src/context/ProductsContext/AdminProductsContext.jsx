@@ -60,7 +60,7 @@ export const AdminProductsProvider = ({ children }) => {
       });
       
       setProducts((prev) =>
-        prev.map((product) =>
+        prev?.map((product) =>
           product.id === productId ? { ...product, ...response.data } : product
         )
       );
@@ -82,7 +82,7 @@ export const AdminProductsProvider = ({ children }) => {
       })
 
       setProducts((prev) =>
-        prev.map((product) =>
+        prev?.map((product) =>
             product.id === productId ? { ...product, status: statusToUpdate } : product
           )
       );
@@ -99,7 +99,7 @@ export const AdminProductsProvider = ({ children }) => {
           Authorization: `Bearer ${localStorage.getItem('authToken')}`,
         },
       });
-      setProducts((prev) => prev.filter((product) => product.id !== productId));
+      setProducts((prev) => prev?.filter((product) => product.id !== productId));
     } catch (err) {
       setError('Error al eliminar el producto');
     }

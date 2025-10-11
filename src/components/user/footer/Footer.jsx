@@ -119,7 +119,7 @@ const Footer = () => {
 
                     <div className="flex flex-col gap-[13px]">
                         {
-                            celPhone.map( number => 
+                            celPhone?.map( number => 
                                 <Link
                                     to={`https://wa.me/${number}`}
                                     target='_blank'

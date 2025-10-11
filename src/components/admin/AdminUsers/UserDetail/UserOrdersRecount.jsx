@@ -25,7 +25,7 @@ const UserOrdersRecount = ({ completedOrders, pendingOrders, cancelledOrders }) 
   return (
     <section className='flex flex-col gap-[22px]'>
         {
-          statusOrdersArray.map(({ id, label, recount }) => 
+          statusOrdersArray?.map(({ id, label, recount }) => 
             <div 
               key={ id } 
               className='flex justify-center items-center py-[14px] rounded-[10px] bg-userDetailBg h-[58px]'
