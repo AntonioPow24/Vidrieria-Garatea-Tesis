@@ -20,7 +20,7 @@ const ShopAside = ({ changeCategory, allCategories }) => {
   
         <div className='flex flex-col tablet:flex-row tablet:gap-4 tablet:overflow-x-auto filterCategoriesScroll min-w-[400px] 950'>
           {
-            allCategories.map( category => 
+            allCategories?.map( category => 
               <ShopCategoryFilter 
                 { ...category } 
                 key={ category.id }  
