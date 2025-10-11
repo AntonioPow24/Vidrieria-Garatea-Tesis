@@ -15,8 +15,8 @@ const RequestContainer = () => {
   const [selectedStatus, setSelectedStatus] = useState("Pendientes") 
 
   const filteredRequest = requests
-  .sort((a, b) => new Date(b.createdDate) - new Date(a.createdDate))
-  .filter(request => {
+  ?.sort((a, b) => new Date(b.createdDate) - new Date(a.createdDate))
+  ?.filter(request => {
     const statusMap = {
       Pendientes: "PENDIENTE",
       Completados: "COMPLETADO",
@@ -31,7 +31,7 @@ const RequestContainer = () => {
       <div className='flex  770:flex-col 770:gap-6'>
         <div className='flex max-w-[310px] w-full border-r border-textWhiteTransparent pb-[100px] 770to1480::max-w-[200px] 770:border-none 770:max-w-full 770:justify-center 770:pb-0'>
             <nav className="flex flex-col gap-2  w-full 770:flex-row  ">
-              {statusOptions.map((status) => (
+              {statusOptions?.map((status) => (
                 <button
                   key={status}
                   onClick={() => setSelectedStatus(status)}
@@ -49,7 +49,7 @@ const RequestContainer = () => {
           <div className=' flex-1  px-[4%]  max-h-[655px] requestContainerScroll'>
               <div className='w-full h-full requestContainer'>
 
-                  {filteredRequest.map(request => <RequestCard {...request} key={request.id} />)}
+                  {filteredRequest?.map(request => <RequestCard {...request} key={request.id} />)}
               </div>
           </div>      
           : 

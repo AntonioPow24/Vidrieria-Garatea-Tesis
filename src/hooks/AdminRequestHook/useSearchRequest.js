@@ -7,7 +7,7 @@ const useSearchRequest = (requests, query) => {
 
   return useMemo(() => {
     if (!query) return requests;
-    return requests.filter(req => {
+    return requests?.filter(req => {
       const user = Array.isArray(users) && users.find(u => u.id === req.userId);
       const userName = user ? user.userName : "";
       return (

@@ -9,7 +9,7 @@ const useSearchUser = () => {
   useEffect(() => {
     if (users && users.length > 0) {
       const filterUsers = () => {
-        return users.filter(  user => {
+        return users?.filter(  user => {
             const matchesQuery = user.userName.toLowerCase().includes(query.toLowerCase()) || 
             user.email.toLowerCase().includes(query.toLowerCase()) ||
             user.lastName.toLowerCase().includes(query.toLowerCase());

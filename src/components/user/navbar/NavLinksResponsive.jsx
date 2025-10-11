@@ -20,7 +20,7 @@ const NavLinksResponsive = ({ navLinkResponsiveStyle, linksClient, handleMenuClo
     return (
         <div className={`${navLinkResponsiveStyle}  navLinksResponsive`}>
             <ul className="flex flex-col items-center justify-start h-screen py-10">
-                {linksClient.map((link) => (
+                {linksClient?.map((link) => (
                     <li key={link} className="my-4">
                         <Link 
                             to={`/${ link === 'inicio' ? '' : link }`}

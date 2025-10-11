@@ -66,7 +66,7 @@ export const AdminUsersProvider = ({ children }) => {
           Authorization: `Bearer ${localStorage.getItem('authToken')}`,
         },
       });
-      setUsers((prevUsers) => prevUsers.filter((user) => user.id !== id));
+      setUsers((prevUsers) => prevUsers?.filter((user) => user.id !== id));
     } catch (err) {
       setError('Error al eliminar el usuario');
     } finally {
