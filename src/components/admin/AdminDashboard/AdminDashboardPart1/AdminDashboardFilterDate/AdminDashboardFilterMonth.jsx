@@ -52,7 +52,7 @@ const { selectedMonth, selectMonth } = useDashboardFilterDate();
                 className='grid grid-cols-3 gap-[10px] p-[10px] absolute top-full bg-adminBgWhite dark:bg-appBgBlack rounded-[6px] mt-[6px]'
             >
                 {
-                MONTHS.map(({id, short, full}) => (
+                MONTHS?.map(({id, short, full}) => (
                     <div 
                     key={id} 
                     className={`flex justify-center items-center rounded-[4px] cursor-pointer px-[8px] py-[4px] ${selectedMonth === id ? "bg-dashboardPurpleBg text-text-white" : "bg-[#EBEBEB] dark:bg-adminTextDark text-adminTextDark dark:text-adminTextWhite"}`}

@@ -83,7 +83,7 @@ export const AdminRequestProvider = ({ children }) => {
         
         setRequests((prev) =>{
             
-            const updatedRequests = prev.map((request) =>{
+            const updatedRequests = prev?.map((request) =>{
             const statusLabelCheck = statusLabelMap.find((status) => status.code === newStatusCode);
             return request.id === id
                 ? { ...request, status: newStatusCode, statusLabel: statusLabelCheck.label  }

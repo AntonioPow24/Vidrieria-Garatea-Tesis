@@ -40,7 +40,7 @@ const CartContextProvider = ({children}) =>{
     // Función para incrementar la cantidad de un producto
     const increaseProductCount = (id) => {
         setCart(prevCart => {
-          const updatedCart = prevCart.map(item => {
+          const updatedCart = prevCart?.map(item => {
             if (item.id === id) {
               return {
                 ...item,
@@ -60,7 +60,7 @@ const CartContextProvider = ({children}) =>{
     // Función para disminuir la cantidad de un producto
     const decreaseProductCount = (id) => {
         setCart(prevCart => {
-        const updatedCart = prevCart.map(item => {
+        const updatedCart = prevCart?.map(item => {
             if (item.id === id && item.quantity > 1) {
             return {
                 ...item,
@@ -79,7 +79,7 @@ const CartContextProvider = ({children}) =>{
 
     //Funcion para Eliminar un producto del Preview Carrito
     const deleteProduct = (id) => setCart( prevCart => {               
-        const updatedCart = prevCart.filter( item => item.id !== id)
+        const updatedCart = prevCart?.filter( item => item.id !== id)
 
         saveCartToLocalStorage(updatedCart);
 
@@ -90,12 +90,12 @@ const CartContextProvider = ({children}) =>{
     const addProductToCart = ( id, quantity ) => {
       setCart( prevCart => {
 
-        const existingProduct = prevCart.find( item => item.id === id )
+        const existingProduct = prevCart?.find( item => item.id === id )
         
         let updatedCart
 
         if( existingProduct ){
-          updatedCart = prevCart.map( item => 
+          updatedCart = prevCart?.map( item => 
             item.id === id 
               ? { ...item, quantity: item.quantity + quantity }
               : item
@@ -119,7 +119,7 @@ const CartContextProvider = ({children}) =>{
     const calculateTotal = async () => {
       try {
         const productDetails = await Promise.all(
-          cart.map(item => getProductDetails(item.id, true))
+          cart?.map(item => getProductDetails(item.id, true))
         );
 
         const total = productDetails.reduce((acc, product, index) => {

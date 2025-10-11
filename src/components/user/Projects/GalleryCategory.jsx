@@ -9,7 +9,7 @@ const GalleryCategory = ({categoryFilter, categoryActive}) => {
   return (
     <div className="flex gap-5 justify-center flex-wrap">   
         {
-            projectList.map( project => 
+            projectList?.map( project => 
                 <button
                     key={project.id}
                     className={` max-w-[333px] w-full 722:max-w-[220px] py-[11px] 722:py-[8px] rounded-[10px] border border-[#4d4d4d] ${project.title === categoryActive? 'bg-[#54BFE17D]' : 'bg-projectBg'} `}

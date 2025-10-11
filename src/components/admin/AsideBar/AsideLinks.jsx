@@ -24,7 +24,7 @@ const AsideLinks = () => {
     <main>
       <div className="flex flex-col gap-2 transition-all duration-300">
         {
-          asideLinks.map( link => 
+          asideLinks?.map( link => 
             <LinkItem 
               key={ link.idLinks } 
               nameLink={ link.nameLink } 

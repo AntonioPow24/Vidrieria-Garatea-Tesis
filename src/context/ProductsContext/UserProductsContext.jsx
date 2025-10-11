@@ -116,7 +116,7 @@ const UserProductsContextProvider = ({ children }) => {
     }
 
 
-    const filteredProducts = products.filter(product => {      
+    const filteredProducts = products?.filter(product => {      
         return product.titleName.toLowerCase().includes(searchQuery.toLowerCase())
     }
     );
