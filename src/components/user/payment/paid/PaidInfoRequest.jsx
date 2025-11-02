@@ -61,25 +61,25 @@ const PaidInfoRequest = () => {
 
                 <div className="flex gap-[4px]">
                     <span className="text-adminTextPurple">N° pedido:</span>
-                    <span className="text-text-white"> #VG_00{ id }2025 </span>
+                    <span className="text-text-white"> #VG_00{ id && id }2025 </span>
                 </div>
 
                 <div className="flex gap-[4px]">
                     <span className="text-adminTextPurple">Fecha:</span>
-                    <span className="text-text-white">{ requestFormatDate( createdDate ) }</span>
+                    <span className="text-text-white">{ createdDate && requestFormatDate( createdDate ) }</span>
                 </div>
 
                 <div className="flex gap-[4px]">
                     <span className="text-adminTextPurple">Total a pagar:</span>
                     <span className="text-text-white">
-                        S/. { (totalOrder || 0).toFixed(2) }
+                        S/. { totalOrder && (totalOrder || 0).toFixed(2) }
                     </span>
                 </div>
 
                 <div className="flex gap-[4px]">
                     <span className="text-adminTextPurple">Delivery:</span>
                     <span className="text-text-white">
-                      <span className="text-skyBlueApp">{ deliveryMethod }</span>  - S/. { (priceDelivery || 0).toFixed(2) }
+                      <span className="text-skyBlueApp">{deliveryMethod && deliveryMethod }</span>  - S/. { priceDelivery && (priceDelivery || 0).toFixed(2) }
                     </span>
                 </div>
 
@@ -88,7 +88,7 @@ const PaidInfoRequest = () => {
                     <span 
                     className={`text-[16px] ${ statusLabel === 'PENDIENTE' ? 'text-yellow-500' : statusLabel === 'COMPLETADO' ? 'text-green-500' : 'text-red-500' }`}
                     >
-                        { statusLabel }
+                        { statusLabel && statusLabel.toUpperCase() }
                     </span>
                 </div>
 
