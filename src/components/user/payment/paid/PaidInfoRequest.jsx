@@ -18,21 +18,45 @@ const PaidInfoRequest = () => {
     useEffect(() => {
         const fetchRequestDetails = async () => {
             try {
-                setIsLoading(true)
-                const response = await getRequestById(Number(requestId))
-                setRequestDetails(response[0])
-                
+                setIsLoading(true);
+
+                if (!requestId) {
+                    throw new Error("Invalid request ID");
+                }
+
+                const response = await getRequestById(Number(requestId));
+
+                if (!response || response.length === 0 || !response[0]) {
+                    throw new Error("No request details found");
+                }
+
+                const requestData = response[0];
+
+                // Ensure all required fields are present
+                if (
+                    requestData.id &&
+                    requestData.createdDate &&
+                    requestData.totalOrder !== undefined &&
+                    requestData.priceDelivery !== undefined &&
+                    requestData.statusLabel &&
+                    requestData.deliveryMethod
+                ) {
+                    setRequestDetails(requestData);
+                } else {
+                    throw new Error("Incomplete request details");
+                }
             } catch (err) {
-                setError("Error al obtener los detalles del pedido.")
+                console.error("Error fetching request details:", err);
+                setError("Error al obtener los detalles del pedido.");
             } finally {
                 setTimeout(() => {
-                    setIsLoading(false)
-                }, 1000)
+                    setIsLoading(false);
+                }, 1000);
             }
-        }
+        };
 
-        fetchRequestDetails()
-    },[ requestId ])
+        fetchRequestDetails();
+    }, [requestId])
 
     const {
         id,
