@@ -19,7 +19,7 @@ const UserTRCard = ({id, userName, lastName, email, roles}) => {
             <div className='flex justify-center items-center'>
                 <div className='w-[58px] h-[58px] rounded-full overflow-hidden bg-red-500'>
                     <img 
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBfnsDVJ35de9T-d_OWdAd4rPV9sKpWWblsw&s" 
+                        src="https://i.pinimg.com/1200x/0b/9d/61/0b9d61e37b8aaa8258b4fd82881c6e0b.jpg" 
                         alt="Imagen de usuario"
                         className='w-full h-full object-cover' 
                     />
