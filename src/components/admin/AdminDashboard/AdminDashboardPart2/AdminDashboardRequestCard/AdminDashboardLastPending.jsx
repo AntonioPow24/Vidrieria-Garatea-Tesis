@@ -33,7 +33,7 @@ const OrderCardDashboard = memo(({statusLabel, totalOrder,address, cityId,create
                 <div className='flex items-center gap-[8px] '>
                     <div className='w-[40px] h-[40px] rounded-full overflow-hidden'>
                         <img 
-                            src={user?.profilePicture || 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBfnsDVJ35de9T-d_OWdAd4rPV9sKpWWblsw&s'} 
+                            src={user?.profilePicture || 'https://i.pinimg.com/1200x/0b/9d/61/0b9d61e37b8aaa8258b4fd82881c6e0b.jpg'} 
                             alt=""
                             className='object-cover w-full h-full' 
                         />
