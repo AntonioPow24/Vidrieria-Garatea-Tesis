@@ -45,6 +45,8 @@ const UserProductsContextProvider = ({ children }) => {
 
     const getProductDetails = async (id,isCartItem=false) => {
         const apiUrl = getApiUrl();
+        console.log(apiUrl);
+        
         if (!id) {
             console.error("El ID del producto es inválido:", id);
             throw new Error("El ID del producto es inválido.");
