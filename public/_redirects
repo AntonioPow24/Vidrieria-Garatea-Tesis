@@ -1,3 +1,2 @@
-/:section/api/*   http://ecommercegaratea.somee.com/api/:splat  200
-/api/*            http://ecommercegaratea.somee.com/api/:splat  200
-/*                /index.html                                    200
+/api/* http://ecommercegaratea.somee.com/api/:splat 200
+/* /index.html 200
